@@ -2,14 +2,14 @@ import { css } from "styled-components";
 
 const lightTheme = css`
   html[theme="light"] {
-    --white: #000;
+    --white: #fff;
     --dark: #242426;
     --light: #fff;
   }
 `;
 const darkTheme = css`
   html[theme="dark"] {
-    --white: #fff;
+    --white: #000;
     --dark: #fff;
     --light: #323537;
   }

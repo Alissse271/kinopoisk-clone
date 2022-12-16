@@ -5,7 +5,7 @@ import { Media } from "./media";
 const H1 = css`
   font-weight: 600;
   line-height: 1.5;
-  color: ${Color.WHITE_THEME};
+  color: ${Color.DARK_THEME};
   ${Media.XS} {
     font-size: 28px;
   }
@@ -20,7 +20,7 @@ const H1 = css`
 const H2 = css`
   font-weight: 600;
   line-height: 1.5;
-  color: ${Color.WHITE_THEME};
+  color: ${Color.DARK_THEME};
   ${Media.XS} {
     font-size: 24px;
   }
