@@ -1,5 +1,7 @@
 import { useEffect } from "react";
+import { RouterProvider } from "react-router-dom";
 import styled from "styled-components";
+import { Router } from "./router";
 import { toggleTheme, useAppDispatch, useAppSelector } from "./store";
 import { Color, Typography } from "./ui";
 
@@ -14,12 +16,15 @@ export const App = () => {
   };
 
   return (
-    <Container>
-      <Title>Test!!!!!!</Title>
-      <button type="button" onClick={handleClick}>
-        Toggle theme
-      </button>
-    </Container>
+    <>
+      <RouterProvider router={Router} />
+      <Container>
+        <Title>Test!!!!!!</Title>
+        <button type="button" onClick={handleClick}>
+          Toggle theme
+        </button>
+      </Container>
+    </>
   );
 };
 const Container = styled.div`
