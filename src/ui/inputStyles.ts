@@ -3,7 +3,7 @@ import { Color } from "./colors";
 import { Typography } from "./typography";
 
 export const inputStyles = css`
-  padding: 16px 0 16px 20px;
+  padding: 16px 16px 16px 20px;
 
   ${Typography.S5}
   color: ${Color.DARK_THEME};
