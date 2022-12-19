@@ -14,7 +14,7 @@ export const Router = createBrowserRouter(
         <Route path={ROUTE.MOVIE} />
         <Route path={ROUTE.NOT_FOUND} element={<NotFoundPage />} />
       </Route>
-      <Route element={<AuthTemplate />}>
+      <Route path={ROUTE.AUTH} element={<AuthTemplate />}>
         <Route path={ROUTE.SIGN_IN} />
         <Route path={ROUTE.SIGN_UP} />
         <Route path={ROUTE.RESET_PASSWORD} />

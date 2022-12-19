@@ -1,4 +1,4 @@
-import { AuthTemplate } from "./AuthTemplate";
-import { MainTemplate } from "./MainTemplate";
+import { AuthTemplate } from "./AuthTemplate/AuthTemplate";
+import { MainTemplate } from "./MainTemplate/MainTemplate";
 
 export { MainTemplate, AuthTemplate };

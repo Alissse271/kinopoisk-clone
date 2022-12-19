@@ -1,9 +1,7 @@
 import { useEffect } from "react";
 import { RouterProvider } from "react-router-dom";
-import styled from "styled-components";
 import { Router } from "./router";
 import { toggleTheme, useAppDispatch, useAppSelector } from "./store";
-import { Color, Typography } from "./ui";
 
 export const App = () => {
   const dispatch = useAppDispatch();
@@ -18,18 +16,9 @@ export const App = () => {
   return (
     <>
       <RouterProvider router={Router} />
-      <Container>
-        <Title>Test!!!!!!</Title>
-        <button type="button" onClick={handleClick}>
-          Toggle theme
-        </button>
-      </Container>
+      <button type="button" onClick={handleClick}>
+        Toggle theme
+      </button>
     </>
   );
 };
-const Container = styled.div`
-  background-color: ${Color.WHITE_THEME};
-`;
-const Title = styled.h1`
-  ${Typography.H1}
-`;

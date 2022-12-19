@@ -59,6 +59,11 @@ const S3 = css`
   line-height: 1.5;
   color: ${Color.LIGHT};
 `;
+const S4 = css`
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.33;
+`;
 
 const B1 = css`
   font-weight: 500;
@@ -67,4 +72,4 @@ const B1 = css`
   color: ${Color.DARK_THEME};
 `;
 
-export const Typography = { H1, H2, H3, S1, S2, S3, B1 };
+export const Typography = { H1, H2, H3, S1, S2, S3, S4, B1 };
