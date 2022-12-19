@@ -16,4 +16,5 @@ export enum Color {
   DARK_THEME = "var(--dark)",
   LIGHT_THEME = "var(--light)",
   SECONDARY_THEME = "var(--secondary)",
+  GREY_THEME = "var(--grey)",
 }

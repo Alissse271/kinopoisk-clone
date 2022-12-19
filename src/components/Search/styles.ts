@@ -21,7 +21,7 @@ const StyledSearch = styled.input`
     color: ${Color.SECONDARY};
   }
   &:focus-visible {
-    outline-width: 0px;
+    outline: none;
   }
   &::-webkit-search-decoration,
   &::-webkit-search-cancel-button,

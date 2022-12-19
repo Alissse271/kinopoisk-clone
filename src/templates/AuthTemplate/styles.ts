@@ -1,31 +1,51 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import background from "../../assets/images/background.jpg";
-import backgroundBlackout from "../../assets/images/background-blackout.svg";
-import logo from "../../assets/icons/logo.svg";
+
 import { Color, Media, Typography } from "../../ui";
 
 const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  place-items: center;
 
+  background: url(${background}) top center no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+`;
+
+const StyledLink = styled(Link)`
   ${Media.XS} {
-    background: url(${logo}) center 48px no-repeat, url(${backgroundBlackout}) left top no-repeat,
-      url(${background}) left top no-repeat;
+    margin-top: 32px;
   }
 
   ${Media.SM} {
-    background: url(${logo}) 40px 47px no-repeat, url(${backgroundBlackout}) left top no-repeat,
-      url(${background}) left top no-repeat;
+    justify-self: start;
+
+    margin-top: 48px;
+    margin-left: 40px;
   }
   ${Media.LG} {
-    background: url(${logo}) 62px 48px no-repeat, url(${backgroundBlackout}) left top no-repeat,
-      url(${background}) left top no-repeat;
+    margin-top: 48px;
+    margin-left: 62px;
   }
 `;
+
+const Logo = styled.img``;
 
 const TextRights = styled.p`
   ${Typography.B1}
   color: ${Color.WHITE};
+
+  ${Media.XS} {
+    padding-bottom: 48px;
+  }
+  ${Media.MD} {
+    padding-bottom: 56px;
+  }
+  ${Media.LG} {
+    padding-bottom: 64px;
+  }
 `;
 
-export { Container, TextRights };
+export { Container, TextRights, StyledLink, Logo };
