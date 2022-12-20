@@ -4,5 +4,6 @@ import { CustomNavLink } from "./CustomNavLink/CustomNavLink";
 import { Navigation } from "./Navigation/Navigation";
 import { Search } from "./Search/Search";
 import { TitleMedium } from "./TitleMedium/TitleMedium";
+import { MovieCard } from "./MovieCard/MovieCard";
 
-export { ButtonMenu, Search, CustomNavLink, Navigation, ButtonPrimary, TitleMedium };
+export { ButtonMenu, Search, CustomNavLink, Navigation, ButtonPrimary, TitleMedium, MovieCard };

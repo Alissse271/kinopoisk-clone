@@ -10,7 +10,7 @@ export const MainTemplate = () => {
   const debouncedValue = useDebounce(search.value, 500);
   return (
     <Container>
-      <Navigation />
+      {/* <Navigation /> */}
       <Header>
         <LogoIcon fill={Color.DARK_THEME} />
         <ButtonMenu type={"button"} label={""} />

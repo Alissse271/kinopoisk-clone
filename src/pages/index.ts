@@ -1,4 +1,4 @@
-import { HomePage } from "./HomePage";
+import { HomePage } from "./HomePage/HomePage";
 import { NotFoundPage } from "./NotFoundPage";
 import { SignInPage } from "./SignInPage/SignInPage";
 import { SignUpPage } from "./SignUpPage/SignUpPage";
