@@ -5,8 +5,6 @@ const Container = styled.div`
   margin: 0 auto;
   padding: 32px 24px 48px;
 
-  background: ${Color.WHITE_THEME};
-
   ${Media.XXL} {
     max-width: 1024px;
   }
