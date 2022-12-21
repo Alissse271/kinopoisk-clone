@@ -1,13 +1,13 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, HTMLInputTypeAttribute } from "react";
 import { StyledSearch } from "./styles";
 
-interface IInput {
-  type: "search";
+interface ISearch {
+  type: HTMLInputTypeAttribute;
   placeholder: string;
   value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Search = ({ type, placeholder, value, onChange }: IInput) => {
-  return <StyledSearch type={type} placeholder={placeholder} value={value} onChange={onChange} />;
+export const Search = (props: ISearch) => {
+  return <StyledSearch {...props} />;
 };
