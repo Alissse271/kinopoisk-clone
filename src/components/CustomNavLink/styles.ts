@@ -8,6 +8,10 @@ const StyledNavLink = styled(NavLink)<{ $isActive: PathMatch<"*"> | null }>`
 
   text-decoration: none;
   color: ${({ $isActive }) => ($isActive ? `${Color.PRIMARY}` : `${Color.SECONDARY}`)};
+
+  svg {
+    fill: ${({ $isActive }) => ($isActive ? `${Color.PRIMARY}` : `${Color.SECONDARY}`)};
+  }
 `;
 
 export { StyledNavLink };
