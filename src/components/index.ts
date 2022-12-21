@@ -7,6 +7,7 @@ import { TitleMedium } from "./TitleMedium/TitleMedium";
 import { MovieCard } from "./MovieCard/MovieCard";
 import { SignInForm } from "./SignInForm/SignInForm";
 import { SignUpForm } from "./SignUpForm/SignUpForm";
+import { Header } from "./Header/Header";
 
 export {
   ButtonMenu,
@@ -18,4 +19,5 @@ export {
   MovieCard,
   SignInForm,
   SignUpForm,
+  Header,
 };
