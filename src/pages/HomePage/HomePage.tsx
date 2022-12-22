@@ -12,6 +12,12 @@ export const HomePage = () => {
       <MovieCard />
       <MovieCard />
       <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
+      <MovieCard />
     </Container>
   );
 };

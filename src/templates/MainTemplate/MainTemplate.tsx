@@ -1,12 +1,14 @@
 import { Outlet } from "react-router-dom";
-import { Header, Navigation } from "../../components";
-import { Container } from "./styles";
+import { useMediaQuery } from "../../hooks";
+
+import { Container, StyledHeader, StyledNavigation } from "./styles";
 
 export const MainTemplate = () => {
+  const isDesktopResolution = useMediaQuery("(min-width: 1440px)");
   return (
     <Container>
-      <Navigation />
-      <Header />
+      {isDesktopResolution && <StyledNavigation />}
+      <StyledHeader />
       <Outlet />
     </Container>
   );

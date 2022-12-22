@@ -1,12 +1,17 @@
 import styled from "styled-components";
 import { Color, Typography } from "../../ui";
-
-const StyledNavigation = styled.nav`
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+const Links = styled.nav`
+  flex: 1 0 auto;
   display: grid;
-  grid-template-rows: repeat(4);
+  grid-template-rows: repeat(4, 24px);
+
   grid-row-gap: 40px;
 
-  padding: 46px 49px 0 0;
+  padding-top: 64px;
 
   background: ${Color.WHITE_THEME};
 `;
@@ -17,4 +22,10 @@ const LinkText = styled.span`
   padding-left: 20px;
 `;
 
-export { StyledNavigation, LinkText };
+const CopyRight = styled.p`
+  padding-top: 770px;
+  ${Typography.S5}
+  color: ${Color.LIGHT};
+`;
+
+export { Links, LinkText, Container, CopyRight };

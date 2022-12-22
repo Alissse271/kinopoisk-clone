@@ -24,7 +24,7 @@ interface IFormValues {
 export const SignUpForm = () => {
   const navigate = useNavigate();
   const handleSignIn = () => {
-    navigate(-1);
+    navigate("../");
   };
   const {
     register,

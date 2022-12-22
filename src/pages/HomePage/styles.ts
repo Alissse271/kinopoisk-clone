@@ -20,7 +20,12 @@ const Container = styled.div`
     grid-template-columns: repeat(4, minmax(208px, 272px));
   }
   ${Media.XXXL} {
-    grid-template-columns: repeat(3, minmax(208px, 272px));
+    grid-template-columns: repeat(auto-fill, minmax(208px, 272px));
+
+    grid-row-start: 2;
+    grid-row-end: 3;
+    grid-column-start: 2;
+    grid-column-end: 3;
   }
 `;
 
