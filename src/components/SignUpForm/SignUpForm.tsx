@@ -22,10 +22,10 @@ interface IFormValues {
 }
 
 export const SignUpForm = () => {
-  const navigate = useNavigate();
-  const handleSignIn = () => {
-    navigate("../");
-  };
+  // const navigate = useNavigate();
+  // const handleSignIn = () => {
+  //   navigate("../" + ROUTE.SIGN_IN);
+  // };
   const {
     register,
     handleSubmit,
@@ -112,10 +112,7 @@ export const SignUpForm = () => {
         </InputsContainer>
         <Button primary type={"submit"} label={"Sign up"} />
         <StyledText>
-          Already have an account?{" "}
-          <LinkSignUp onClick={handleSignIn} to={ROUTE.SIGN_IN}>
-            Sign In
-          </LinkSignUp>
+          Already have an account? <LinkSignUp to={"../"}>Sign In</LinkSignUp>
         </StyledText>
       </StyledForm>
     </FormContainer>
