@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { inputStyles } from "../../ui";
+import { inputStyles } from "ui";
 
 const StyledSearch = styled.input`
   width: 100%;

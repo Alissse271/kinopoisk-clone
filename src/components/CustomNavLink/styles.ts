@@ -1,6 +1,6 @@
 import { NavLink, PathMatch } from "react-router-dom";
 import styled from "styled-components";
-import { Color } from "../../ui";
+import { Color } from "ui";
 
 const StyledNavLink = styled(NavLink)<{ $isActive: PathMatch<"*"> | null }>`
   display: flex;

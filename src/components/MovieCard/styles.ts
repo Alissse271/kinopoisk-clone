@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color, Media, Typography } from "../../ui";
+import { Color, Media, Typography } from "ui";
 
 const Card = styled.div`
   max-width: 272px;

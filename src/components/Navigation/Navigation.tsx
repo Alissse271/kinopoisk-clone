@@ -1,12 +1,9 @@
-import { ROUTE } from "../../router";
-import { ReactComponent as LogoIcon } from "../../assets/icons/logo.svg";
-import { CustomNavLink } from "../CustomNavLink/CustomNavLink";
-import { ReactComponent as HomeIcon } from "../../assets/icons/home.svg";
-import { ReactComponent as TrendsIcon } from "../../assets/icons/trends.svg";
-import { ReactComponent as FavoritesIcon } from "../../assets/icons/favorites.svg";
-import { ReactComponent as SettingsIcon } from "../../assets/icons/settings.svg";
+import { ROUTE } from "router";
 import { LinkText, Links, Container, CopyRight } from "./styles";
-import { Color } from "../../ui";
+import { Color } from "ui";
+import { CustomNavLink } from "components";
+import { FavoritesIcon, HomeIcon, LogoIcon, SettingsIcon, TrendsIcon } from "assets";
+import { Link } from "react-router-dom";
 
 interface IProps {
   className?: string;
@@ -15,7 +12,9 @@ interface IProps {
 export const Navigation = ({ className }: IProps) => {
   return (
     <Container className={className}>
-      <LogoIcon fill={Color.DARK_THEME} />
+      <Link to={ROUTE.HOME}>
+        <LogoIcon fill={Color.DARK_THEME} />
+      </Link>
       <Links>
         <CustomNavLink to={ROUTE.HOME}>
           <HomeIcon />

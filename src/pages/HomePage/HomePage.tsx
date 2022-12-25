@@ -1,4 +1,5 @@
-import { MovieCard } from "../../components";
+import { MovieCard } from "components";
+import { toggleTheme, useAppDispatch } from "store";
 import { Container } from "./styles";
 
 export const HomePage = () => {

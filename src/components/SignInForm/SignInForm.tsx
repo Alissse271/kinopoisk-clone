@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { Button, TitleMedium } from "../../components";
-import { ROUTE } from "../../router";
+import { Button, TitleMedium } from "components";
+import { ROUTE } from "router";
 import {
   Container,
   ErrorMessage,
@@ -21,10 +20,6 @@ interface IFormValues {
 }
 
 export const SignInForm = () => {
-  // const navigate = useNavigate();
-  // const handleSignUp = () => {
-  //   navigate("../" + ROUTE.SIGN_UP);
-  // };
   const {
     register,
     handleSubmit,

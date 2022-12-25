@@ -1,7 +1,6 @@
+import { background } from "assets";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import background from "../../assets/images/background.jpg";
-
 import { Color, Media, Typography } from "../../ui";
 
 const Container = styled.div`
@@ -31,8 +30,6 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const Logo = styled.img``;
-
 const TextRights = styled.p`
   ${Typography.B1}
   color: ${Color.WHITE};
@@ -48,4 +45,4 @@ const TextRights = styled.p`
   }
 `;
 
-export { Container, TextRights, StyledLink, Logo };
+export { Container, TextRights, StyledLink };

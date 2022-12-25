@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color, Typography } from "../../ui";
+import { Color, Typography } from "ui";
 
 const StyledButton = styled.button<{ primary?: boolean; secondary?: boolean }>`
   width: 100%;

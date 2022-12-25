@@ -1,7 +1,6 @@
 import { useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
-import { Button, TitleMedium } from "../../components";
-import { ROUTE } from "../../router";
+import { Button, TitleMedium } from "components";
+
 import {
   FormContainer,
   StyledForm,

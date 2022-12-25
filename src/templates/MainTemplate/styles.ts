@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { Media } from "../../ui";
-import { Header, Navigation } from "../../components";
+import { Media } from "ui";
+import { Header, Navigation } from "components";
 
 const Container = styled.div`
   display: grid;

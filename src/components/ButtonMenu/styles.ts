@@ -1,6 +1,6 @@
+import { burgerMenu } from "assets";
 import styled from "styled-components";
-import { Color } from "../../ui";
-import burgerMenu from "../../assets/icons/burger-menu.svg";
+import { Color } from "ui";
 
 const StyledButton = styled.button`
   width: 56px;

@@ -1,6 +1,6 @@
 import { createRoutesFromElements, createBrowserRouter, Route } from "react-router-dom";
-import { HomePage, NotFoundPage, SignInPage, SignUpPage } from "../pages";
-import { AuthTemplate, MainTemplate } from "../templates";
+import { HomePage, NotFoundPage, SignInPage, SignUpPage } from "pages";
+import { AuthTemplate, MainTemplate } from "templates";
 import { ROUTE } from "./routes";
 
 export const Router = createBrowserRouter(
@@ -21,4 +21,5 @@ export const Router = createBrowserRouter(
       </Route>
     </>,
   ),
+  { basename: "/kinopoisk-clone" },
 );

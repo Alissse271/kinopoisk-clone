@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Color, inputStyles, Media, Typography } from "../../ui";
+import { Color, inputStyles, Media, Typography } from "ui";
 
 const FormContainer = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
-import { useDebounce, useInput, useMediaQuery } from "../../hooks";
-import { Color } from "../../ui";
-import { ReactComponent as LogoIcon } from "../../assets/icons/logo.svg";
+import { LogoIcon } from "assets";
+import { useDebounce, useInput, useWindowSize } from "hooks";
+import { Color } from "ui";
 import { StyledHeader, StyledMenuButton, StyledSearch } from "./styles";
 
 interface IProps {
@@ -10,11 +10,11 @@ interface IProps {
 export const Header = ({ className }: IProps) => {
   const search = useInput();
   const debouncedValue = useDebounce(search.value, 500);
-  const isDesktopResolution = useMediaQuery("(max-width: 1439px)");
+  const { width = 0 } = useWindowSize();
   return (
     <StyledHeader className={className}>
-      {isDesktopResolution && <LogoIcon fill={Color.DARK_THEME} />}
-      <StyledMenuButton type={"button"} label={""} />
+      {width < 1440 && <LogoIcon fill={Color.DARK_THEME} />}
+      <StyledMenuButton type="button" label="" />
       <StyledSearch type="search" placeholder="Search" {...search} />
     </StyledHeader>
   );

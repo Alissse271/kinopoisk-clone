@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import { Color, Typography } from "../../ui";
+import { Color, Typography } from "ui";
+
 const Container = styled.div`
   display: flex;
   flex-direction: column;
