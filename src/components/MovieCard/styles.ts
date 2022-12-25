@@ -15,15 +15,29 @@ const Name = styled.p`
   }
   ${Typography.S2}
 `;
-const List = styled.ul`
-  display: grid;
-  grid-template-columns: repeat(3, auto);
+const List = styled.ul<{ $isMobile: boolean }>`
+  display: inline-grid;
+
+  grid-template-columns: ${({ $isMobile }) => ($isMobile ? "repeat(2, auto)" : "repeat(3, auto)")};
 `;
-const ListItem = styled.li`
+const ListItem = styled.li<{ $isMobile: boolean }>`
+  position: relative;
+
+  margin-right: 1.5rem;
+
   ${Typography.S5};
   color: ${Color.LIGHT};
-  &:first-child {
-    list-style: none;
+  list-style: none;
+
+  ${({ $isMobile }) => ($isMobile ? "&:nth-child(even)" : "&:not(:nth-child(3n + 1))")}:before {
+    content: "";
+    position: absolute;
+    left: -1rem;
+    top: calc(50% - 0.125rem);
+    width: 0.5rem;
+    height: 0.5rem;
+    background-color: ${Color.LIGHT};
+    border-radius: 50%;
   }
 `;
 
