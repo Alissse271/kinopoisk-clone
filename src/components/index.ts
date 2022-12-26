@@ -8,6 +8,7 @@ import { MovieCard } from "./MovieCard/MovieCard";
 import { SignInForm } from "./SignInForm/SignInForm";
 import { SignUpForm } from "./SignUpForm/SignUpForm";
 import { Header } from "./Header/Header";
+import { ResetForm } from "./ResetForm/ResetForm";
 
 export {
   ButtonMenu,
@@ -20,4 +21,5 @@ export {
   SignInForm,
   SignUpForm,
   Header,
+  ResetForm,
 };

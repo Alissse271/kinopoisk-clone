@@ -56,14 +56,14 @@ export const SignUpForm = () => {
   return (
     <FormContainer>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <TitleMedium label={"Sign Up"} />
+        <TitleMedium label="Sign Up" />
         <InputsContainer>
           <Container>
             <StyledLabel>
               Name
               <StyledInput
-                type={"name"}
-                placeholder={"Your name"}
+                type="name"
+                placeholder="Your name"
                 {...register("name", {
                   required: "*name is required",
                   pattern: { value: /^[a-zA-ZА-ЯЁа-яё\s]*$/, message: "Enter a valid name" },
@@ -80,8 +80,8 @@ export const SignUpForm = () => {
             <StyledLabel>
               Email
               <StyledInput
-                type={"text"}
-                placeholder={"Your email"}
+                type="text"
+                placeholder="Your email"
                 {...register("email", {
                   required: "*email is required",
                   pattern: { value: /^(.+)@(.+)$/, message: "Enter a valid email" },
@@ -98,8 +98,8 @@ export const SignUpForm = () => {
             <StyledLabel>
               Password
               <StyledInput
-                type={"password"}
-                placeholder={"Your password"}
+                type="password"
+                placeholder="Your password"
                 {...register("password", {
                   required: "*password is required",
                   minLength: {
@@ -115,8 +115,8 @@ export const SignUpForm = () => {
             <StyledLabel>
               Confirm password
               <StyledInput
-                type={"password"}
-                placeholder={"Confirm password"}
+                type="password"
+                placeholder="Confirm password"
                 {...register("confirmPassword", {
                   required: "*password is incorrect",
                   minLength: {
@@ -131,7 +131,7 @@ export const SignUpForm = () => {
             )}
           </Container>
         </InputsContainer>
-        <Button primary type={"submit"} label={"Sign up"} />
+        <Button primary type="submit" label="Sign up" />
         <StyledText>
           Already have an account? <LinkSignUp to={"../"}>Sign In</LinkSignUp>
         </StyledText>

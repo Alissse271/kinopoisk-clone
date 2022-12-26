@@ -55,14 +55,14 @@ export const SignInForm = () => {
   return (
     <FormContainer>
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <TitleMedium label={"Sign In"} />
+        <TitleMedium label="Sign In" />
         <InputsContainer>
           <Container>
             <StyledLabel>
               Email
               <StyledInput
-                type={"text"}
-                placeholder={"Your email"}
+                type="text"
+                placeholder="Your email"
                 {...register("email", {
                   required: "*email is required",
                   pattern: { value: /^(.+)@(.+)$/, message: "Enter a valid email" },
@@ -79,8 +79,8 @@ export const SignInForm = () => {
             <StyledLabel>
               Password
               <StyledInput
-                type={"password"}
-                placeholder={"Your password"}
+                type="password"
+                placeholder="Your password"
                 {...register("password", {
                   required: "*password is required",
                   minLength: {

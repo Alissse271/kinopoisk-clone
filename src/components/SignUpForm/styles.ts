@@ -8,12 +8,10 @@ const FormContainer = styled.div`
 
   max-width: 574px;
   width: 100%;
-  height: 100vh;
 `;
 
 const StyledForm = styled.form`
   width: 100%;
-  min-height: 540px;
 
   margin: 0 24px;
 

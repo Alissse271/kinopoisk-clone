@@ -12,7 +12,6 @@ const FormContainer = styled.div`
 
 const StyledForm = styled.form`
   width: 100%;
-  min-height: 540px;
 
   margin: 0 24px;
 
