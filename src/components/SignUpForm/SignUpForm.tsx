@@ -1,6 +1,5 @@
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { Button, TitleMedium } from "components";
-
 import {
   FormContainer,
   StyledForm,
@@ -12,6 +11,11 @@ import {
   StyledText,
   LinkSignUp,
 } from "./styles";
+import { useAppDispatch } from "store";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { setUser } from "store/auth/authSlice";
+import { ROUTE } from "router";
+import { useNavigate } from "react-router-dom";
 
 interface IFormValues {
   name: string;
@@ -21,19 +25,37 @@ interface IFormValues {
 }
 
 export const SignUpForm = () => {
-  // const navigate = useNavigate();
-  // const handleSignIn = () => {
-  //   navigate("../" + ROUTE.SIGN_IN);
-  // };
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm<IFormValues>();
+
+  const onSubmit: SubmitHandler<IFormValues> = ({ email, password }) => {
+    const auth = getAuth();
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(({ user }) => {
+        dispatch(
+          setUser({
+            email: user.email,
+            id: user.uid,
+          }),
+        );
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+    reset();
+    navigate(`${ROUTE.HOME}`);
+  };
+
   return (
     <FormContainer>
-      <StyledForm>
+      <StyledForm onSubmit={handleSubmit(onSubmit)}>
         <TitleMedium label={"Sign Up"} />
         <InputsContainer>
           <Container>

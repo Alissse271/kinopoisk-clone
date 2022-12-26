@@ -1,4 +1,4 @@
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { Button, TitleMedium } from "components";
 import { ROUTE } from "router";
 import {
@@ -13,6 +13,10 @@ import {
   StyledLink,
   LinkSignUp,
 } from "./styles";
+import { useAppDispatch } from "store";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { setUser } from "store/auth/authSlice";
+import { useNavigate } from "react-router-dom";
 
 interface IFormValues {
   email: string;
@@ -20,15 +24,37 @@ interface IFormValues {
 }
 
 export const SignInForm = () => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm<IFormValues>();
+
+  const onSubmit: SubmitHandler<IFormValues> = ({ email, password }) => {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then(({ user }) => {
+        dispatch(
+          setUser({
+            email: user.email,
+            id: user.uid,
+          }),
+        );
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+      });
+    reset();
+    navigate(`${ROUTE.HOME}`);
+  };
+
   return (
     <FormContainer>
-      <StyledForm>
+      <StyledForm onSubmit={handleSubmit(onSubmit)}>
         <TitleMedium label={"Sign In"} />
         <InputsContainer>
           <Container>
@@ -68,7 +94,7 @@ export const SignInForm = () => {
             <StyledLink to={ROUTE.RESET_PASSWORD}>Forgot password?</StyledLink>
           </Container>
         </InputsContainer>
-        <Button primary type={"submit"} label={"Sign in"} />
+        <Button primary type="submit" label="Sign in" />
         <StyledText>
           Don’t have an account? <LinkSignUp to={ROUTE.SIGN_UP}>Sign Up</LinkSignUp>
         </StyledText>
