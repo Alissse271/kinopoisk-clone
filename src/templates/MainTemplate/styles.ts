@@ -14,7 +14,6 @@ const Container = styled.div`
     padding: 40px 24px 56px;
   }
   ${Media.XXXL} {
-    /* grid-template-columns: repeat(2, auto); */
     grid-template-columns: auto minmax(880px, 1490px);
     grid-template-rows: 100px auto;
     padding: 40px 60px 64px;

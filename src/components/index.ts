@@ -1,3 +1,4 @@
+import { ThemeToggler } from "./ThemeToggler/ThemeToggler";
 import { Button } from "./Button/Button";
 import { ButtonMenu } from "./ButtonMenu/ButtonMenu";
 import { CustomNavLink } from "./CustomNavLink/CustomNavLink";
@@ -9,10 +10,9 @@ import { SignInForm } from "./SignInForm/SignInForm";
 import { SignUpForm } from "./SignUpForm/SignUpForm";
 import { Header } from "./Header/Header";
 import { ResetForm } from "./ResetForm/ResetForm";
-import { StyledSwitch } from "./Switch/Switch";
-import { ThemeToggler } from "./ThemeToggler/ThemeToggler";
 
 export {
+  ThemeToggler,
   ButtonMenu,
   Input,
   CustomNavLink,
@@ -24,6 +24,4 @@ export {
   SignUpForm,
   Header,
   ResetForm,
-  StyledSwitch,
-  ThemeToggler,
 };

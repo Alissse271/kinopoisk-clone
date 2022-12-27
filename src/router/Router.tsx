@@ -1,5 +1,12 @@
 import { createRoutesFromElements, createBrowserRouter, Route } from "react-router-dom";
-import { HomePage, NotFoundPage, ResetPasswordPage, SignInPage, SignUpPage } from "pages";
+import {
+  HomePage,
+  NotFoundPage,
+  ResetPasswordPage,
+  SettingsPage,
+  SignInPage,
+  SignUpPage,
+} from "pages";
 import { AuthTemplate, MainTemplate } from "templates";
 import { ROUTE } from "./routes";
 
@@ -10,7 +17,7 @@ export const Router = createBrowserRouter(
         <Route index element={<HomePage />} />
         <Route path={ROUTE.FAVORITES} />
         <Route path={ROUTE.TRENDS} />
-        <Route path={ROUTE.SETTINGS} />
+        <Route path={ROUTE.SETTINGS} element={<SettingsPage />} />
         <Route path={ROUTE.MOVIE} />
         <Route path={ROUTE.NOT_FOUND} element={<NotFoundPage />} />
       </Route>
