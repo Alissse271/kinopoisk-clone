@@ -1,6 +1,7 @@
+import { ButtonMenu, Input } from "components";
 import styled from "styled-components";
-import { ButtonMenu, Search } from "../../components";
-import { Media } from "../../ui";
+
+import { Media } from "ui";
 
 const StyledHeader = styled.div`
   display: grid;
@@ -23,7 +24,7 @@ const StyledHeader = styled.div`
   padding-bottom: 40px;
 `;
 
-const StyledSearch = styled(Search)`
+const StyledSearch = styled(Input)`
   grid-column-start: 1;
   grid-column-end: 3;
 
