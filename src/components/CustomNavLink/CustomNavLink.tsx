@@ -6,12 +6,13 @@ import { StyledNavLink } from "./styles";
 interface IProps {
   children: ReactNode;
   to: ROUTE;
+  onClick: () => void;
 }
 
-export const CustomNavLink = ({ children, to }: IProps) => {
+export const CustomNavLink = ({ children, to, onClick }: IProps) => {
   const match = useMatch(to);
   return (
-    <StyledNavLink $isActive={match} to={to}>
+    <StyledNavLink onClick={onClick} $isActive={match} to={to}>
       {children}
     </StyledNavLink>
   );

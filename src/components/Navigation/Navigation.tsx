@@ -21,6 +21,7 @@ interface IProps {
 export const Navigation = ({ className }: IProps) => {
   const [open, setOpen] = useState(false);
   const { width = 0 } = useWindowSize();
+  const handleClose = () => setOpen(!open);
   return (
     <Container className={className}>
       {(width >= 1440 || width < 768) && (
@@ -31,19 +32,19 @@ export const Navigation = ({ className }: IProps) => {
       {width < 1440 && <StyledMenuButton type="button" label="" open={open} setOpen={setOpen} />}
       <StyledNavigation open={open}>
         <Links>
-          <CustomNavLink to={ROUTE.HOME}>
+          <CustomNavLink onClick={handleClose} to={ROUTE.HOME}>
             <HomeIcon />
             <LinkText>Home</LinkText>
           </CustomNavLink>
-          <CustomNavLink to={ROUTE.TRENDS}>
+          <CustomNavLink onClick={handleClose} to={ROUTE.TRENDS}>
             <TrendsIcon />
             <LinkText>Trends</LinkText>
           </CustomNavLink>
-          <CustomNavLink to={ROUTE.FAVORITES}>
+          <CustomNavLink onClick={handleClose} to={ROUTE.FAVORITES}>
             <FavoritesIcon />
             <LinkText>Favorites</LinkText>
           </CustomNavLink>
-          <CustomNavLink to={ROUTE.SETTINGS}>
+          <CustomNavLink onClick={handleClose} to={ROUTE.SETTINGS}>
             <SettingsIcon />
             <LinkText>Settings</LinkText>
           </CustomNavLink>

@@ -1,6 +1,8 @@
 import { LogoIcon } from "assets";
 import { HeaderAccount, Input } from "components";
 import { useDebounce, useInput, useWindowSize } from "hooks";
+import { Link } from "react-router-dom";
+import { ROUTE } from "router";
 import { Color } from "ui";
 import { StyledHeader } from "./styles";
 
@@ -14,7 +16,11 @@ export const Header = ({ className }: IProps) => {
   const { width = 0 } = useWindowSize();
   return (
     <StyledHeader className={className}>
-      {width < 1440 && width >= 768 && <LogoIcon fill={Color.DARK_THEME} />}
+      {width < 1440 && width >= 768 && (
+        <Link to={ROUTE.HOME}>
+          <LogoIcon fill={Color.DARK_THEME} />
+        </Link>
+      )}
       <Input type="search" placeholder="Search" {...search} />
       {width >= 1440 && <HeaderAccount />}
     </StyledHeader>

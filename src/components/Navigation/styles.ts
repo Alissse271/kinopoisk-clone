@@ -30,13 +30,19 @@ const StyledNavigation = styled.div<{ open: boolean }>`
     right: 0;
     top: 0;
 
-    width: 320px;
+    width: 100%;
     padding-left: 48px;
 
     background: ${Color.WHITE_THEME};
     z-index: 2;
     transition: all 0.3s ease;
     transform: ${({ open }) => (open ? "translateX(0%)" : "translateX(100%)")};
+  }
+  ${Media.MD} {
+    width: 320px;
+  }
+  ${Media.XXL} {
+    width: 220px;
   }
   ${Media.XXXL} {
     position: relative;
