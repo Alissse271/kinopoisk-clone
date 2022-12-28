@@ -1,3 +1,10 @@
+import { NotFoundText, NotFoundNumber, Container } from "./styles";
+
 export const NotFoundPage = () => {
-  return <div>NotFoundPage</div>;
+  return (
+    <Container>
+      <NotFoundNumber>404</NotFoundNumber>
+      <NotFoundText>Page Not Found</NotFoundText>
+    </Container>
+  );
 };
