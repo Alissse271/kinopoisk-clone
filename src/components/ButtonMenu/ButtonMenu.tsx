@@ -4,11 +4,13 @@ interface IButton {
   type: "button";
   label: string;
   className?: string;
+  open: boolean;
+  setOpen: (open: boolean) => void;
 }
 
-export const ButtonMenu = ({ type, label, className }: IButton) => {
+export const ButtonMenu = ({ type, label, className, open, setOpen }: IButton) => {
   return (
-    <StyledButton className={className} type={type}>
+    <StyledButton className={className} type={type} open={open} onClick={() => setOpen(!open)}>
       {label}
     </StyledButton>
   );

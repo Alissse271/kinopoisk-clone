@@ -1,8 +1,9 @@
 import { Outlet } from "react-router-dom";
 import { useWindowSize } from "hooks";
-import { Container, StyledHeader, StyledNavigation } from "./styles";
+import { StyledTemplate, Container, StyledNavigation } from "./styles";
 import { setTheme, useAppSelector } from "store";
 import { useEffect } from "react";
+import { Header } from "components";
 
 export const MainTemplate = () => {
   const { width = 0 } = useWindowSize();
@@ -11,10 +12,19 @@ export const MainTemplate = () => {
     document.documentElement.setAttribute("theme", theme);
   }, [theme]);
   return (
-    <Container>
-      {width >= 1440 && <StyledNavigation />}
-      <StyledHeader />
+    <StyledTemplate>
+      {width >= 1440 ? (
+        <>
+          <StyledNavigation />
+          <Header />
+        </>
+      ) : (
+        <Container>
+          <StyledNavigation />
+          <Header />
+        </Container>
+      )}
       <Outlet />
-    </Container>
+    </StyledTemplate>
   );
 };

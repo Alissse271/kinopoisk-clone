@@ -10,6 +10,7 @@ import { SignInForm } from "./SignInForm/SignInForm";
 import { SignUpForm } from "./SignUpForm/SignUpForm";
 import { Header } from "./Header/Header";
 import { ResetForm } from "./ResetForm/ResetForm";
+import { HeaderAccount } from "./HeaderAccount/HeaderAccount";
 
 export {
   ThemeToggler,
@@ -24,4 +25,5 @@ export {
   SignUpForm,
   Header,
   ResetForm,
+  HeaderAccount,
 };

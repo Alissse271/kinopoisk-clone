@@ -1,39 +1,55 @@
 import { ROUTE } from "router";
-import { LinkText, Links, Container, CopyRight } from "./styles";
+import {
+  LinkText,
+  Links,
+  Container,
+  CopyRight,
+  StyledMenuButton,
+  StyledNavigation,
+  StyledLogo,
+} from "./styles";
 import { Color } from "ui";
 import { CustomNavLink } from "components";
 import { FavoritesIcon, HomeIcon, LogoIcon, SettingsIcon, TrendsIcon } from "assets";
-import { Link } from "react-router-dom";
+import { useWindowSize } from "hooks";
+import { useState } from "react";
 
 interface IProps {
   className?: string;
 }
 
 export const Navigation = ({ className }: IProps) => {
+  const [open, setOpen] = useState(false);
+  const { width = 0 } = useWindowSize();
   return (
     <Container className={className}>
-      <Link to={ROUTE.HOME}>
-        <LogoIcon fill={Color.DARK_THEME} />
-      </Link>
-      <Links>
-        <CustomNavLink to={ROUTE.HOME}>
-          <HomeIcon />
-          <LinkText>Home</LinkText>
-        </CustomNavLink>
-        <CustomNavLink to={ROUTE.TRENDS}>
-          <TrendsIcon />
-          <LinkText>Trends</LinkText>
-        </CustomNavLink>
-        <CustomNavLink to={ROUTE.FAVORITES}>
-          <FavoritesIcon />
-          <LinkText>Favorites</LinkText>
-        </CustomNavLink>
-        <CustomNavLink to={ROUTE.SETTINGS}>
-          <SettingsIcon />
-          <LinkText>Settings</LinkText>
-        </CustomNavLink>
-      </Links>
-      <CopyRight>© All Rights Reserved</CopyRight>
+      {(width >= 1440 || width < 768) && (
+        <StyledLogo to={ROUTE.HOME}>
+          <LogoIcon fill={Color.DARK_THEME} />
+        </StyledLogo>
+      )}
+      {width < 1440 && <StyledMenuButton type="button" label="" open={open} setOpen={setOpen} />}
+      <StyledNavigation open={open}>
+        <Links>
+          <CustomNavLink to={ROUTE.HOME}>
+            <HomeIcon />
+            <LinkText>Home</LinkText>
+          </CustomNavLink>
+          <CustomNavLink to={ROUTE.TRENDS}>
+            <TrendsIcon />
+            <LinkText>Trends</LinkText>
+          </CustomNavLink>
+          <CustomNavLink to={ROUTE.FAVORITES}>
+            <FavoritesIcon />
+            <LinkText>Favorites</LinkText>
+          </CustomNavLink>
+          <CustomNavLink to={ROUTE.SETTINGS}>
+            <SettingsIcon />
+            <LinkText>Settings</LinkText>
+          </CustomNavLink>
+        </Links>
+        <CopyRight>© All Rights Reserved</CopyRight>
+      </StyledNavigation>
     </Container>
   );
 };
