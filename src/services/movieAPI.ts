@@ -24,12 +24,12 @@ class MovieAPI {
     baseURL: this.BASE_URL,
   });
 
-  public async getMoviesByTitle() {
+  public async getMoviesBySearch() {
     const { data } = await this.API.get(
       `https://omdbapi.com/?s=${this.randomMovie}&apikey=3dc510bf`,
     );
 
-    return data;
+    return data.Search;
   }
 }
 

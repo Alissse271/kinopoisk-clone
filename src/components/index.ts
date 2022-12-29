@@ -11,6 +11,7 @@ import { SignUpForm } from "./SignUpForm/SignUpForm";
 import { Header } from "./Header/Header";
 import { ResetForm } from "./ResetForm/ResetForm";
 import { HeaderAccount } from "./HeaderAccount/HeaderAccount";
+import { MovieList } from "./MovieList/MovieList";
 
 export {
   ThemeToggler,
@@ -26,4 +27,5 @@ export {
   Header,
   ResetForm,
   HeaderAccount,
+  MovieList,
 };

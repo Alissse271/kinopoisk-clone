@@ -4,8 +4,14 @@ import { Color, Media, Typography } from "ui";
 const Card = styled.div`
   max-width: 272px;
 `;
+const ImageContainer = styled.div`
+  height: 400px;
+`;
 const Image = styled.img`
   width: 100%;
+  height: 100%;
+
+  border-radius: 10px;
 `;
 const Name = styled.p`
   padding-top: 20px;
@@ -41,4 +47,4 @@ const ListItem = styled.li<{ $isMobile: boolean }>`
   }
 `;
 
-export { Name, Card, List, ListItem, Image };
+export { Name, Card, List, ListItem, Image, ImageContainer };
