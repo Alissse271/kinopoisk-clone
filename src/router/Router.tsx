@@ -1,6 +1,7 @@
 import { createRoutesFromElements, createBrowserRouter, Route } from "react-router-dom";
 import {
   HomePage,
+  MovieInfoPage,
   NotFoundPage,
   ResetPasswordPage,
   SettingsPage,
@@ -18,7 +19,7 @@ export const Router = createBrowserRouter(
         <Route path={ROUTE.FAVORITES} />
         <Route path={ROUTE.TRENDS} />
         <Route path={ROUTE.SETTINGS} element={<SettingsPage />} />
-        <Route path={ROUTE.MOVIE} />
+        <Route path={ROUTE.MOVIE_INFO} element={<MovieInfoPage />} />
       </Route>
       <Route path={ROUTE.SIGN_IN} element={<AuthTemplate />}>
         <Route index element={<SignInPage />} />

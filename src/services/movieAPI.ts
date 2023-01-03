@@ -1,12 +1,7 @@
 import axios from "axios";
 
 class MovieAPI {
-  private readonly BASE_URL = "";
-  private readonly ENDPOINTS = {
-    title: "t",
-    year: "y",
-    search: "s",
-  };
+  private readonly BASE_URL = "https://omdbapi.com/?&apikey=3dc510bf";
 
   private randomMovieArray = [
     "Star Wars",
@@ -30,6 +25,14 @@ class MovieAPI {
     );
 
     return data.Search;
+  }
+  public async getMovieByIMDB(imdb: string) {
+    const params = {
+      i: imdb,
+      plot: "full",
+    };
+    const { data } = await this.API.get(`https://omdbapi.com/?i=${params.i}&apikey=3dc510bf`);
+    return data;
   }
 }
 

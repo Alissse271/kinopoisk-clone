@@ -12,6 +12,7 @@ import { Header } from "./Header/Header";
 import { ResetForm } from "./ResetForm/ResetForm";
 import { HeaderAccount } from "./HeaderAccount/HeaderAccount";
 import { MovieList } from "./MovieList/MovieList";
+import { MovieInfo } from "./MovieInfo/MovieInfo";
 
 export {
   ThemeToggler,
@@ -28,4 +29,5 @@ export {
   ResetForm,
   HeaderAccount,
   MovieList,
+  MovieInfo,
 };

@@ -1,14 +1,14 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { movieAPI } from "services";
-import { IMovie } from "types";
+import { IMovieAPI } from "types";
 
 interface IMoviesState {
-  movies: IMovie[];
+  movies: IMovieAPI[];
   isLoading: boolean;
   error: null | string;
 }
 
-export const fetchMovies = createAsyncThunk<IMovie[], undefined, { rejectValue: string }>(
+export const fetchMovies = createAsyncThunk<IMovieAPI[], undefined, { rejectValue: string }>(
   "movies/fetchMovies",
   async (_, { rejectWithValue }) => {
     try {

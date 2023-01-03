@@ -21,7 +21,7 @@ const StyledTemplate = styled.div`
   }
   ${Media.XXXL} {
     grid-template-columns: min-content minmax(880px, 1490px);
-    grid-template-rows: min-content auto;
+    grid-template-rows: 60px auto;
     padding: 40px 60px 64px;
   }
 `;
