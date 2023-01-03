@@ -13,6 +13,7 @@ import { ResetForm } from "./ResetForm/ResetForm";
 import { HeaderAccount } from "./HeaderAccount/HeaderAccount";
 import { MovieList } from "./MovieList/MovieList";
 import { MovieInfo } from "./MovieInfo/MovieInfo";
+import { Badge } from "./Badge/Badge";
 
 export {
   ThemeToggler,
@@ -30,4 +31,5 @@ export {
   HeaderAccount,
   MovieList,
   MovieInfo,
+  Badge,
 };

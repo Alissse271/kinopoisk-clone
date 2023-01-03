@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { movieAPI } from "services";
-import { IMovieInfoAPI } from "types";
+import { IMovieInfo, IMovieInfoAPI } from "types";
 
 interface IMovieInfoState {
   movieInfo: IMovieInfoAPI;
@@ -20,7 +20,7 @@ export const fetchMovieInfo = createAsyncThunk<IMovieInfoAPI, string, { rejectVa
 );
 
 const initialState: IMovieInfoState = {
-  movieInfo: {},
+  movieInfo: {} as IMovieInfoAPI,
   isLoading: false,
   error: null,
 };

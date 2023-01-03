@@ -31,7 +31,9 @@ class MovieAPI {
       i: imdb,
       plot: "full",
     };
-    const { data } = await this.API.get(`https://omdbapi.com/?i=${params.i}&apikey=3dc510bf`);
+    const { data } = await this.API.get(
+      `https://omdbapi.com/?i=${params.i}&plot=${params.plot}&apikey=3dc510bf`,
+    );
     return data;
   }
 }
