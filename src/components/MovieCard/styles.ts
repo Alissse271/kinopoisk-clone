@@ -1,8 +1,15 @@
+import { Badge } from "components/Badge/Badge";
 import styled from "styled-components";
 import { Color, Media, Typography } from "ui";
 
 const Card = styled.div`
+  position: relative;
   max-width: 272px;
+`;
+const StyledBadge = styled(Badge)`
+  position: absolute;
+  left: 20px;
+  top: 20px;
 `;
 const ImageContainer = styled.div`
   height: 400px;
@@ -47,4 +54,4 @@ const ListItem = styled.li<{ $isMobile: boolean }>`
   }
 `;
 
-export { Name, Card, List, ListItem, Image, ImageContainer };
+export { Name, Card, StyledBadge, List, ListItem, Image, ImageContainer };

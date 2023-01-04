@@ -1,6 +1,9 @@
 import styled from "styled-components";
 import { Color, Typography } from "ui";
 
+const LoadingText = styled.span`
+  ${Typography.H2};
+`;
 const Container = styled.div`
   display: grid;
   justify-items: flex-start;
@@ -71,6 +74,7 @@ const Description = styled.td`
 `;
 
 export {
+  LoadingText,
   Container,
   GenresList,
   Genres,

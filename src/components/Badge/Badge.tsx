@@ -4,11 +4,12 @@ interface IProps {
   color: string;
   label: string;
   icon?: boolean;
+  className?: string;
 }
 
-export const Badge = ({ color, label, icon }: IProps) => {
+export const Badge = ({ color, label, icon, className }: IProps) => {
   return (
-    <StyledBadge color={color}>
+    <StyledBadge className={className} color={color}>
       {icon && <StyledIcon />}
       {label}
     </StyledBadge>
