@@ -19,10 +19,15 @@ class MovieAPI {
     baseURL: this.BASE_URL,
   });
 
-  public async getMoviesBySearch() {
+  public async getRandomMovies() {
     const { data } = await this.API.get(
       `https://omdbapi.com/?s=${this.randomMovie}&apikey=3dc510bf`,
     );
+
+    return data.Search;
+  }
+  public async getMoviesBySearch(searchValue: string) {
+    const { data } = await this.API.get(`https://omdbapi.com/?s=${searchValue}&apikey=3dc510bf`);
 
     return data.Search;
   }

@@ -8,11 +8,11 @@ interface IMoviesState {
   error: null | string;
 }
 
-export const fetchMovies = createAsyncThunk<IMovieAPI[], undefined, { rejectValue: string }>(
-  "movies/fetchMovies",
-  async (_, { rejectWithValue }) => {
+export const fetchMoviesBySearch = createAsyncThunk<IMovieAPI[], string, { rejectValue: string }>(
+  "movies/fetchMoviesBySearch",
+  async (value, { rejectWithValue }) => {
     try {
-      return movieAPI.getRandomMovies();
+      return movieAPI.getMoviesBySearch(value);
     } catch (error) {
       return rejectWithValue("Error");
     }
@@ -30,15 +30,15 @@ const moviesSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers(builder) {
-    builder.addCase(fetchMovies.pending, (state) => {
+    builder.addCase(fetchMoviesBySearch.pending, (state) => {
       state.isLoading = true;
       state.error = null;
     });
-    builder.addCase(fetchMovies.fulfilled, (state, { payload }) => {
+    builder.addCase(fetchMoviesBySearch.fulfilled, (state, { payload }) => {
       state.isLoading = false;
       state.movies = payload;
     });
-    builder.addCase(fetchMovies.rejected, (state, { payload }) => {
+    builder.addCase(fetchMoviesBySearch.rejected, (state, { payload }) => {
       if (payload) {
         state.isLoading = false;
         state.error = payload;

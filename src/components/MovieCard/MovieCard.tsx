@@ -1,3 +1,4 @@
+import { imageNotFound } from "assets";
 import { Badge } from "components";
 import { useWindowSize } from "hooks";
 import { transrormMovieInfo } from "mappers";
@@ -34,7 +35,11 @@ export const MovieCard = ({ movie }: IProps) => {
         to={generatePath(`${ROUTE.MOVIE_INFO}`, { imdb: movie.id })}
       >
         <ImageContainer>
-          <Image src={movie.poster} alt="Movie" />
+          {movie.poster === "N/A" ? (
+            <Image src={imageNotFound} alt="Movie" />
+          ) : (
+            <Image src={movie.poster} alt="Movie" />
+          )}
         </ImageContainer>
         <Name>
           {movie.title}: {movie.year}

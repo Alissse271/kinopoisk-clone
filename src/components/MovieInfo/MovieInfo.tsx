@@ -1,3 +1,4 @@
+import { imageNotFound } from "assets";
 import { Badge } from "components";
 import { useWindowSize } from "hooks";
 import { transrormMovieInfo } from "mappers";
@@ -66,7 +67,11 @@ export const MovieInfo = () => {
             <Badge color={Color.GRAPHITE} label={runtime} />
           </Badges>
           <ImageWrap>
-            <MovieImage src={poster} alt="Movie poster"></MovieImage>
+            {poster === "N/A" ? (
+              <MovieImage src={imageNotFound} alt="Movie poster"></MovieImage>
+            ) : (
+              <MovieImage src={poster} alt="Movie poster"></MovieImage>
+            )}
           </ImageWrap>
           {/* BUTTONS */}
           <Plot>{plot}</Plot>

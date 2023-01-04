@@ -4,9 +4,12 @@ import { ReactComponent as TrendsIcon } from "./icons/trends.svg";
 import { ReactComponent as FavoritesIcon } from "./icons/favorites.svg";
 import { ReactComponent as SettingsIcon } from "./icons/settings.svg";
 import { ReactComponent as IMDB } from "./icons/imdb.svg";
+import { ReactComponent as User } from "./icons/user.svg";
+import { ReactComponent as RightArrow } from "./icons/right-arrow.svg";
 import burgerMenu from "./icons/burger-menu.svg";
 import close from "./icons/close.svg";
 import background from "./images/background.jpg";
+import imageNotFound from "./images/image-not-found.png";
 
 export {
   LogoIcon,
@@ -18,4 +21,7 @@ export {
   background,
   close,
   IMDB,
+  User,
+  RightArrow,
+  imageNotFound,
 };
