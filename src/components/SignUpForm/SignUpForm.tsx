@@ -11,14 +11,12 @@ import {
   StyledText,
   LinkSignUp,
 } from "./styles";
-import { useAppDispatch } from "store";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { setUser } from "store/auth/authSlice";
+import { signUpUser, useAppDispatch } from "store";
 import { ROUTE } from "router";
 import { useNavigate } from "react-router-dom";
 
 interface IFormValues {
-  name: string;
+  userName: string;
   email: string;
   password: string;
   confirmPassword: string;
@@ -34,23 +32,14 @@ export const SignUpForm = () => {
     formState: { errors },
   } = useForm<IFormValues>();
 
-  const onSubmit: SubmitHandler<IFormValues> = ({ email, password }) => {
-    const auth = getAuth();
-    createUserWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        dispatch(
-          setUser({
-            email: user.email,
-            id: user.uid,
-          }),
-        );
+  const onSubmit: SubmitHandler<IFormValues> = (userInfo) => {
+    dispatch(signUpUser(userInfo))
+      .then(() => {
+        navigate(ROUTE.HOME);
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+      .finally(() => {
+        reset();
       });
-    reset();
-    navigate(`${ROUTE.HOME}`);
   };
 
   return (
@@ -64,7 +53,7 @@ export const SignUpForm = () => {
               <StyledInput
                 type="name"
                 placeholder="Your name"
-                {...register("name", {
+                {...register("userName", {
                   required: "*name is required",
                   pattern: { value: /^[a-zA-ZА-ЯЁа-яё\s]*$/, message: "Enter a valid name" },
                   maxLength: {
@@ -74,7 +63,7 @@ export const SignUpForm = () => {
                 })}
               />
             </StyledLabel>
-            {errors.name && <ErrorMessage>{errors.name.message}</ErrorMessage>}
+            {errors.userName && <ErrorMessage>{errors.userName.message}</ErrorMessage>}
           </Container>
           <Container>
             <StyledLabel>

@@ -1,34 +1,101 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createUserWithEmailAndPassword, getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { FirebaseErrorCode, getFBErrorMessage } from "utils";
 
 interface IAuth {
-  userName: null | string;
+  name: null | string;
   email: null | string;
-  id: null | string;
+  password: null | string;
+  isAuth: boolean;
+  error: null | string;
 }
 
 const initialState: IAuth = {
-  userName: null,
+  name: null,
   email: null,
-  id: null,
+  password: null,
+  isAuth: false,
+  error: null,
 };
+
+export const signUpUser = createAsyncThunk<
+  { userEmail: string | null; name: string },
+  { email: string; password: string; userName: string },
+  { rejectValue: string }
+>("user/signUpUser", async ({ userName, email, password }, { rejectWithValue }) => {
+  try {
+    const auth = getAuth();
+    const userCredential = createUserWithEmailAndPassword(auth, email, password);
+    const userEmail = (await userCredential).user.email;
+    const name = userName;
+    return { userEmail, name };
+  } catch (error) {
+    const firebaseError = error as { code: FirebaseErrorCode };
+    return rejectWithValue(getFBErrorMessage(firebaseError.code));
+  }
+});
+
+export const signInUser = createAsyncThunk<
+  { userEmail: string | null },
+  { email: string; password: string },
+  { rejectValue: string }
+>("user/signInUser", async ({ email, password }, { rejectWithValue }) => {
+  try {
+    const auth = getAuth();
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const userEmail = userCredential.user.email;
+    return { userEmail };
+  } catch (error) {
+    const firebaseError = error as { code: FirebaseErrorCode };
+    return rejectWithValue(getFBErrorMessage(firebaseError.code));
+  }
+});
 
 const authSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUser(state, { payload }) {
-      state.userName = payload.name;
-      state.email = payload.email;
-      state.id = payload.id;
+    getUserName: (state, { payload }: PayloadAction<string>) => {
+      state.name = payload;
+      state.email = payload;
     },
-    removeUser(state) {
-      state.email = null;
-      state.userName = null;
-      state.id = null;
-    },
+  },
+  extraReducers(builder) {
+    builder.addCase(signUpUser.pending, (state) => {
+      state.isAuth = false;
+      state.error = null;
+    });
+    builder.addCase(signUpUser.fulfilled, (state, { payload }) => {
+      state.isAuth = true;
+      state.name = payload.name;
+      state.email = payload.userEmail;
+      state.error = null;
+    });
+    builder.addCase(signUpUser.rejected, (state, { payload }) => {
+      if (payload) {
+        state.isAuth = false;
+        state.error = payload;
+      }
+    });
+
+    builder.addCase(signInUser.pending, (state) => {
+      state.isAuth = false;
+      state.error = null;
+    });
+    builder.addCase(signInUser.fulfilled, (state, { payload }) => {
+      state.isAuth = true;
+      state.email = payload.userEmail;
+      state.error = null;
+    });
+    builder.addCase(signInUser.rejected, (state, { payload }) => {
+      if (payload) {
+        state.isAuth = false;
+        state.error = payload;
+      }
+    });
   },
 });
 
-export const { setUser, removeUser } = authSlice.actions;
+export const { getUserName } = authSlice.actions;
 
 export default authSlice.reducer;

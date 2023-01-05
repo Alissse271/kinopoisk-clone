@@ -13,9 +13,7 @@ import {
   StyledLink,
   LinkSignUp,
 } from "./styles";
-import { useAppDispatch } from "store";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { setUser } from "store/auth/authSlice";
+import { signInUser, useAppDispatch } from "store";
 import { useNavigate } from "react-router-dom";
 
 interface IFormValues {
@@ -33,23 +31,14 @@ export const SignInForm = () => {
     formState: { errors },
   } = useForm<IFormValues>();
 
-  const onSubmit: SubmitHandler<IFormValues> = ({ email, password }) => {
-    const auth = getAuth();
-    signInWithEmailAndPassword(auth, email, password)
-      .then(({ user }) => {
-        dispatch(
-          setUser({
-            email: user.email,
-            id: user.uid,
-          }),
-        );
+  const onSubmit: SubmitHandler<IFormValues> = (userInfo) => {
+    dispatch(signInUser(userInfo))
+      .then(() => {
+        navigate(`${ROUTE.HOME}`);
       })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
+      .finally(() => {
+        reset();
       });
-    reset();
-    navigate(`${ROUTE.HOME}`);
   };
 
   return (
