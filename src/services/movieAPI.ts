@@ -1,7 +1,7 @@
 import axios from "axios";
 
 class MovieAPI {
-  private readonly BASE_URL = "https://omdbapi.com/?&apikey=3dc510bf";
+  private readonly BASE_URL = process.env.REACT_APP_SERVICES_MOVIE_API_BASE_URL;
 
   private randomMovieArray = [
     "Star Wars",
