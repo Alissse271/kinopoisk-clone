@@ -1,4 +1,4 @@
-import { imageNotFound } from "assets";
+import { FavoritesMark, imageNotFound, ShareMark } from "assets";
 import { Badge } from "components";
 import { useWindowSize } from "hooks";
 import { transrormMovieInfo } from "mappers";
@@ -20,6 +20,9 @@ import {
   Name,
   Description,
   MovieDetailsList,
+  ButtonsContainer,
+  SaveToFavoritesButton,
+  ShareButton,
 } from "./styles";
 
 export const MovieInfo = () => {
@@ -73,7 +76,14 @@ export const MovieInfo = () => {
               <MovieImage src={poster} alt="Movie poster"></MovieImage>
             )}
           </ImageWrap>
-          {/* BUTTONS */}
+          <ButtonsContainer>
+            <SaveToFavoritesButton>
+              <FavoritesMark />
+            </SaveToFavoritesButton>
+            <ShareButton>
+              <ShareMark />
+            </ShareButton>
+          </ButtonsContainer>
           <Plot>{plot}</Plot>
           <MovieDetails>
             <MovieDetailsList>

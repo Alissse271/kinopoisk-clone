@@ -55,6 +55,54 @@ const MovieImage = styled.img`
   height: auto;
   border-radius: 20px;
 `;
+const ButtonsContainer = styled.div`
+  display: flex;
+  max-width: 272px;
+  width: 100%;
+  margin-bottom: 32px;
+  background-color: inherit;
+  border-radius: 10px;
+`;
+const SaveToFavoritesButton = styled.button`
+  width: 100%;
+  margin-right: 1px;
+  padding: 16px 0;
+  background-color: ${Color.GRAPHITE};
+  border-radius: 10px 0 0 10px;
+  cursor: pointer;
+  svg {
+    fill: ${Color.LIGHT};
+    &:hover {
+      fill: ${Color.WHITE};
+    }
+  }
+  &:disabled {
+    background-color: ${Color.SECONDARY};
+    svg {
+      &:hover {
+        fill: ${Color.LIGHT};
+      }
+    }
+  }
+`;
+const ShareButton = styled.button`
+  width: 100%;
+  padding: 16px 0;
+  background-color: ${Color.GRAPHITE};
+  border-radius: 0 10px 10px 0;
+  cursor: pointer;
+  svg:hover {
+    fill: ${Color.WHITE};
+  }
+  &:disabled {
+    background-color: ${Color.SECONDARY};
+    svg {
+      &:hover {
+        fill: ${Color.LIGHT};
+      }
+    }
+  }
+`;
 const Plot = styled.p`
   ${Typography.B1};
   margin-bottom: 32px;
@@ -87,4 +135,7 @@ export {
   Name,
   Description,
   MovieDetailsList,
+  ButtonsContainer,
+  SaveToFavoritesButton,
+  ShareButton,
 };
