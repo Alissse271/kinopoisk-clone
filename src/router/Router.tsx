@@ -1,5 +1,6 @@
 import { createRoutesFromElements, createBrowserRouter, Route } from "react-router-dom";
 import {
+  FavoritesPage,
   HomePage,
   MovieInfoPage,
   NotFoundPage,
@@ -16,7 +17,7 @@ export const Router = createBrowserRouter(
     <>
       <Route path={ROUTE.HOME} element={<MainTemplate />}>
         <Route index element={<HomePage />} />
-        <Route path={ROUTE.FAVORITES} />
+        <Route path={ROUTE.FAVORITES} element={<FavoritesPage />} />
         <Route path={ROUTE.TRENDS} />
         <Route path={ROUTE.SETTINGS} element={<SettingsPage />} />
         <Route path={ROUTE.MOVIE_INFO} element={<MovieInfoPage />} />

@@ -13,6 +13,7 @@ import burgerMenu from "./icons/burger-menu.svg";
 import close from "./icons/close.svg";
 import background from "./images/background.jpg";
 import imageNotFound from "./images/image-not-found.png";
+import emptyFavorites from "./images/empty-favorites.png";
 
 export {
   LogoIcon,
@@ -22,6 +23,7 @@ export {
   SettingsIcon,
   burgerMenu,
   background,
+  emptyFavorites,
   close,
   IMDB,
   User,

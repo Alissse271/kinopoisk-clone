@@ -1,3 +1,4 @@
+import { FavoritesPage } from "./FavoritesPage/FavoritesPage";
 import { HomePage } from "./HomePage/HomePage";
 import { MovieInfoPage } from "./MovieInfoPage/MovieInfoPage";
 import { NotFoundPage } from "./NotFoundPage/NotFoundPage";
@@ -14,4 +15,5 @@ export {
   ResetPasswordPage,
   SettingsPage,
   MovieInfoPage,
+  FavoritesPage,
 };

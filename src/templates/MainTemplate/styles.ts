@@ -9,6 +9,7 @@ const StyledTemplate = styled.div`
   margin: 0 auto;
   padding: 32px 24px 48px;
   max-width: fit-content;
+  height: 100vh;
 
   ${Media.MD} {
     padding: 40px 24px 56px;
