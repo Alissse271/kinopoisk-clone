@@ -20,14 +20,19 @@ class MovieAPI {
   });
 
   public async getRandomMovies() {
-    const { data } = await this.API.get(
-      `https://omdbapi.com/?s=${this.randomMovie}&apikey=3dc510bf`,
-    );
+    const params = {
+      s: this.randomMovie,
+    };
 
+    const { data } = await this.API.get("", { params });
     return data.Search;
   }
   public async getMoviesBySearch(searchValue: string) {
-    const { data } = await this.API.get(`https://omdbapi.com/?s=${searchValue}&apikey=3dc510bf`);
+    const params = {
+      s: searchValue,
+    };
+
+    const { data } = await this.API.get("", { params });
 
     return data.Search;
   }
@@ -36,9 +41,7 @@ class MovieAPI {
       i: imdb,
       plot: "full",
     };
-    const { data } = await this.API.get(
-      `https://omdbapi.com/?i=${params.i}&plot=${params.plot}&apikey=3dc510bf`,
-    );
+    const { data } = await this.API.get("", { params });
     return data;
   }
 }
