@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import { Color, Media, Typography } from "ui";
 
-const LoadingText = styled.span`
-  ${Typography.H2};
-`;
 const Container = styled.div`
   display: grid;
   justify-items: flex-start;
@@ -141,7 +138,6 @@ const Row = styled.tr`
 `;
 
 export {
-  LoadingText,
   Container,
   GenresList,
   Genres,
