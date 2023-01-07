@@ -23,7 +23,10 @@ const StyledMovieList = styled.ul`
     grid-template-columns: repeat(3, minmax(208px, 272px));
   }
   ${Media.XXXL} {
-    grid-template-columns: repeat(auto-fill, minmax(208px, 272px));
+    grid-template-columns: repeat(3, minmax(208px, 272px));
+  }
+  ${Media.XXXXL} {
+    grid-template-columns: repeat(5, minmax(208px, 272px));
   }
 `;
 

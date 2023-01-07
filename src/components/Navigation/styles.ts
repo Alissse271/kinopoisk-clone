@@ -13,6 +13,10 @@ const Container = styled.div`
   ${Media.LG} {
     grid-template-columns: min-content;
   }
+  ${Media.XXXL} {
+    grid-template-columns: min-content;
+    height: 95vh;
+  }
 `;
 
 const StyledLogo = styled(Link)`

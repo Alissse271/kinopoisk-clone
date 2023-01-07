@@ -5,7 +5,7 @@ import { fetchMovies } from "./movies/moviesSlice";
 import { fetchMoviesBySearch } from "./moviesSearch/moviesSearchSlice";
 import { getUserInfo } from "./selectors/authSelector";
 import { getAllMovies, getMovieByIMDB, getMoviesBySearch } from "./selectors/moviesSelector";
-import { setTheme } from "./selectors/themeSelector";
+import { getTheme } from "./selectors/themeSelector";
 import { store } from "./store";
 import { toggleTheme } from "./theme/themeSlice";
 
@@ -14,7 +14,7 @@ export {
   useAppDispatch,
   store,
   toggleTheme,
-  setTheme,
+  getTheme,
   fetchMovies,
   fetchMovieInfo,
   fetchMoviesBySearch,

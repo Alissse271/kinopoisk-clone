@@ -2,7 +2,7 @@ import { MovieList } from "components";
 import { transrormMovies } from "mappers";
 import { useEffect } from "react";
 import { fetchMovies, getAllMovies, useAppDispatch, useAppSelector } from "store";
-// import { Container } from "./styles";
+import { Container, LoadingText } from "./styles";
 
 export const HomePage = () => {
   const { isLoading, movies } = useAppSelector(getAllMovies);
@@ -12,11 +12,9 @@ export const HomePage = () => {
     dispatch(fetchMovies());
   }, [dispatch]);
   return (
-    <>
-      {isLoading && <p>Loading...</p>}
-      {/* <Container> */}
-      {movies && <MovieList movies={transrormedMovies} />}
-      {/* </Container> */}
-    </>
+    <Container>
+      {isLoading && <LoadingText>Loading...</LoadingText>}
+      {movies && movies.length > 0 && <MovieList movies={transrormedMovies} />}
+    </Container>
   );
 };

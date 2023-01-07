@@ -6,4 +6,5 @@ export enum Media {
   XL = "@media(min-width: 1024px)",
   XXL = "@media(min-width: 1280px)",
   XXXL = "@media(min-width: 1440px)",
+  XXXXL = "@media(min-width: 1920px)",
 }

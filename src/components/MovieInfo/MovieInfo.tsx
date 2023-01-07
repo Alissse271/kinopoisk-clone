@@ -23,16 +23,15 @@ import {
   ButtonsContainer,
   SaveToFavoritesButton,
   ShareButton,
+  Row,
 } from "./styles";
 
 export const MovieInfo = () => {
   const { movieInfo, isLoading } = useAppSelector(getMovieByIMDB);
   const dispatch = useAppDispatch();
-  const { imdb } = useParams();
+  const { imdb = "" } = useParams();
   useEffect(() => {
-    if (imdb) {
-      dispatch(fetchMovieInfo(imdb));
-    }
+    dispatch(fetchMovieInfo(imdb));
   }, [dispatch, imdb]);
   const {
     title,
@@ -87,34 +86,34 @@ export const MovieInfo = () => {
           <Plot>{plot}</Plot>
           <MovieDetails>
             <MovieDetailsList>
-              <tr>
+              <Row>
                 <Name>Year</Name>
                 <Description>{year}</Description>
-              </tr>
-              <tr>
+              </Row>
+              <Row>
                 <Name>Released</Name>
                 <Description>{released}</Description>
-              </tr>
-              <tr>
+              </Row>
+              <Row>
                 <Name>BoxOffice</Name>
                 <Description>{boxOffice}</Description>
-              </tr>
-              <tr>
+              </Row>
+              <Row>
                 <Name>Country</Name>
                 <Description>{country}</Description>
-              </tr>
-              <tr>
+              </Row>
+              <Row>
                 <Name>Actors</Name>
                 <Description>{actors}</Description>
-              </tr>
-              <tr>
+              </Row>
+              <Row>
                 <Name>Director</Name>
                 <Description>{director}</Description>
-              </tr>
-              <tr>
+              </Row>
+              <Row>
                 <Name>Writers</Name>
                 <Description>{writer}</Description>
-              </tr>
+              </Row>
             </MovieDetailsList>
           </MovieDetails>
         </Container>

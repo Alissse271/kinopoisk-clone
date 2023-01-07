@@ -9,7 +9,6 @@ const StyledTemplate = styled.div`
   margin: 0 auto;
   padding: 32px 24px 48px;
   max-width: fit-content;
-  height: 100vh;
 
   ${Media.MD} {
     padding: 40px 24px 56px;
@@ -21,9 +20,12 @@ const StyledTemplate = styled.div`
     padding: 40px 176px 56px;
   }
   ${Media.XXXL} {
-    grid-template-columns: min-content minmax(880px, 1490px);
+    grid-template-columns: min-content 880px;
     grid-template-rows: 60px auto;
     padding: 40px 60px 64px;
+  }
+  ${Media.XXXXL} {
+    grid-template-columns: min-content auto;
   }
 `;
 const Container = styled.div`

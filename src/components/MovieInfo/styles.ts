@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Color, Typography } from "ui";
+import { Color, Media, Typography } from "ui";
 
 const LoadingText = styled.span`
   ${Typography.H2};
@@ -11,6 +11,10 @@ const Container = styled.div`
 const GenresList = styled.ul`
   display: inline-grid;
   grid-template-columns: repeat(3, auto);
+  ${Media.SM} {
+    grid-template-columns: repeat(auto-fit, auto);
+    grid-auto-flow: column;
+  }
 `;
 
 const Genres = styled.li`
@@ -31,6 +35,18 @@ const Genres = styled.li`
     height: 0.5rem;
     background-color: ${Color.LIGHT};
     border-radius: 50%;
+  }
+  ${Media.SM} {
+    &&:not(:first-child):before {
+      content: "";
+      position: absolute;
+      left: -1rem;
+      top: calc(50% - 0.125rem);
+      width: 0.5rem;
+      height: 0.5rem;
+      background-color: ${Color.LIGHT};
+      border-radius: 50%;
+    }
   }
 `;
 
@@ -120,6 +136,9 @@ const Name = styled.td`
 const Description = styled.td`
   ${Typography.B1};
 `;
+const Row = styled.tr`
+  ${Typography.B1};
+`;
 
 export {
   LoadingText,
@@ -138,4 +157,5 @@ export {
   ButtonsContainer,
   SaveToFavoritesButton,
   ShareButton,
+  Row,
 };
