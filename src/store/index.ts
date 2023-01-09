@@ -1,4 +1,4 @@
-import { signInUser, signUpUser } from "./auth/authSlice";
+import { getLogOutUser, signInUser, signUpUser } from "./auth/authSlice";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import { fetchMovieInfo } from "./movieInfo/movieInfoSlice";
 import { fetchMovies } from "./movies/moviesSlice";
@@ -24,4 +24,5 @@ export {
   signUpUser,
   signInUser,
   getUserInfo,
+  getLogOutUser,
 };

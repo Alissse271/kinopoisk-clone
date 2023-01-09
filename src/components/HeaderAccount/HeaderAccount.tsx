@@ -2,7 +2,7 @@ import { User, RightArrow, DownArrow } from "assets";
 import { useOnClickOutside, useToggle } from "hooks";
 import { useRef, useState } from "react";
 import { ROUTE } from "router";
-import { getUserInfo, useAppSelector } from "store";
+import { getLogOutUser, getUserInfo, useAppDispatch, useAppSelector } from "store";
 import { AccountPortal } from "components";
 import {
   StyledLink,
@@ -16,14 +16,21 @@ import {
   EditProfileButton,
   LogOutButton,
 } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 export const HeaderAccount = () => {
   // const [openLink, setOpenLink] = useState(false);
   const { isAuth, name } = useAppSelector(getUserInfo);
   const [isOpen, setOpen] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const handleAccountPortal = () => {
     // setOpen();
     setOpen((isOpen) => !isOpen);
+  };
+  const handleLogOutUser = () => {
+    dispatch(getLogOutUser());
+    navigate(ROUTE.HOME);
   };
   const ref = useRef<HTMLDivElement>(null);
   useOnClickOutside(ref, handleAccountPortal);
@@ -50,7 +57,7 @@ export const HeaderAccount = () => {
             // <AccountPortal />
             <DetailsContainer ref={ref} onClick={handleAccountPortal}>
               <EditProfileButton to={ROUTE.SETTINGS}>Edit profile</EditProfileButton>
-              <LogOutButton>Log Out</LogOutButton>
+              <LogOutButton onClick={handleLogOutUser}>Log Out</LogOutButton>
             </DetailsContainer>
           )}
         </UserInfo>
