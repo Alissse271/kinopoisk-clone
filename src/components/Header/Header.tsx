@@ -1,10 +1,10 @@
 import { LogoIcon } from "assets";
 import { HeaderAccount } from "components";
-import { useWindowSize } from "hooks";
+import { useDebounce, useWindowSize } from "hooks";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { ROUTE } from "router";
-import { fetchMoviesBySearch, getMoviesBySearch, useAppDispatch, useAppSelector } from "store";
+import { fetchMoviesBySearch, useAppDispatch } from "store";
 
 import { Color } from "ui";
 import { StyledForm, StyledHeader, StyledInput } from "./styles";
@@ -17,8 +17,7 @@ interface IFormValues {
 }
 
 export const Header = ({ className }: IProps) => {
-  // const debouncedValue = useDebounce(search.value, 500);
-  const { movies } = useAppSelector(getMoviesBySearch);
+  // const debouncedValue = useDebounce(searchValue, 500);
   const dispatch = useAppDispatch();
   const { width = 0 } = useWindowSize();
   const {
@@ -33,6 +32,7 @@ export const Header = ({ className }: IProps) => {
     const searchValue = getValues("searchValue");
     console.log(searchValue);
     dispatch(fetchMoviesBySearch(searchValue));
+    reset();
   };
   return (
     <StyledHeader className={className}>
@@ -47,7 +47,6 @@ export const Header = ({ className }: IProps) => {
           placeholder="Search"
           {...register("searchValue", {
             required: "*email is required",
-            // pattern: { value: /^(.+)@(.+)$/, message: "Enter a valid email" },
             maxLength: {
               value: 30,
               message: "*max 30 characters",

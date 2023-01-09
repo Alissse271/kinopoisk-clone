@@ -1,10 +1,11 @@
 import { getLogOutUser, signInUser, signUpUser } from "./auth/authSlice";
+import { addFavorite } from "./favorites/favoritesSlice";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import { fetchMovieInfo } from "./movieInfo/movieInfoSlice";
-import { fetchMovies } from "./movies/moviesSlice";
-import { fetchMoviesBySearch } from "./moviesSearch/moviesSearchSlice";
+import { fetchMovies, fetchMoviesBySearch } from "./movies/moviesSlice";
 import { getUserInfo } from "./selectors/authSelector";
-import { getAllMovies, getMovieByIMDB, getMoviesBySearch } from "./selectors/moviesSelector";
+import { addToFavorite } from "./selectors/favoritesSelector";
+import { getAllMovies, getMovieByIMDB } from "./selectors/moviesSelector";
 import { getTheme } from "./selectors/themeSelector";
 import { store } from "./store";
 import { toggleTheme } from "./theme/themeSlice";
@@ -20,9 +21,10 @@ export {
   fetchMoviesBySearch,
   getAllMovies,
   getMovieByIMDB,
-  getMoviesBySearch,
   signUpUser,
   signInUser,
   getUserInfo,
   getLogOutUser,
+  addToFavorite,
+  addFavorite,
 };

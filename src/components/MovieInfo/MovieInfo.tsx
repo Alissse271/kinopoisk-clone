@@ -1,6 +1,8 @@
 import { FavoritesMark, imageNotFound, ShareMark } from "assets";
 import { Badge } from "components";
 import { useWindowSize } from "hooks";
+import { addFavorite, useAppDispatch } from "store";
+
 import { IMovieInfo } from "types";
 import { Color } from "ui";
 import {
@@ -45,6 +47,11 @@ export const MovieInfo = ({
   },
 }: IProps) => {
   const { width = 0 } = useWindowSize();
+  const dispach = useAppDispatch();
+  const favorite = { title, year, poster, id: imdbID, type: "movie" };
+  const haddleAddToFavorite = () => {
+    dispach(addFavorite(favorite));
+  };
   return (
     <Container>
       <GenresList>
@@ -68,7 +75,7 @@ export const MovieInfo = ({
         )}
       </ImageWrap>
       <ButtonsContainer>
-        <SaveToFavoritesButton>
+        <SaveToFavoritesButton onClick={haddleAddToFavorite}>
           <FavoritesMark />
         </SaveToFavoritesButton>
         <ShareButton>

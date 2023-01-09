@@ -1,6 +1,7 @@
 import { imageNotFound } from "assets";
 import { generatePath, Link } from "react-router-dom";
 import { ROUTE } from "router";
+import { useAppDispatch } from "store";
 import { IMovie } from "types";
 import { Name, Card, Image, ImageContainer } from "./styles";
 
