@@ -5,7 +5,7 @@ import { Navigation } from "components";
 const StyledTemplate = styled.div`
   display: grid;
   grid-template-columns: 272px;
-  height: 100vh;
+  height: 100%;
   grid-template-rows: auto 1fr;
 
   margin: 0 auto;
