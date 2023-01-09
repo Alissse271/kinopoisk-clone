@@ -4,7 +4,9 @@ import { Navigation } from "components";
 
 const StyledTemplate = styled.div`
   display: grid;
-  grid-template-columns: repeat(1, auto);
+  grid-template-columns: 272px;
+  height: 100vh;
+  grid-template-rows: auto 1fr;
 
   margin: 0 auto;
   padding: 32px 24px 48px;
@@ -12,9 +14,15 @@ const StyledTemplate = styled.div`
 
   ${Media.MD} {
     padding: 40px 24px 56px;
+    grid-template-columns: 520px;
   }
   ${Media.LG} {
+    grid-template-columns: 688px;
     grid-row-gap: 48px;
+    padding: 40px 40px 56px;
+  }
+  ${Media.XL} {
+    grid-template-columns: 928px;
   }
   ${Media.XXL} {
     padding: 40px 176px 56px;
@@ -25,7 +33,7 @@ const StyledTemplate = styled.div`
     padding: 40px 60px 64px;
   }
   ${Media.XXXXL} {
-    grid-template-columns: min-content auto;
+    grid-template-columns: min-content 1490px;
   }
 `;
 const Container = styled.div`

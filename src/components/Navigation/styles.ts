@@ -1,4 +1,5 @@
 import { ButtonMenu } from "components";
+import { CustomNavLink } from "components";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Color, Media, Typography } from "ui";
@@ -14,7 +15,6 @@ const Container = styled.div`
     grid-template-columns: min-content;
   }
   ${Media.XXXL} {
-    grid-template-columns: min-content;
     height: 95vh;
   }
 `;
@@ -27,7 +27,7 @@ const StyledNavigation = styled.div<{ open: boolean }>`
   display: flex;
   flex-direction: column;
 
-  height: -webkit-fill-available;
+  height: fill-available;
 
   ${Media.XS} {
     position: fixed;
@@ -36,6 +36,7 @@ const StyledNavigation = styled.div<{ open: boolean }>`
 
     width: 100%;
     padding-left: 48px;
+    padding-bottom: 20px;
 
     background: ${Color.WHITE_THEME};
     z-index: 2;
@@ -65,9 +66,11 @@ const Links = styled.nav`
   padding-top: 64px;
 `;
 
-const LinkText = styled.span`
-  ${Typography.S4}
-  padding-left: 20px;
+const StyledCustomNavLink = styled(CustomNavLink)`
+  ${Typography.S4};
+  svg {
+    margin-right: 20px;
+  }
 `;
 
 const CopyRight = styled.p`
@@ -78,4 +81,12 @@ const StyledMenuButton = styled(ButtonMenu)`
   z-index: 3;
   justify-self: end;
 `;
-export { StyledNavigation, Links, LinkText, Container, CopyRight, StyledMenuButton, StyledLogo };
+export {
+  StyledNavigation,
+  Links,
+  Container,
+  CopyRight,
+  StyledMenuButton,
+  StyledLogo,
+  StyledCustomNavLink,
+};

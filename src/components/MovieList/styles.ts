@@ -9,24 +9,24 @@ const StyledMovieList = styled.ul`
   justify-items: center;
 
   ${Media.MD} {
-    grid-template-columns: repeat(2, minmax(208px, 272px));
+    grid-template-columns: repeat(2, minmax(208px, 300px));
     grid-column-gap: 32px;
   }
   ${Media.LG} {
-    grid-template-columns: repeat(3, minmax(208px, 272px));
+    grid-template-columns: repeat(3, minmax(208px, 300px));
     grid-row-gap: 40px;
   }
   ${Media.XL} {
-    grid-template-columns: repeat(4, minmax(208px, 272px));
+    grid-template-columns: repeat(4, minmax(208px, 300px));
   }
   ${Media.XXL} {
-    grid-template-columns: repeat(3, minmax(208px, 272px));
+    grid-template-columns: repeat(3, minmax(208px, 300px));
   }
   ${Media.XXXL} {
-    grid-template-columns: repeat(3, minmax(208px, 272px));
+    grid-template-columns: repeat(3, minmax(208px, 300px));
   }
   ${Media.XXXXL} {
-    grid-template-columns: repeat(5, minmax(208px, 272px));
+    grid-template-columns: repeat(5, minmax(208px, 300px));
   }
 `;
 

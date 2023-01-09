@@ -14,6 +14,8 @@ import { HeaderAccount } from "./HeaderAccount/HeaderAccount";
 import { MovieList } from "./MovieList/MovieList";
 import { MovieInfo } from "./MovieInfo/MovieInfo";
 import { Badge } from "./Badge/Badge";
+import { Portal, PortalTarget } from "./Portal/Portal";
+import { AccountPortal } from "./AccountPortal/AccountPortal";
 
 export {
   ThemeToggler,
@@ -32,4 +34,7 @@ export {
   MovieList,
   MovieInfo,
   Badge,
+  Portal,
+  AccountPortal,
+  PortalTarget,
 };

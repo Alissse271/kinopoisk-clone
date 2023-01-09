@@ -3,6 +3,7 @@ import { useOnClickOutside, useToggle } from "hooks";
 import { useRef, useState } from "react";
 import { ROUTE } from "router";
 import { getUserInfo, useAppSelector } from "store";
+import { AccountPortal } from "components";
 import {
   StyledLink,
   BadgeContainer,
@@ -17,15 +18,16 @@ import {
 } from "./styles";
 
 export const HeaderAccount = () => {
-  const [openLink, setOpenLink] = useState(false);
+  // const [openLink, setOpenLink] = useState(false);
   const { isAuth, name } = useAppSelector(getUserInfo);
-  const [isOpen, setOpen] = useToggle(false);
-  const handleOpenDetails = () => {
-    setOpen();
+  const [isOpen, setOpen] = useState<boolean>(false);
+  const handleAccountPortal = () => {
+    // setOpen();
+    setOpen((isOpen) => !isOpen);
   };
-  // const ref = useRef<HTMLDivElement>(null);
-  // useOnClickOutside(ref, handleOpenDetails);
-  const handleClose = () => setOpenLink(!openLink);
+  const ref = useRef<HTMLDivElement>(null);
+  useOnClickOutside(ref, handleAccountPortal);
+  // const handleClose = () => setOpenLink(!openLink);
   return (
     <div>
       {isAuth ? (
@@ -41,11 +43,12 @@ export const HeaderAccount = () => {
             </UserInitials>
           </BadgeContainer>
           <UserName>{name}</UserName>
-          <StyledButton onClick={handleOpenDetails}>
+          <StyledButton onClick={handleAccountPortal}>
             <DownArrow />
           </StyledButton>
           {isOpen && (
-            <DetailsContainer onClick={handleClose}>
+            // <AccountPortal />
+            <DetailsContainer ref={ref} onClick={handleAccountPortal}>
               <EditProfileButton to={ROUTE.SETTINGS}>Edit profile</EditProfileButton>
               <LogOutButton>Log Out</LogOutButton>
             </DetailsContainer>

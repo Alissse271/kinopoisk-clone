@@ -4,10 +4,19 @@ import { Media, Typography } from "ui";
 const Card = styled.div`
   position: relative;
   max-width: 272px;
+  width: 100%;
 `;
 
 const ImageContainer = styled.div`
-  height: 400px;
+  min-width: 208px;
+  height: 365px;
+
+  ${Media.LG} {
+    height: 279px;
+  }
+  ${Media.XXL} {
+    height: 357px;
+  }
 `;
 const Image = styled.img`
   width: 100%;

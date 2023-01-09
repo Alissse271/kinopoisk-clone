@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { Media } from "ui";
+import { inputStyles, Media } from "ui";
 
 const StyledHeader = styled.div`
   display: grid;
@@ -21,5 +21,12 @@ const StyledHeader = styled.div`
     grid-column-gap: 42px;
   }
 `;
+const StyledForm = styled.form`
+  width: auto;
+`;
+const StyledInput = styled.input`
+  width: 100%;
+  ${inputStyles}
+`;
 
-export { StyledHeader };
+export { StyledHeader, StyledForm, StyledInput };

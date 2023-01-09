@@ -1,15 +1,15 @@
 import { ROUTE } from "router";
 import {
-  LinkText,
   Links,
   Container,
   CopyRight,
   StyledMenuButton,
   StyledNavigation,
   StyledLogo,
+  StyledCustomNavLink,
 } from "./styles";
 import { Color } from "ui";
-import { CustomNavLink } from "components";
+
 import { FavoritesIcon, HomeIcon, LogoIcon, SettingsIcon, TrendsIcon } from "assets";
 import { useWindowSize } from "hooks";
 import { useState } from "react";
@@ -32,22 +32,22 @@ export const Navigation = ({ className }: IProps) => {
       {width < 1440 && <StyledMenuButton type="button" label="" open={open} setOpen={setOpen} />}
       <StyledNavigation open={open}>
         <Links>
-          <CustomNavLink onClick={handleClose} to={ROUTE.HOME}>
+          <StyledCustomNavLink onClick={handleClose} to={ROUTE.HOME}>
             <HomeIcon />
-            <LinkText>Home</LinkText>
-          </CustomNavLink>
-          <CustomNavLink onClick={handleClose} to={ROUTE.TRENDS}>
+            Home
+          </StyledCustomNavLink>
+          <StyledCustomNavLink onClick={handleClose} to={ROUTE.TRENDS}>
             <TrendsIcon />
-            <LinkText>Trends</LinkText>
-          </CustomNavLink>
-          <CustomNavLink onClick={handleClose} to={ROUTE.FAVORITES}>
+            Trends
+          </StyledCustomNavLink>
+          <StyledCustomNavLink onClick={handleClose} to={ROUTE.FAVORITES}>
             <FavoritesIcon />
-            <LinkText>Favorites</LinkText>
-          </CustomNavLink>
-          <CustomNavLink onClick={handleClose} to={ROUTE.SETTINGS}>
+            Favorites
+          </StyledCustomNavLink>
+          <StyledCustomNavLink onClick={handleClose} to={ROUTE.SETTINGS}>
             <SettingsIcon />
-            <LinkText>Settings</LinkText>
-          </CustomNavLink>
+            Settings
+          </StyledCustomNavLink>
         </Links>
         <CopyRight>© All Rights Reserved</CopyRight>
       </StyledNavigation>

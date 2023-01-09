@@ -46,6 +46,7 @@ const StyledButton = styled.button`
   background-color: transparent;
   cursor: pointer;
 `;
+
 const DetailsContainer = styled.div`
   position: absolute;
   top: 100%;
