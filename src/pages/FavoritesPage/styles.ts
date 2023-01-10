@@ -1,3 +1,4 @@
+import { TitleMain } from "components";
 import styled from "styled-components";
 import { Typography, Color, Media } from "ui";
 
@@ -15,5 +16,11 @@ const EmptyText = styled.p`
   ${Typography.H3};
   color: ${Color.DARK_THEME};
 `;
+const StyledTitle = styled(TitleMain)`
+  margin-bottom: 32px;
+  ${Media.LG} {
+    margin-bottom: 0;
+  }
+`;
 
-export { EmptyText, EmptyFavoritesContainer };
+export { EmptyText, EmptyFavoritesContainer, StyledTitle };

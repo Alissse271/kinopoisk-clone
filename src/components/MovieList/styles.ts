@@ -7,6 +7,7 @@ const StyledMovieList = styled.ul`
   grid-row-gap: 32px;
   justify-content: center;
   justify-items: center;
+  align-content: flex-start;
 
   ${Media.MD} {
     grid-template-columns: repeat(2, minmax(208px, 300px));

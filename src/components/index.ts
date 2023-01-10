@@ -16,6 +16,7 @@ import { MovieInfo } from "./MovieInfo/MovieInfo";
 import { Badge } from "./Badge/Badge";
 import { Portal, PortalTarget } from "./Portal/Portal";
 import { AccountPortal } from "./AccountPortal/AccountPortal";
+import { TitleMain } from "./TitleMain/TitleMain";
 
 export {
   ThemeToggler,
@@ -24,6 +25,7 @@ export {
   CustomNavLink,
   Navigation,
   Button,
+  TitleMain,
   TitleMedium,
   MovieCard,
   SignInForm,
