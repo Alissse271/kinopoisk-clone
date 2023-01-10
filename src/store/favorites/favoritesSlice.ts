@@ -6,7 +6,7 @@ interface FavoritesState {
 }
 
 const initialState: FavoritesState = {
-  favorites: [],
+  favorites: JSON.parse(localStorage.getItem("favorites") || "[]"),
 };
 
 const favoritesSlice = createSlice({

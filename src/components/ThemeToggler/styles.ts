@@ -11,7 +11,7 @@ const StyledFormControlLabel = styled(FormControlLabel)({
 
 const CustomSwitch = styled(Switch)({
   "& .MuiSwitch-thumb": {
-    marginTop: 5,
+    marginTop: 3,
     marginLeft: 4,
     width: 16,
     height: 16,
@@ -21,6 +21,7 @@ const CustomSwitch = styled(Switch)({
     background: Color.SECONDARY,
   },
   "& .MuiSwitch-track": {
+    marginTop: -2,
     width: 32,
     height: 20,
     borderRadius: 10,

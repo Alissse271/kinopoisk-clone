@@ -20,17 +20,10 @@ export const Header = ({ className }: IProps) => {
   // const debouncedValue = useDebounce(searchValue, 500);
   const dispatch = useAppDispatch();
   const { width = 0 } = useWindowSize();
-  const {
-    register,
-    handleSubmit,
-    getValues,
-    reset,
-    formState: { errors },
-  } = useForm<IFormValues>();
+  const { handleSubmit, getValues, reset } = useForm<IFormValues>();
 
   const onSubmit: SubmitHandler<IFormValues> = () => {
     const searchValue = getValues("searchValue");
-    console.log(searchValue);
     dispatch(fetchMoviesBySearch(searchValue));
     reset();
   };
@@ -42,17 +35,7 @@ export const Header = ({ className }: IProps) => {
         </Link>
       )}
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <StyledInput
-          type="text"
-          placeholder="Search"
-          {...register("searchValue", {
-            required: "*email is required",
-            maxLength: {
-              value: 30,
-              message: "*max 30 characters",
-            },
-          })}
-        />
+        <StyledInput type="text" placeholder="Search" />
       </StyledForm>
 
       {width >= 1440 && <HeaderAccount />}
