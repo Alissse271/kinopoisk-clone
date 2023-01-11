@@ -17,6 +17,7 @@ const EmptyText = styled.p`
   color: ${Color.DARK_THEME};
 `;
 const StyledTitle = styled(TitleMain)`
+  align-self: flex-start;
   margin-bottom: 32px;
   ${Media.LG} {
     margin-bottom: 0;

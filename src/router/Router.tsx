@@ -8,6 +8,7 @@ import {
   SettingsPage,
   SignInPage,
   SignUpPage,
+  TrendsPage,
 } from "pages";
 import { AuthTemplate, MainTemplate } from "templates";
 import { ROUTE } from "./routes";
@@ -18,7 +19,7 @@ export const Router = createBrowserRouter(
       <Route path={ROUTE.HOME} element={<MainTemplate />}>
         <Route index element={<HomePage />} />
         <Route path={ROUTE.FAVORITES} element={<FavoritesPage />} />
-        <Route path={ROUTE.TRENDS} />
+        <Route path={ROUTE.TRENDS} element={<TrendsPage />} />
         <Route path={ROUTE.SETTINGS} element={<SettingsPage />} />
         <Route path={ROUTE.MOVIE_INFO} element={<MovieInfoPage />} />
       </Route>

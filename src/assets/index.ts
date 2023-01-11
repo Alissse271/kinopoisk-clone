@@ -8,6 +8,7 @@ import { ReactComponent as User } from "./icons/user.svg";
 import { ReactComponent as RightArrow } from "./icons/right-arrow.svg";
 import { ReactComponent as DownArrow } from "./icons/down-arrow.svg";
 import { ReactComponent as FavoritesMark } from "./icons/favorites-mark.svg";
+import { ReactComponent as TrendsMark } from "./icons/trends-mark.svg";
 import { ReactComponent as ShareMark } from "./icons/share-mark.svg";
 import burgerMenu from "./icons/burger-menu.svg";
 import close from "./icons/close.svg";
@@ -32,4 +33,5 @@ export {
   DownArrow,
   FavoritesMark,
   ShareMark,
+  TrendsMark,
 };

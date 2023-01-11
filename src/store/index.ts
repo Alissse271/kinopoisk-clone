@@ -4,7 +4,7 @@ import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import { fetchMovieInfo } from "./movieInfo/movieInfoSlice";
 import { fetchMovies, fetchMoviesBySearch } from "./movies/moviesSlice";
 import { getUserInfo } from "./selectors/authSelector";
-import { addToFavorite } from "./selectors/favoritesSelector";
+import { getAllFavorites } from "./selectors/favoritesSelector";
 import { getAllMovies, getMovieByIMDB } from "./selectors/moviesSelector";
 import { getTheme } from "./selectors/themeSelector";
 import { store } from "./store";
@@ -25,6 +25,6 @@ export {
   signInUser,
   getUserInfo,
   getLogOutUser,
-  addToFavorite,
+  getAllFavorites,
   addFavorite,
 };

@@ -25,6 +25,7 @@ const StyledTemplate = styled.div`
     grid-template-columns: 928px;
   }
   ${Media.XXL} {
+    grid-template-columns: 886px;
     padding: 40px 176px 56px;
   }
   ${Media.XXXL} {

@@ -20,7 +20,7 @@ export const Header = ({ className }: IProps) => {
   // const debouncedValue = useDebounce(searchValue, 500);
   const dispatch = useAppDispatch();
   const { width = 0 } = useWindowSize();
-  const { handleSubmit, getValues, reset } = useForm<IFormValues>();
+  const { register, handleSubmit, getValues, reset } = useForm<IFormValues>();
 
   const onSubmit: SubmitHandler<IFormValues> = () => {
     const searchValue = getValues("searchValue");
@@ -35,9 +35,8 @@ export const Header = ({ className }: IProps) => {
         </Link>
       )}
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <StyledInput type="text" placeholder="Search" />
+        <StyledInput type="text" placeholder="Search" {...register("searchValue")} />
       </StyledForm>
-
       {width >= 1440 && <HeaderAccount />}
     </StyledHeader>
   );
