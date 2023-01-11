@@ -98,6 +98,28 @@ const SaveToFavoritesButton = styled.button`
     }
   }
 `;
+const RemoveFromFavoritesButton = styled.button`
+  width: 100%;
+  margin-right: 1px;
+  padding: 16px 0;
+  background-color: ${Color.GRAPHITE};
+  border-radius: 10px 0 0 10px;
+  cursor: pointer;
+  svg {
+    fill: ${Color.PRIMARY};
+    &:hover {
+      fill: ${Color.PRIMARY_LIGHT};
+    }
+  }
+  &:disabled {
+    background-color: ${Color.SECONDARY};
+    svg {
+      &:hover {
+        fill: ${Color.LIGHT};
+      }
+    }
+  }
+`;
 const ShareButton = styled.button`
   width: 100%;
   padding: 16px 0;
@@ -152,6 +174,7 @@ export {
   MovieDetailsList,
   ButtonsContainer,
   SaveToFavoritesButton,
+  RemoveFromFavoritesButton,
   ShareButton,
   Row,
 };

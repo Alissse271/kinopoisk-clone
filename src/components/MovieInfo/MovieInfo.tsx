@@ -1,7 +1,17 @@
 import { FavoritesMark, imageNotFound, ShareMark } from "assets";
 import { Badge } from "components";
 import { useWindowSize } from "hooks";
-import { addFavorite, getAllFavorites, useAppDispatch, useAppSelector } from "store";
+import { useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
+import { ROUTE } from "router";
+import {
+  addFavorite,
+  getAllFavorites,
+  getUserInfo,
+  removeFavorite,
+  useAppDispatch,
+  useAppSelector,
+} from "store";
 
 import { IMovieInfo } from "types";
 import { Color } from "ui";
@@ -20,6 +30,7 @@ import {
   MovieDetailsList,
   ButtonsContainer,
   SaveToFavoritesButton,
+  RemoveFromFavoritesButton,
   ShareButton,
   Row,
 } from "./styles";
@@ -47,13 +58,22 @@ export const MovieInfo = ({
   },
 }: IProps) => {
   const { favorites } = useAppSelector(getAllFavorites);
-  console.log(favorites);
+  const { isAuth } = useAppSelector(getUserInfo);
   const { width = 0 } = useWindowSize();
   const dispach = useAppDispatch();
+  const navigate = useNavigate();
   const favorite = { title, year, poster, id: imdbID, type: "movie" };
-  const haddleAddToFavorite = () => {
-    dispach(addFavorite(favorite));
+
+  const isFavorite = (): boolean => favorites.some((favorite) => favorite.id === imdbID);
+
+  const handleAddToFavorites = () => {
+    isAuth ? dispach(addFavorite(favorite)) : navigate(`${ROUTE.HOME}` + `${ROUTE.SIGN_IN}`);
   };
+
+  const handleRemoveFromFavorites = () => {
+    dispach(removeFavorite(favorite.id));
+  };
+
   return (
     <Container>
       <GenresList>
@@ -77,10 +97,15 @@ export const MovieInfo = ({
         )}
       </ImageWrap>
       <ButtonsContainer>
-        {/* {favorites.map(favorite) => {}} */}
-        <SaveToFavoritesButton onClick={haddleAddToFavorite}>
-          <FavoritesMark />
-        </SaveToFavoritesButton>
+        {isFavorite() ? (
+          <RemoveFromFavoritesButton onClick={handleRemoveFromFavorites}>
+            <FavoritesMark />
+          </RemoveFromFavoritesButton>
+        ) : (
+          <SaveToFavoritesButton onClick={handleAddToFavorites}>
+            <FavoritesMark />
+          </SaveToFavoritesButton>
+        )}
         <ShareButton>
           <ShareMark />
         </ShareButton>

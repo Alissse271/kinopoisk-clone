@@ -1,5 +1,5 @@
 import { getLogOutUser, signInUser, signUpUser } from "./auth/authSlice";
-import { addFavorite } from "./favorites/favoritesSlice";
+import { addFavorite, removeFavorite } from "./favorites/favoritesSlice";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import { fetchMovieInfo } from "./movieInfo/movieInfoSlice";
 import { fetchMovies, fetchMoviesBySearch } from "./movies/moviesSlice";
@@ -27,4 +27,5 @@ export {
   getLogOutUser,
   getAllFavorites,
   addFavorite,
+  removeFavorite,
 };
