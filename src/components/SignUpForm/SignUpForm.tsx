@@ -21,6 +21,10 @@ interface IFormValues {
   password: string;
   confirmPassword: string;
 }
+interface IUserInfo {
+  name: string;
+  email: string;
+}
 
 export const SignUpForm = () => {
   const navigate = useNavigate();
@@ -30,15 +34,27 @@ export const SignUpForm = () => {
     handleSubmit,
     reset,
     formState: { errors },
+    watch,
+    getValues,
   } = useForm<IFormValues>();
 
   const onSubmit: SubmitHandler<IFormValues> = (userInfo) => {
+    const userInfoToSave: IUserInfo[] = [
+      {
+        name: userInfo.userName,
+        email: userInfo.email,
+      },
+    ];
     dispatch(signUpUser(userInfo))
       .then(() => {
         navigate(ROUTE.HOME);
-      })
-      .finally(() => {
         reset();
+      })
+      .then(() => {
+        localStorage.setItem("userInfo", JSON.stringify(userInfoToSave));
+      })
+      .catch(() => {
+        alert("ERROR");
       });
   };
 
@@ -106,18 +122,15 @@ export const SignUpForm = () => {
               <StyledInput
                 type="password"
                 placeholder="Confirm password"
-                {...register("confirmPassword", {
-                  required: "*password is incorrect",
-                  minLength: {
-                    value: 8,
-                    message: "*min 8 characters",
-                  },
-                })}
+                {...register("confirmPassword", { required: true })}
               />
             </StyledLabel>
-            {errors.confirmPassword && (
+            {watch("confirmPassword") !== watch("password") && getValues("confirmPassword") ? (
+              <ErrorMessage>*password not match</ErrorMessage>
+            ) : null}
+            {/* {errors.confirmPassword && (
               <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>
-            )}
+            )} */}
           </Container>
         </InputsContainer>
         <Button primary type="submit" label="Sign up" />

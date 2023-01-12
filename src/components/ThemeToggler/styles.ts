@@ -5,7 +5,11 @@ import { Switch } from "@mui/material";
 
 const StyledFormControlLabel = styled(FormControlLabel)({
   "& .MuiFormControlLabel-label": {
+    marginRight: 0,
     color: Color.DARK_THEME,
+  },
+  "& .MuiFormControlLabel-root": {
+    marginRight: 0,
   },
 });
 
@@ -25,7 +29,7 @@ const CustomSwitch = styled(Switch)({
     width: 32,
     height: 20,
     borderRadius: 10,
-    backgroundColor: Color.LIGHT,
+    backgroundColor: Color.SECONDARY,
   },
   "& .MuiSwitch-switchBase.Mui-checked": {
     transform: "translateX(14px)",

@@ -7,6 +7,7 @@ const lightTheme = css`
     --light: #fff;
     --secondary: #afb2b6;
     --grey: #fff;
+    --murk: #afb2b6;
   }
 `;
 const darkTheme = css`
@@ -16,6 +17,7 @@ const darkTheme = css`
     --light: #323537;
     --secondary: #323537;
     --grey: #242426;
+    --murk: #242426;
   }
 `;
 

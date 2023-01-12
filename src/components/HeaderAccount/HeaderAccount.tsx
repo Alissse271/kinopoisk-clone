@@ -19,37 +19,41 @@ import {
 import { useNavigate } from "react-router-dom";
 
 export const HeaderAccount = () => {
-  // const [openLink, setOpenLink] = useState(false);
-  const { isAuth, name } = useAppSelector(getUserInfo);
-  const [isOpen, setOpen] = useState<boolean>(false);
+  const { isAuth } = useAppSelector(getUserInfo);
+  const [isOpen, setOpen] = useToggle(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
   const handleAccountPortal = () => {
-    // setOpen();
-    setOpen((isOpen) => !isOpen);
+    setOpen();
   };
+
   const handleLogOutUser = () => {
     dispatch(getLogOutUser());
     navigate(ROUTE.HOME);
   };
+
   const ref = useRef<HTMLDivElement>(null);
   useOnClickOutside(ref, handleAccountPortal);
-  // const handleClose = () => setOpenLink(!openLink);
+
+  const users = JSON.parse(localStorage.getItem("userInfo")!);
   return (
     <div>
       {isAuth ? (
         <UserInfo>
           <BadgeContainer>
             <UserInitials>
-              {name &&
-                name
-                  .split(" ")
-                  .map((n) => n[0])
-                  .join("")
-                  .toUpperCase()}
+              {users !== null &&
+                users.map((user: any) =>
+                  user.name
+                    .split(" ")
+                    .map((name: string) => name[0])
+                    .join("")
+                    .toUpperCase(),
+                )}
             </UserInitials>
           </BadgeContainer>
-          <UserName>{name}</UserName>
+          <UserName>{users !== null && users.map((user: any) => user.name)}</UserName>
           <StyledButton onClick={handleAccountPortal}>
             <DownArrow />
           </StyledButton>

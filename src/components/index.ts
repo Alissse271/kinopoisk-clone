@@ -17,6 +17,9 @@ import { Badge } from "./Badge/Badge";
 import { Portal, PortalTarget } from "./Portal/Portal";
 import { AccountPortal } from "./AccountPortal/AccountPortal";
 import { TitleMain } from "./TitleMain/TitleMain";
+import { ColorMode } from "./ColorMode/ColorMode";
+import { PasswordSettings } from "./PasswordSettings/PasswordSettings";
+import { AccountInfo } from "./AccountInfo/AccountInfo";
 
 export {
   ThemeToggler,
@@ -39,4 +42,7 @@ export {
   Portal,
   AccountPortal,
   PortalTarget,
+  ColorMode,
+  PasswordSettings,
+  AccountInfo,
 };

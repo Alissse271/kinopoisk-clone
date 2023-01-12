@@ -35,9 +35,10 @@ export const SignInForm = () => {
     dispatch(signInUser(userInfo))
       .then(() => {
         navigate(`${ROUTE.HOME}`);
-      })
-      .finally(() => {
         reset();
+      })
+      .catch(() => {
+        alert("ERROR");
       });
   };
 
