@@ -1,3 +1,4 @@
+import { FiltersMark } from "assets";
 import styled from "styled-components";
 
 import { inputStyles, Media } from "ui";
@@ -25,8 +26,17 @@ const StyledForm = styled.form`
   width: auto;
 `;
 const StyledInput = styled.input`
+  position: relative;
   width: 100%;
   ${inputStyles}
 `;
+const FiltersButton = styled.button`
+  position: absolute;
+  top: 16px;
+  right: 16px;
 
-export { StyledHeader, StyledForm, StyledInput };
+  background-color: transparent;
+  cursor: pointer;
+`;
+
+export { StyledHeader, StyledForm, StyledInput, FiltersButton };

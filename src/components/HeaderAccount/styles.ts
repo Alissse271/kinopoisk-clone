@@ -53,7 +53,7 @@ const DetailsContainer = styled.div`
   min-width: 260px;
   margin-top: 24px;
   border-radius: 10px;
-  background-color: ${Color.GRAPHITE};
+  background-color: ${Color.LIGHT_THEME};
   z-index: 3;
 `;
 const EditProfileButton = styled(Link)`
@@ -64,7 +64,7 @@ const EditProfileButton = styled(Link)`
   text-align: left;
   text-decoration: none;
   color: ${Color.WHITE};
-  background-color: ${Color.DARK};
+  background-color: ${Color.MURK_THEME};
   border-radius: 10px 10px 0 0;
   cursor: pointer;
 `;
@@ -75,7 +75,7 @@ const LogOutButton = styled.button`
   ${Typography.S5};
   text-align: left;
   color: ${Color.PRIMARY};
-  background-color: ${Color.DARK};
+  background-color: ${Color.MURK_THEME};
   border-radius: 0 0 10px 10px;
   cursor: pointer;
 `;

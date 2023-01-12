@@ -14,9 +14,6 @@ const Container = styled.div`
   ${Media.LG} {
     grid-template-columns: min-content;
   }
-  ${Media.XXXL} {
-    height: 95vh;
-  }
 `;
 
 const StyledLogo = styled(Link)`
@@ -24,25 +21,22 @@ const StyledLogo = styled(Link)`
 `;
 
 const StyledNavigation = styled.div<{ open: boolean }>`
+  position: fixed;
+  right: 0;
+  top: 0;
+
   display: flex;
   flex-direction: column;
 
   height: fill-available;
+  width: 100%;
+  padding-left: 48px;
+  padding-bottom: 20px;
 
-  ${Media.XS} {
-    position: fixed;
-    right: 0;
-    top: 0;
-
-    width: 100%;
-    padding-left: 48px;
-    padding-bottom: 20px;
-
-    background: ${Color.WHITE_THEME};
-    z-index: 2;
-    transition: all 0.3s ease;
-    transform: ${({ open }) => (open ? "translateX(0%)" : "translateX(100%)")};
-  }
+  background: ${Color.WHITE_THEME};
+  z-index: 2;
+  transition: all 0.3s ease;
+  transform: ${({ open }) => (open ? "translateX(0%)" : "translateX(100%)")};
   ${Media.MD} {
     width: 320px;
   }
@@ -53,6 +47,7 @@ const StyledNavigation = styled.div<{ open: boolean }>`
     position: relative;
     width: 100%;
     padding-left: 0;
+    padding-bottom: 0;
     background: inherit;
     transform: none;
   }

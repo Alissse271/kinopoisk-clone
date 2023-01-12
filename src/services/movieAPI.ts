@@ -32,7 +32,7 @@ class MovieAPI {
       s: searchValue,
     };
     const { data } = await this.API.get("", { params });
-    console.log(data.Search);
+
     return data.Search;
   }
   public async getMovieByIMDB(imdb: string) {

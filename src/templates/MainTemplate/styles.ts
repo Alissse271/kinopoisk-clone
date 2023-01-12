@@ -5,8 +5,8 @@ import { Navigation } from "components";
 const StyledTemplate = styled.div`
   display: grid;
   grid-template-columns: 272px;
-  height: 100%;
-  grid-template-rows: auto 1fr;
+  min-height: 100vh;
+  grid-template-rows: auto min-content 1fr;
 
   margin: 0 auto;
   padding: 32px 24px 48px;

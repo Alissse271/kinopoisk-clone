@@ -1,4 +1,4 @@
-import { MovieList } from "components";
+import { Filters, MovieList } from "components";
 import { transrormMovies } from "mappers";
 import { useEffect } from "react";
 import { fetchMovies, getAllMovies, useAppDispatch, useAppSelector } from "store";

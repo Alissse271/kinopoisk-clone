@@ -4,6 +4,7 @@ import { createPortal } from "react-dom";
 export enum PortalTarget {
   ROOT = "root",
   ACCOUNT = "account",
+  FILTERS = "filters",
 }
 
 interface IProps {

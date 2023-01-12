@@ -20,6 +20,7 @@ import { TitleMain } from "./TitleMain/TitleMain";
 import { ColorMode } from "./ColorMode/ColorMode";
 import { PasswordSettings } from "./PasswordSettings/PasswordSettings";
 import { AccountInfo } from "./AccountInfo/AccountInfo";
+import { Filters } from "./Filters/Filters";
 
 export {
   ThemeToggler,
@@ -45,4 +46,5 @@ export {
   ColorMode,
   PasswordSettings,
   AccountInfo,
+  Filters,
 };
