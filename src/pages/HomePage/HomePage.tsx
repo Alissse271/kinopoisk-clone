@@ -1,4 +1,4 @@
-import { Loader, MovieList } from "components";
+import { Loader, MovieList, ShowMoreButton } from "components";
 import { useEffect } from "react";
 import { fetchMovies, getAllMovies, useAppDispatch, useAppSelector } from "store";
 import { Container, ErrorText } from "./styles";
@@ -15,6 +15,7 @@ export const HomePage = () => {
       <Loader loading={isLoading} />
       {movies && movies.length > 0 && <MovieList movies={movies} />}
       {error && <ErrorText>Loading...</ErrorText>}
+      <ShowMoreButton onClick={() => console.log("sd")} $isLoading={true} />
     </Container>
   );
 };

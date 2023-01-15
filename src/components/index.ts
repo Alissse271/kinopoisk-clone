@@ -23,6 +23,8 @@ import { AccountInfo } from "./AccountInfo/AccountInfo";
 import { Filters } from "./Filters/Filters";
 import { Loader } from "./Loader/Loader";
 import { Slider } from "./Slider/Slider";
+import { ShowMoreButton } from "./ShowMoreButton/ShowMoreButton";
+import { ShowMoreLoader } from "./ShowMoreLoader/ShowMoreLoader";
 
 export {
   ThemeToggler,
@@ -51,4 +53,6 @@ export {
   Filters,
   Loader,
   Slider,
+  ShowMoreButton,
+  ShowMoreLoader,
 };
