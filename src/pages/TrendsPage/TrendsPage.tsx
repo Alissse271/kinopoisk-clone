@@ -1,9 +1,9 @@
-import { MovieList } from "components";
+import { Loader, MovieList } from "components";
 import { useWindowSize } from "hooks";
 import { transrormMovies } from "mappers";
 import { useEffect } from "react";
 import { useAppSelector, getAllMovies, useAppDispatch, fetchMovies } from "store";
-import { Container, LoadingText, StyledTitle } from "./styles";
+import { Container, StyledTitle } from "./styles";
 
 export const TrendsPage = () => {
   const { isLoading, movies } = useAppSelector(getAllMovies);
@@ -16,7 +16,7 @@ export const TrendsPage = () => {
   return (
     <Container>
       {width < 1440 && <StyledTitle label="Trends" />}
-      {isLoading && <LoadingText>Loading...</LoadingText>}
+      <Loader loading={isLoading} />
       {movies && movies.length > 0 && <MovieList trends movies={transrormedMovies} />}
     </Container>
   );

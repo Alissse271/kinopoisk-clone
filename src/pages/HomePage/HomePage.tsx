@@ -1,11 +1,11 @@
-import { Filters, MovieList } from "components";
+import { Loader, MovieList } from "components";
 import { transrormMovies } from "mappers";
 import { useEffect } from "react";
 import { fetchMovies, getAllMovies, useAppDispatch, useAppSelector } from "store";
-import { Container, LoadingText } from "./styles";
+import { Container, ErrorText } from "./styles";
 
 export const HomePage = () => {
-  const { isLoading, movies } = useAppSelector(getAllMovies);
+  const { isLoading, movies, error } = useAppSelector(getAllMovies);
   const dispatch = useAppDispatch();
   const transrormedMovies = transrormMovies(movies);
   useEffect(() => {
@@ -13,8 +13,9 @@ export const HomePage = () => {
   }, [dispatch]);
   return (
     <Container>
-      {isLoading && <LoadingText>Loading...</LoadingText>}
+      <Loader loading={isLoading} />
       {movies && movies.length > 0 && <MovieList movies={transrormedMovies} />}
+      {error && <ErrorText>Loading...</ErrorText>}
     </Container>
   );
 };

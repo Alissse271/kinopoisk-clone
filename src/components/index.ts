@@ -21,6 +21,7 @@ import { ColorMode } from "./ColorMode/ColorMode";
 import { PasswordSettings } from "./PasswordSettings/PasswordSettings";
 import { AccountInfo } from "./AccountInfo/AccountInfo";
 import { Filters } from "./Filters/Filters";
+import { Loader } from "./Loader/Loader";
 
 export {
   ThemeToggler,
@@ -47,4 +48,5 @@ export {
   PasswordSettings,
   AccountInfo,
   Filters,
+  Loader,
 };
