@@ -1,5 +1,5 @@
 import { FavoritesMark, imageNotFound, ShareMark } from "assets";
-import { Badge } from "components";
+import { Badge, Slider } from "components";
 import { useWindowSize } from "hooks";
 import { useEffect, useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
@@ -143,6 +143,7 @@ export const MovieInfo = ({
           </Row>
         </MovieDetailsList>
       </MovieDetails>
+      <Slider />
     </Container>
   );
 };

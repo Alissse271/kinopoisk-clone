@@ -28,7 +28,7 @@ const ImageContainer = styled.div`
   height: 365px;
 
   ${Media.LG} {
-    height: 279px;
+    height: 320px;
   }
   ${Media.XXL} {
     height: 357px;

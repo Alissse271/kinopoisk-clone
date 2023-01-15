@@ -12,6 +12,8 @@ import { ReactComponent as TrendsMark } from "./icons/trends-mark.svg";
 import { ReactComponent as ShareMark } from "./icons/share-mark.svg";
 import { ReactComponent as FiltersMark } from "./icons/filters-mark.svg";
 import { ReactComponent as Close } from "./icons/close.svg";
+import { ReactComponent as SliderLeftArrow } from "./icons/slider-left-arrow.svg";
+import { ReactComponent as SliderRightArrow } from "./icons/slider-right-arrow.svg";
 import burgerMenu from "./icons/burger-menu.svg";
 import close from "./icons/close.svg";
 import background from "./images/background.jpg";
@@ -38,4 +40,6 @@ export {
   TrendsMark,
   FiltersMark,
   Close,
+  SliderLeftArrow,
+  SliderRightArrow,
 };

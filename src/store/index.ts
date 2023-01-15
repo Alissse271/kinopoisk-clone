@@ -7,6 +7,7 @@ import { getUserInfo } from "./selectors/authSelector";
 import { getAllFavorites } from "./selectors/favoritesSelector";
 import { getAllMovies, getMovieByIMDB } from "./selectors/moviesSelector";
 import { getTheme } from "./selectors/themeSelector";
+import { getTrends } from "./selectors/trendsSelector";
 import { store } from "./store";
 import { toggleTheme } from "./theme/themeSlice";
 
@@ -28,4 +29,5 @@ export {
   getAllFavorites,
   addFavorite,
   removeFavorite,
+  getTrends,
 };

@@ -1,23 +1,22 @@
 import { Loader, MovieList } from "components";
 import { useWindowSize } from "hooks";
-import { transrormMovies } from "mappers";
 import { useEffect } from "react";
-import { useAppSelector, getAllMovies, useAppDispatch, fetchMovies } from "store";
+import { useAppSelector, useAppDispatch, fetchMovies, getTrends } from "store";
+import { fetchTrends } from "store/trends/trendsSlice";
 import { Container, StyledTitle } from "./styles";
 
 export const TrendsPage = () => {
-  const { isLoading, movies } = useAppSelector(getAllMovies);
+  const { isLoading, trends, error } = useAppSelector(getTrends);
   const dispatch = useAppDispatch();
-  const transrormedMovies = transrormMovies(movies);
   useEffect(() => {
-    dispatch(fetchMovies());
+    dispatch(fetchTrends());
   }, [dispatch]);
   const { width = 0 } = useWindowSize();
   return (
     <Container>
       {width < 1440 && <StyledTitle label="Trends" />}
       <Loader loading={isLoading} />
-      {movies && movies.length > 0 && <MovieList trends movies={transrormedMovies} />}
+      {trends && trends.length > 0 && <MovieList trends movies={trends} />}
     </Container>
   );
 };

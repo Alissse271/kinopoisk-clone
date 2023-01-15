@@ -28,7 +28,6 @@ export const Header = ({ className }: IProps) => {
   const onSubmit: SubmitHandler<IFormValues> = () => {
     const searchValue = getValues("searchValue");
     dispatch(fetchMoviesBySearch(searchValue));
-    // navigate(ROUTE.HOME);
     reset();
   };
   const handleOpenFilters = () => {
@@ -42,7 +41,12 @@ export const Header = ({ className }: IProps) => {
         </Link>
       )}
       <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <StyledInput type="text" placeholder="Search" {...register("searchValue")} />
+        <StyledInput
+          type="text"
+          placeholder="Search"
+          onClick={() => navigate(ROUTE.HOME)}
+          {...register("searchValue")}
+        />
         <FiltersButton onClick={handleOpenFilters}>
           <FiltersMark />
         </FiltersButton>

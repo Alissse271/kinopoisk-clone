@@ -22,6 +22,7 @@ import { PasswordSettings } from "./PasswordSettings/PasswordSettings";
 import { AccountInfo } from "./AccountInfo/AccountInfo";
 import { Filters } from "./Filters/Filters";
 import { Loader } from "./Loader/Loader";
+import { Slider } from "./Slider/Slider";
 
 export {
   ThemeToggler,
@@ -49,4 +50,5 @@ export {
   AccountInfo,
   Filters,
   Loader,
+  Slider,
 };

@@ -7,13 +7,30 @@ class MovieAPI {
     "Star Wars",
     "Game of Thrones",
     "Harry Potter",
-    "Spiderman",
+    "Wonder Woman",
+    "Hobbit",
+    "Hunger Games",
+    "Avengers",
+    "love",
+    "war",
+    "money",
+  ];
+  private randomMovieTrendsCollection = [
+    "Star Wars",
+    "Game of Thrones",
+    "Harry Potter",
+    "Wonder Woman",
     "Hobbit",
     "Hunger Games",
     "Avengers",
   ];
   private randomNumber = Math.floor(Math.random() * this.randomMovieCollection.length - 1 + 1);
   private randomMovie = this.randomMovieCollection[this.randomNumber];
+
+  private randomTrendsNumber = Math.floor(
+    Math.random() * this.randomMovieTrendsCollection.length - 1 + 1,
+  );
+  private randomTrendMovie = this.randomMovieTrendsCollection[this.randomTrendsNumber];
 
   private readonly API = axios.create({
     baseURL: this.BASE_URL,
@@ -25,7 +42,7 @@ class MovieAPI {
     };
 
     const { data } = await this.API.get("", { params });
-    return data.Search;
+    return data;
   }
   public async getMoviesBySearch(searchValue: string) {
     const params = {
@@ -33,7 +50,15 @@ class MovieAPI {
     };
     const { data } = await this.API.get("", { params });
 
-    return data.Search;
+    return data;
+  }
+  public async getTrends() {
+    const params = {
+      s: this.randomTrendMovie,
+    };
+
+    const { data } = await this.API.get("", { params });
+    return data;
   }
   public async getMovieByIMDB(imdb: string) {
     const params = {

@@ -17,7 +17,7 @@ export const MovieCard = ({ movie, favorites, trends }: IProps) => {
     <Card>
       <Link
         style={{ textDecoration: "none" }}
-        to={generatePath(`${ROUTE.MOVIE_INFO}`, { imdb: movie.id })}
+        to={generatePath(`${ROUTE.HOME}` + `${ROUTE.MOVIE_INFO}`, { imdb: movie.id })}
       >
         {favorites && (
           <FavoriteLabel>

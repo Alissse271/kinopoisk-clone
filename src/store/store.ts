@@ -4,6 +4,7 @@ import themeReducer from "./theme/themeSlice";
 import moviesReducer from "./movies/moviesSlice";
 import movieInfoReducer from "./movieInfo/movieInfoSlice";
 import favoritesReducer from "./favorites/favoritesSlice";
+import trendsReducer from "./trends/trendsSlice";
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     movies: moviesReducer,
     movieInfo: movieInfoReducer,
     favorites: favoritesReducer,
+    trends: trendsReducer,
   },
 });
 
