@@ -2,7 +2,7 @@ import { getLogOutUser, signInUser, signUpUser } from "./auth/authSlice";
 import { addFavorite, removeFavorite } from "./favorites/favoritesSlice";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import { fetchMovieInfo } from "./movieInfo/movieInfoSlice";
-import { fetchMovies, fetchMoviesBySearch } from "./movies/moviesSlice";
+import { fetchMoreMovies, fetchMovies, fetchMoviesBySearch } from "./movies/moviesSlice";
 import { getUserInfo } from "./selectors/authSelector";
 import { getAllFavorites } from "./selectors/favoritesSelector";
 import { getAllMovies, getMovieByIMDB } from "./selectors/moviesSelector";
@@ -30,4 +30,5 @@ export {
   addFavorite,
   removeFavorite,
   getTrends,
+  fetchMoreMovies,
 };

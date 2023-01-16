@@ -2,14 +2,15 @@ import { StyledButton, StyledShowMoreLoader } from "./styles";
 
 interface IProps {
   onClick: () => void;
-  $isLoading: boolean;
+  isLoadingMoreMovies: boolean;
+  className?: string;
 }
 
-export const ShowMoreButton = ({ onClick, $isLoading }: IProps) => {
+export const ShowMoreButton = ({ onClick, isLoadingMoreMovies, className }: IProps) => {
   return (
-    <StyledButton type="button" onClick={onClick}>
+    <StyledButton className={className} type="button" onClick={onClick}>
       Show More
-      {$isLoading && <StyledShowMoreLoader loading={$isLoading} />}
+      {isLoadingMoreMovies && <StyledShowMoreLoader loading={isLoadingMoreMovies} />}
     </StyledButton>
   );
 };

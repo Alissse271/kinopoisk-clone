@@ -44,6 +44,15 @@ class MovieAPI {
     const { data } = await this.API.get("", { params });
     return data;
   }
+  public async getMoreMovies(page: string) {
+    const params = {
+      s: this.randomMovie,
+      page: page,
+    };
+
+    const { data } = await this.API.get("", { params });
+    return data;
+  }
   public async getMoviesBySearch(searchValue: string) {
     const params = {
       s: searchValue,

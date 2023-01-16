@@ -6,7 +6,7 @@ const StyledTemplate = styled.div`
   display: grid;
   grid-template-columns: 272px;
   min-height: 100vh;
-  grid-template-rows: auto min-content 1fr;
+  grid-template-rows: min-content auto;
 
   margin: 0 auto;
   padding: 32px 24px 48px;

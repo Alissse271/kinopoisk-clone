@@ -5,9 +5,18 @@ import { IMovie } from "types";
 
 interface IMoviesState {
   movies: IMovie[];
+  page: number;
   isLoading: boolean;
+  isLoadingMoreMovies: boolean;
   error: null | string;
 }
+const initialState: IMoviesState = {
+  movies: [],
+  page: 1,
+  isLoading: false,
+  isLoadingMoreMovies: false,
+  error: null,
+};
 
 export const fetchMovies = createAsyncThunk<IMovie[], undefined, { rejectValue: string }>(
   "movies/fetchMovies",
@@ -32,12 +41,17 @@ export const fetchMoviesBySearch = createAsyncThunk<IMovie[], string, { rejectVa
     }
   },
 );
-
-const initialState: IMoviesState = {
-  movies: [],
-  isLoading: false,
-  error: null,
-};
+export const fetchMoreMovies = createAsyncThunk<IMovie[], string, { rejectValue: string }>(
+  "movies/fetchMoreMovies",
+  async (page, { rejectWithValue }) => {
+    try {
+      const response = await movieAPI.getMoreMovies(page);
+      return transrormMovies(response.Search);
+    } catch (error) {
+      return rejectWithValue("Error");
+    }
+  },
+);
 
 const moviesSlice = createSlice({
   name: "movies",
@@ -55,6 +69,20 @@ const moviesSlice = createSlice({
     builder.addCase(fetchMovies.rejected, (state, { payload }) => {
       if (payload) {
         state.isLoading = false;
+        state.error = payload;
+      }
+    });
+    builder.addCase(fetchMoreMovies.pending, (state) => {
+      state.isLoadingMoreMovies = true;
+      state.error = null;
+    });
+    builder.addCase(fetchMoreMovies.fulfilled, (state, { payload }) => {
+      state.isLoadingMoreMovies = false;
+      state.movies = state.movies.concat(payload);
+    });
+    builder.addCase(fetchMoreMovies.rejected, (state, { payload }) => {
+      if (payload) {
+        state.isLoadingMoreMovies = false;
         state.error = payload;
       }
     });

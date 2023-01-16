@@ -1,6 +1,6 @@
+import { ShowMoreLoader } from "components/ShowMoreLoader/ShowMoreLoader";
 import styled from "styled-components";
 import { Color, Typography } from "ui";
-import { ShowMoreLoader } from "components";
 
 const StyledButton = styled.button`
   display: flex;
