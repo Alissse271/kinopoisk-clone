@@ -2,8 +2,25 @@ import styled from "styled-components";
 import { Color, Media, Typography } from "ui";
 
 const Container = styled.div`
-  display: grid;
-  justify-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  ${Media.LG} {
+    display: grid;
+    justify-items: flex-start;
+    grid-column-gap: 32px;
+    grid-template-areas:
+      "poster ..."
+      "poster ..."
+      "poster ..."
+      "poster ..."
+      "poster ..."
+      "poster ..."
+      "poster ...";
+  }
+  ${Media.XXXXL} {
+    grid-column-gap: 32px;
+  }
 `;
 const GenresList = styled.ul`
   display: inline-grid;
@@ -58,9 +75,14 @@ const Badges = styled.div`
   grid-column-gap: 20px;
   padding-bottom: 32px;
 `;
+const ImageContainer = styled.div`
+  ${Media.LG} {
+    order: -1;
+    grid-area: poster;
+  }
+`;
 const ImageWrap = styled.div`
   max-width: 272px;
-
   margin-bottom: 24px;
 `;
 const MovieImage = styled.img`
@@ -177,4 +199,5 @@ export {
   RemoveFromFavoritesButton,
   ShareButton,
   Row,
+  ImageContainer,
 };

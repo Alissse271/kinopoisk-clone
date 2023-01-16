@@ -33,6 +33,7 @@ import {
   RemoveFromFavoritesButton,
   ShareButton,
   Row,
+  ImageContainer,
 } from "./styles";
 
 interface IProps {
@@ -89,27 +90,30 @@ export const MovieInfo = ({
         <Badge icon color={Color.GRAPHITE} label={imdbRating} />
         <Badge color={Color.GRAPHITE} label={runtime} />
       </Badges>
-      <ImageWrap>
-        {poster === "N/A" ? (
-          <MovieImage src={imageNotFound} alt="Movie poster"></MovieImage>
-        ) : (
-          <MovieImage src={poster} alt="Movie poster"></MovieImage>
-        )}
-      </ImageWrap>
-      <ButtonsContainer>
-        {isFavorite() ? (
-          <RemoveFromFavoritesButton onClick={handleRemoveFromFavorites}>
-            <FavoritesMark />
-          </RemoveFromFavoritesButton>
-        ) : (
-          <SaveToFavoritesButton onClick={handleAddToFavorites}>
-            <FavoritesMark />
-          </SaveToFavoritesButton>
-        )}
-        <ShareButton>
-          <ShareMark />
-        </ShareButton>
-      </ButtonsContainer>
+      <ImageContainer>
+        <ImageWrap>
+          {poster === "N/A" ? (
+            <MovieImage src={imageNotFound} alt="Movie poster"></MovieImage>
+          ) : (
+            <MovieImage src={poster} alt="Movie poster"></MovieImage>
+          )}
+        </ImageWrap>
+        <ButtonsContainer>
+          {isFavorite() ? (
+            <RemoveFromFavoritesButton onClick={handleRemoveFromFavorites}>
+              <FavoritesMark />
+            </RemoveFromFavoritesButton>
+          ) : (
+            <SaveToFavoritesButton onClick={handleAddToFavorites}>
+              <FavoritesMark />
+            </SaveToFavoritesButton>
+          )}
+          <ShareButton>
+            <ShareMark />
+          </ShareButton>
+        </ButtonsContainer>
+      </ImageContainer>
+
       <Plot>{plot}</Plot>
       <MovieDetails>
         <MovieDetailsList>
