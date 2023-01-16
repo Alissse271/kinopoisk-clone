@@ -85,7 +85,7 @@ export const MovieInfo = ({
         {title}: {year}
       </Title>
       <Badges>
-        <Badge color={"#000"} label={imdbRating} />
+        <Badge color={Color.GREEN} label={imdbRating} />
         <Badge icon color={Color.GRAPHITE} label={imdbRating} />
         <Badge color={Color.GRAPHITE} label={runtime} />
       </Badges>
