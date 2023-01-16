@@ -17,7 +17,6 @@ const Header = styled.div`
   }
 `;
 const StyledSwiper = styled(Swiper)`
-  max-width: min-content;
   width: 100%;
 `;
 const StyledSlide = styled(SwiperSlide)`

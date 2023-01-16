@@ -1,12 +1,12 @@
 import { FavoritesMark, imageNotFound, ShareMark } from "assets";
-import { Badge, Slider } from "components";
-import { useWindowSize } from "hooks";
-import { useEffect, useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Badge, Loader, Slider } from "components";
+import { MouseEvent } from "react";
+import { useNavigate } from "react-router-dom";
 import { ROUTE } from "router";
 import {
   addFavorite,
   getAllFavorites,
+  getMovieInfo,
   getUserInfo,
   removeFavorite,
   useAppDispatch,
@@ -34,6 +34,7 @@ import {
   ShareButton,
   Row,
   ImageContainer,
+  ErrorMessage,
 } from "./styles";
 
 interface IProps {
@@ -59,15 +60,16 @@ export const MovieInfo = ({
   },
 }: IProps) => {
   const { favorites } = useAppSelector(getAllFavorites);
+  const { isLoading, error } = useAppSelector(getMovieInfo);
   const { isAuth } = useAppSelector(getUserInfo);
-  const { width = 0 } = useWindowSize();
   const dispach = useAppDispatch();
   const navigate = useNavigate();
   const favorite = { title, year, poster, id: imdbID, type: "movie" };
 
   const isFavorite = (): boolean => favorites.some((favorite) => favorite.id === imdbID);
 
-  const handleAddToFavorites = () => {
+  const handleAddToFavorites = (event: MouseEvent<HTMLButtonElement>): void => {
+    event.preventDefault();
     isAuth ? dispach(addFavorite(favorite)) : navigate(`${ROUTE.HOME}` + `${ROUTE.SIGN_IN}`);
   };
 
@@ -75,7 +77,11 @@ export const MovieInfo = ({
     dispach(removeFavorite(favorite.id));
   };
 
-  return (
+  return isLoading ? (
+    <Loader loading={isLoading} />
+  ) : error ? (
+    <ErrorMessage>{error}</ErrorMessage>
+  ) : (
     <Container>
       <GenresList>
         {genre?.split(",").map((genre) => {
@@ -117,34 +123,48 @@ export const MovieInfo = ({
       <Plot>{plot}</Plot>
       <MovieDetails>
         <MovieDetailsList>
-          <Row>
-            <Name>Year</Name>
-            <Description>{year}</Description>
-          </Row>
-          <Row>
-            <Name>Released</Name>
-            <Description>{released}</Description>
-          </Row>
-          <Row>
-            <Name>BoxOffice</Name>
-            <Description>{boxOffice}</Description>
-          </Row>
-          <Row>
-            <Name>Country</Name>
-            <Description>{country}</Description>
-          </Row>
-          <Row>
-            <Name>Actors</Name>
-            <Description>{actors}</Description>
-          </Row>
-          <Row>
-            <Name>Director</Name>
-            <Description>{director}</Description>
-          </Row>
-          <Row>
-            <Name>Writers</Name>
-            <Description>{writer}</Description>
-          </Row>
+          {year !== "N/A" && (
+            <Row>
+              <Name>Year</Name>
+              <Description>{year}</Description>
+            </Row>
+          )}
+          {released !== "N/A" && (
+            <Row>
+              <Name>Released</Name>
+              <Description>{released}</Description>
+            </Row>
+          )}
+          {boxOffice !== "N/A" && (
+            <Row>
+              <Name>BoxOffice</Name>
+              <Description>{boxOffice}</Description>
+            </Row>
+          )}
+          {country !== "N/A" && (
+            <Row>
+              <Name>Country</Name>
+              <Description>{country}</Description>
+            </Row>
+          )}
+          {actors !== "N/A" && (
+            <Row>
+              <Name>Actors</Name>
+              <Description>{actors}</Description>
+            </Row>
+          )}
+          {director !== "N/A" && (
+            <Row>
+              <Name>Director</Name>
+              <Description>{director}</Description>
+            </Row>
+          )}
+          {writer !== "N/A" && (
+            <Row>
+              <Name>Writers</Name>
+              <Description>{writer}</Description>
+            </Row>
+          )}
         </MovieDetailsList>
       </MovieDetails>
       <Slider />

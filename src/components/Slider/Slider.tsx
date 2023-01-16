@@ -2,7 +2,7 @@ import { Navigation } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { MovieCard, TitleMedium } from "components";
+import { MovieCard, Slide, TitleMedium } from "components";
 import { SliderLeftArrow, SliderRightArrow } from "assets";
 import {
   Header,
@@ -53,7 +53,7 @@ export const Slider = () => {
           return (
             <StyledSlide>
               <Container>
-                <MovieCard key={movie.id} movie={movie} />
+                <Slide key={movie.id} movie={movie} />
               </Container>
             </StyledSlide>
           );

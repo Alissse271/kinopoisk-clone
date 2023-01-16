@@ -12,12 +12,12 @@ interface IProps {
   trends?: boolean;
 }
 
-export const MovieCard = ({ movie, favorites, trends }: IProps) => {
+export const MovieCard = ({ movie: { id, poster, title, year }, favorites, trends }: IProps) => {
   return (
     <Card>
       <Link
         style={{ textDecoration: "none" }}
-        to={generatePath(`${ROUTE.HOME}` + `${ROUTE.MOVIE_INFO}`, { imdb: movie.id })}
+        to={generatePath(`${ROUTE.HOME}` + `${ROUTE.MOVIE_INFO}`, { imdb: id })}
       >
         {favorites && (
           <FavoriteLabel>
@@ -30,14 +30,14 @@ export const MovieCard = ({ movie, favorites, trends }: IProps) => {
           </TrendsLabel>
         )}
         <ImageContainer>
-          {movie.poster === "N/A" ? (
+          {poster === "N/A" ? (
             <Image src={imageNotFound} alt="Movie" />
           ) : (
-            <Image src={movie.poster} alt="Movie" />
+            <Image src={poster} alt="Movie" />
           )}
         </ImageContainer>
         <Name>
-          {movie.title}: {movie.year}
+          {title}: {year}
         </Name>
       </Link>
     </Card>

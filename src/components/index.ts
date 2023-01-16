@@ -25,6 +25,7 @@ import { Loader } from "./Loader/Loader";
 import { Slider } from "./Slider/Slider";
 import { ShowMoreButton } from "./ShowMoreButton/ShowMoreButton";
 import { ShowMoreLoader } from "./ShowMoreLoader/ShowMoreLoader";
+import { Slide } from "./Slide/Slide";
 
 export {
   ThemeToggler,
@@ -55,4 +56,5 @@ export {
   Slider,
   ShowMoreButton,
   ShowMoreLoader,
+  Slide,
 };

@@ -47,6 +47,9 @@ const Name = styled.p`
     padding-top: 24px;
   }
   ${Typography.S2}
+  &:hover {
+    color: ${Color.PRIMARY};
+  }
 `;
 
 export { Name, Card, Image, ImageContainer, FavoriteLabel, TrendsLabel };

@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { movieAPI } from "services";
-import { IMovieInfo, IMovieInfoAPI } from "types";
+import { IMovieInfoAPI } from "types";
 
 interface IMovieInfoState {
   movieInfo: IMovieInfoAPI;

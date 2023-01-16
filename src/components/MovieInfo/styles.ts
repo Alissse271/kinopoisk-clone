@@ -180,6 +180,9 @@ const Description = styled.td`
 const Row = styled.tr`
   ${Typography.B1};
 `;
+const ErrorMessage = styled.p`
+  ${Typography.B1};
+`;
 
 export {
   Container,
@@ -200,4 +203,5 @@ export {
   ShareButton,
   Row,
   ImageContainer,
+  ErrorMessage,
 };
