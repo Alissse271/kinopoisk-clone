@@ -1,12 +1,11 @@
 import { Button, ColorMode, TitleMedium } from "components";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { getUserInfo, useAppSelector } from "store";
 import {
   StyledAccountInfo,
   AccountContainer,
   Container,
   Title,
-  UserInfoContainer,
-  UserInfo,
   StyledPasswordSettings,
   PasswordSettingsContainer,
   PasswordContainer,
@@ -17,6 +16,7 @@ import {
   Buttons,
   SettingsBlock,
   StyledSettingsForm,
+  NewPassword,
 } from "./styles";
 
 interface IFormValues {
@@ -28,6 +28,8 @@ interface IFormValues {
 }
 
 export const SettingsForm = () => {
+  const { name, email, error, password } = useAppSelector(getUserInfo);
+
   const {
     register,
     handleSubmit,
@@ -49,15 +51,33 @@ export const SettingsForm = () => {
           <AccountContainer>
             <Container>
               <Title>Name</Title>
-              <UserInfoContainer>
-                <UserInfo>{users !== null && users.map((user: any) => user.name)}</UserInfo>
-              </UserInfoContainer>
+              <StyledInput
+                type="text"
+                placeholder="Your name"
+                defaultValue={name ? name : "User name"}
+                {...register("userName", {
+                  required: "*name is required",
+                  maxLength: {
+                    value: 50,
+                    message: "*max 50 characters",
+                  },
+                })}
+              />
             </Container>
             <Container>
               <Title>Email</Title>
-              <UserInfoContainer>
-                <UserInfo>{users !== null && users.map((user: any) => user.email)}</UserInfo>
-              </UserInfoContainer>
+              <StyledInput
+                type="text"
+                placeholder="Your email"
+                defaultValue={email ? email : "User email"}
+                {...register("email", {
+                  required: "*email is required",
+                  maxLength: {
+                    value: 50,
+                    message: "*max 50 characters",
+                  },
+                })}
+              />
             </Container>
           </AccountContainer>
         </StyledAccountInfo>
@@ -69,6 +89,7 @@ export const SettingsForm = () => {
               <StyledInput
                 type="password"
                 placeholder="Your password"
+                defaultValue={password ? password : "User password"}
                 {...register("password", {
                   required: "*password is required",
                   minLength: {
@@ -80,28 +101,32 @@ export const SettingsForm = () => {
               {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
             </PasswordContainer>
             <NewPasswordContainer>
-              <SubTitle>New password</SubTitle>
-              <StyledInput
-                type="password"
-                placeholder="New password"
-                {...register("newPassword", {
-                  required: "*new password is required",
-                  minLength: {
-                    value: 8,
-                    message: "*min 8 characters",
-                  },
-                })}
-              />
-              {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
-              <SubTitle>Confirm password</SubTitle>
-              <StyledInput
-                type="password"
-                placeholder="Confirm password"
-                {...register("confirmPassword", { required: true })}
-              />
-              {watch("confirmPassword") !== watch("password") && getValues("confirmPassword") ? (
-                <ErrorMessage>*password not match</ErrorMessage>
-              ) : null}
+              <NewPassword>
+                <SubTitle>New password</SubTitle>
+                <StyledInput
+                  type="password"
+                  placeholder="New password"
+                  {...register("newPassword", {
+                    required: "*new password is required",
+                    minLength: {
+                      value: 8,
+                      message: "*min 8 characters",
+                    },
+                  })}
+                />
+                {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
+              </NewPassword>
+              <NewPassword>
+                <SubTitle>Confirm password</SubTitle>
+                <StyledInput
+                  type="password"
+                  placeholder="Confirm password"
+                  {...register("confirmPassword", { required: true })}
+                />
+                {watch("confirmPassword") !== watch("password") && getValues("confirmPassword") ? (
+                  <ErrorMessage>*password not match</ErrorMessage>
+                ) : null}
+              </NewPassword>
             </NewPasswordContainer>
           </PasswordSettingsContainer>
         </StyledPasswordSettings>

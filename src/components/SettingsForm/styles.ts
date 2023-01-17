@@ -34,16 +34,6 @@ const Container = styled.div`
 const Title = styled.p`
   ${Typography.B1};
 `;
-const UserInfoContainer = styled.div`
-  width: 100%;
-  padding: 16px 20px;
-  background-color: ${Color.LIGHT_THEME};
-  border-radius: 10px;
-`;
-const UserInfo = styled.p`
-  ${Typography.S5}
-  color: ${Color.DARK_THEME};
-`;
 const StyledPasswordSettings = styled.div`
   display: grid;
   grid-template-rows: repeat(2, min-content);
@@ -79,7 +69,13 @@ const NewPasswordContainer = styled.div`
   ${Media.LG} {
     width: 50%;
   }
+  display: grid;
+  grid-row-gap: 20px;
+  ${Media.LG} {
+    grid-row-gap: 24px;
+  }
 `;
+const NewPassword = styled.div``;
 const SubTitle = styled.p`
   ${Typography.B1};
   padding-bottom: 8px;
@@ -133,12 +129,11 @@ export {
   AccountContainer,
   Container,
   Title,
-  UserInfoContainer,
-  UserInfo,
   StyledPasswordSettings,
   PasswordSettingsContainer,
   PasswordContainer,
   NewPasswordContainer,
+  NewPassword,
   SubTitle,
   StyledInput,
   ErrorMessage,
