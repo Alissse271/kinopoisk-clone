@@ -1,6 +1,4 @@
-import { FiltersMark } from "assets";
 import styled from "styled-components";
-
 import { inputStyles, Media } from "ui";
 
 const StyledHeader = styled.div`
@@ -25,8 +23,11 @@ const StyledHeader = styled.div`
 const StyledForm = styled.form`
   width: auto;
 `;
-const StyledInput = styled.input`
+const InputContainer = styled.div`
   position: relative;
+  width: 100%;
+`;
+const StyledInput = styled.input`
   width: 100%;
   ${inputStyles}
 `;
@@ -39,4 +40,4 @@ const FiltersButton = styled.button`
   cursor: pointer;
 `;
 
-export { StyledHeader, StyledForm, StyledInput, FiltersButton };
+export { StyledHeader, StyledForm, StyledInput, FiltersButton, InputContainer };

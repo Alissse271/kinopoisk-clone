@@ -38,7 +38,7 @@ export const HeaderAccount = () => {
 
   const users = JSON.parse(localStorage.getItem("userInfo")!);
   return (
-    <div>
+    <>
       {isAuth ? (
         <UserInfo>
           <BadgeContainer>
@@ -74,6 +74,6 @@ export const HeaderAccount = () => {
           <RightArrow />
         </StyledLink>
       )}
-    </div>
+    </>
   );
 };

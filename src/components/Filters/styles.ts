@@ -16,6 +16,7 @@ const StyledFilters = styled.form`
   z-index: 5;
 
   ${Media.LG} {
+    width: 518px;
     padding: 48px 40px;
   }
 `;
@@ -94,8 +95,6 @@ const Buttons = styled.div`
   }
   ${Media.XXXXL} {
     grid-column-gap: 40px;
-    justify-self: flex-end;
-    width: 50%;
   }
 `;
 

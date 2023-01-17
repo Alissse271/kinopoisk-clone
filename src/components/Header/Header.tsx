@@ -1,24 +1,23 @@
 import { FiltersMark, LogoIcon } from "assets";
-import { Filters, HeaderAccount } from "components";
+import { HeaderAccount } from "components";
 import { useDebounce, useWindowSize } from "hooks";
-import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTE } from "router";
 import { fetchMoviesBySearch, useAppDispatch } from "store";
 
 import { Color } from "ui";
-import { StyledForm, StyledHeader, StyledInput, FiltersButton } from "./styles";
+import { StyledForm, StyledHeader, StyledInput, FiltersButton, InputContainer } from "./styles";
 
 interface IProps {
   className?: string;
+  toggleModal: (value: boolean) => void;
 }
 interface IFormValues {
   searchValue: string;
 }
 
-export const Header = ({ className }: IProps) => {
-  const [isOpenModal, toggleModal] = useState(false);
+export const Header = ({ className, toggleModal }: IProps) => {
   const navigate = useNavigate();
   // const debouncedValue = useDebounce(searchValue, 500);
   const dispatch = useAppDispatch();
@@ -31,7 +30,8 @@ export const Header = ({ className }: IProps) => {
     reset();
   };
   const handleOpenFilters = () => {
-    toggleModal((isOpenModal) => !isOpenModal);
+    navigate(ROUTE.HOME);
+    toggleModal(true);
   };
   return (
     <StyledHeader className={className}>
@@ -40,19 +40,20 @@ export const Header = ({ className }: IProps) => {
           <LogoIcon fill={Color.DARK_THEME} />
         </Link>
       )}
-      <StyledForm onSubmit={handleSubmit(onSubmit)}>
-        <StyledInput
-          type="text"
-          placeholder="Search"
-          onClick={() => navigate(ROUTE.HOME)}
-          {...register("searchValue")}
-        />
+      <InputContainer>
+        <StyledForm onSubmit={handleSubmit(onSubmit)}>
+          <StyledInput
+            type="text"
+            placeholder="Search"
+            onClick={() => navigate(ROUTE.HOME)}
+            {...register("searchValue")}
+          />
+        </StyledForm>
         <FiltersButton onClick={handleOpenFilters}>
           <FiltersMark />
         </FiltersButton>
-      </StyledForm>
+      </InputContainer>
       {width >= 1440 && <HeaderAccount />}
-      {isOpenModal && <Filters />}
     </StyledHeader>
   );
 };

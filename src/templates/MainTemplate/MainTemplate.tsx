@@ -1,11 +1,12 @@
 import { Outlet } from "react-router-dom";
-import { useWindowSize } from "hooks";
+import { useToggle, useWindowSize } from "hooks";
 import { StyledTemplate, Container, StyledNavigation } from "./styles";
 import { getTheme, useAppSelector } from "store";
 import { useEffect } from "react";
-import { Header } from "components";
+import { FiltersModal, Header } from "components";
 
 export const MainTemplate = () => {
+  const [isOpen, toggleModal] = useToggle();
   const { width = 0 } = useWindowSize();
   const { theme } = useAppSelector(getTheme);
   useEffect(() => {
@@ -16,15 +17,16 @@ export const MainTemplate = () => {
       {width >= 1440 ? (
         <>
           <StyledNavigation />
-          <Header />
+          <Header toggleModal={toggleModal} />
         </>
       ) : (
         <Container>
           <StyledNavigation />
-          <Header />
+          <Header toggleModal={toggleModal} />
         </Container>
       )}
       <Outlet />
+      <FiltersModal toggleModal={toggleModal} isOpen={isOpen} />
     </StyledTemplate>
   );
 };

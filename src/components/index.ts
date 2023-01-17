@@ -26,6 +26,7 @@ import { Slider } from "./Slider/Slider";
 import { ShowMoreButton } from "./ShowMoreButton/ShowMoreButton";
 import { ShowMoreLoader } from "./ShowMoreLoader/ShowMoreLoader";
 import { Slide } from "./Slide/Slide";
+import { FiltersModal } from "./FiltersModal/FiltersModal";
 
 export {
   ThemeToggler,
@@ -57,4 +58,5 @@ export {
   ShowMoreButton,
   ShowMoreLoader,
   Slide,
+  FiltersModal,
 };
