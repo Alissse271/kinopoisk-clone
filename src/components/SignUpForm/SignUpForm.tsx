@@ -48,6 +48,7 @@ export const SignUpForm = () => {
       isAuth: true,
     };
     dispatch(signUpUser(userInfo))
+      .unwrap()
       .then(() => {
         navigate(ROUTE.HOME);
         reset();

@@ -44,6 +44,7 @@ export const SignInForm = () => {
 
   const onSubmit: SubmitHandler<IFormValues> = (userInfo) => {
     dispatch(signInUser(userInfo))
+      .unwrap()
       .then(() => {
         localStorage.length > 0 && localStorage.setItem("userInfo", JSON.stringify(userInfo));
         navigate(`${ROUTE.HOME}`);

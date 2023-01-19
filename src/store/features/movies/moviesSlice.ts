@@ -7,6 +7,7 @@ interface IMoviesState {
   movies: IMovie[];
   page: number;
   isLoading: boolean;
+  isFoundMovies: boolean;
   isLoadingMoreMovies: boolean;
   error: null | string;
 }
@@ -14,6 +15,7 @@ const initialState: IMoviesState = {
   movies: [],
   page: 1,
   isLoading: false,
+  isFoundMovies: true,
   isLoadingMoreMovies: false,
   error: null,
 };
@@ -92,11 +94,13 @@ const moviesSlice = createSlice({
     });
     builder.addCase(fetchMoviesBySearch.fulfilled, (state, { payload }) => {
       state.isLoading = false;
+      state.isFoundMovies = true;
       state.movies = payload;
     });
     builder.addCase(fetchMoviesBySearch.rejected, (state, { payload }) => {
       if (payload) {
         state.isLoading = false;
+        state.isFoundMovies = false;
         state.error = payload;
       }
     });

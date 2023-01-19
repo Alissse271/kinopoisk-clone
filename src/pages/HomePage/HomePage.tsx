@@ -4,7 +4,8 @@ import { fetchMoreMovies, fetchMovies, getAllMovies, useAppDispatch, useAppSelec
 import { Container, ErrorText, StyledShowMoreButton } from "./styles";
 
 export const HomePage = () => {
-  const { isLoading, movies, error, isLoadingMoreMovies, page } = useAppSelector(getAllMovies);
+  const { isLoading, movies, error, isLoadingMoreMovies, page, isFoundMovies } =
+    useAppSelector(getAllMovies);
   const dispatch = useAppDispatch();
   const [pageNumber, setPageNumber] = useState(page + 1);
 
@@ -24,7 +25,7 @@ export const HomePage = () => {
     <Container>
       {isLoading && <Loader loading={isLoading} />}
       {error && <ErrorText>No such movies</ErrorText>}
-      {movies && movies.length > 0 && (
+      {isFoundMovies && movies && movies.length > 0 && (
         <>
           <MovieList movies={movies} />
           <StyledShowMoreButton
