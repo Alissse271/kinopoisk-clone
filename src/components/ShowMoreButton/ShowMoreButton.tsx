@@ -1,4 +1,5 @@
-import { StyledButton, StyledShowMoreLoader } from "./styles";
+import { ClipLoader } from "components";
+import { StyledButton } from "./styles";
 
 interface IProps {
   onClick: () => void;
@@ -10,7 +11,7 @@ export const ShowMoreButton = ({ onClick, isLoadingMoreMovies, className }: IPro
   return (
     <StyledButton className={className} type="button" onClick={onClick}>
       Show More
-      {isLoadingMoreMovies && <StyledShowMoreLoader loading={isLoadingMoreMovies} />}
+      {isLoadingMoreMovies && <ClipLoader loading={isLoadingMoreMovies} />}
     </StyledButton>
   );
 };

@@ -1,6 +1,6 @@
 import { TitleMain } from "components";
 import styled from "styled-components";
-import { Media } from "ui";
+import { Color, Media, Typography } from "ui";
 
 const Container = styled.div`
   display: flex;
@@ -15,4 +15,9 @@ const StyledTitle = styled(TitleMain)`
     margin-bottom: 40px;
   }
 `;
-export { Container, StyledTitle };
+const ErrorText = styled.p`
+  padding: 20px 0;
+  ${Typography.S2};
+  color: ${Color.ERROR};
+`;
+export { Container, StyledTitle, ErrorText };

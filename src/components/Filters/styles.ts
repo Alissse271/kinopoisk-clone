@@ -45,16 +45,6 @@ const Container = styled.div`
   grid-template-rows: repeat(2, min-content);
   grid-row-gap: 8px;
 `;
-const YearsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(2, auto);
-  grid-column-gap: 24px;
-  grid-row-gap: 8px;
-
-  ${Media.LG} {
-    grid-column-gap: 40px;
-  }
-`;
 const Subtitle = styled.p`
   ${Typography.S3}
   color: ${Color.DARK_THEME};
@@ -97,6 +87,10 @@ const Buttons = styled.div`
     grid-column-gap: 40px;
   }
 `;
+const ErrorMessage = styled.span`
+  ${Typography.S5}
+  color: ${Color.ERROR};
+`;
 
 export {
   StyledFilters,
@@ -106,6 +100,6 @@ export {
   Container,
   StyledInput,
   FiltersContainer,
-  YearsContainer,
   Buttons,
+  ErrorMessage,
 };

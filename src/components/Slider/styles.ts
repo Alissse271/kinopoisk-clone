@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Color, Media } from "ui";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper } from "swiper/react";
 
 const Header = styled.div`
   display: flex;
@@ -18,13 +18,6 @@ const Header = styled.div`
 `;
 const StyledSwiper = styled(Swiper)`
   width: 100%;
-`;
-const StyledSlide = styled(SwiperSlide)`
-  width: auto !important;
-`;
-const Container = styled.div`
-  /* max-width: 272px;
-  width: 100%; */
 `;
 const Arrows = styled.div`
   display: flex;
@@ -47,4 +40,4 @@ const NextButton = styled.button`
   cursor: pointer;
 `;
 
-export { Header, Arrows, PreviousButton, NextButton, Container, StyledSwiper, StyledSlide };
+export { Header, Arrows, PreviousButton, NextButton, StyledSwiper };

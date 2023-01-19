@@ -10,15 +10,20 @@ export const HomePage = () => {
 
   const handleShowMoreMovies = () => {
     setPageNumber(pageNumber + 1);
+    // dispatch(fetchMovies(pageNumber.toString()));
     dispatch(fetchMoreMovies(pageNumber.toString()));
   };
 
+  // useEffect(() => {
+  //   dispatch(fetchMovies(page.toString()));
+  // }, [dispatch, page]);
   useEffect(() => {
     dispatch(fetchMovies());
   }, [dispatch]);
   return (
     <Container>
-      <Loader loading={isLoading} />
+      {isLoading && <Loader loading={isLoading} />}
+      {error && <ErrorText>No such movies</ErrorText>}
       {movies && movies.length > 0 && (
         <>
           <MovieList movies={movies} />
@@ -28,7 +33,6 @@ export const HomePage = () => {
           />
         </>
       )}
-      {error && <ErrorText>Loading...</ErrorText>}
     </Container>
   );
 };

@@ -13,8 +13,10 @@ import {
   StyledLink,
   LinkSignUp,
 } from "./styles";
-import { signInUser, useAppDispatch } from "store";
+import { getUserInfo, signInUser, useAppDispatch, useAppSelector } from "store";
 import { useNavigate } from "react-router-dom";
+import { emailValidation, passwordValidation } from "utils";
+import { useState } from "react";
 
 interface IFormValues {
   email: string;
@@ -22,8 +24,12 @@ interface IFormValues {
 }
 
 export const SignInForm = () => {
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { isLoading } = useAppSelector(getUserInfo);
+
   const {
     register,
     handleSubmit,
@@ -31,14 +37,23 @@ export const SignInForm = () => {
     formState: { errors },
   } = useForm<IFormValues>();
 
+  const userInfo = JSON.parse(localStorage.getItem("userInfo")!);
+  if (userInfo) {
+    userInfo.isAuth = true;
+  }
+
   const onSubmit: SubmitHandler<IFormValues> = (userInfo) => {
     dispatch(signInUser(userInfo))
       .then(() => {
+        localStorage.length > 0 && localStorage.setItem("userInfo", JSON.stringify(userInfo));
         navigate(`${ROUTE.HOME}`);
-        reset();
       })
-      .catch(() => {
-        alert("ERROR");
+      .catch((error) => {
+        setErrorMessage(error);
+        console.log(error);
+      })
+      .finally(() => {
+        reset();
       });
   };
 
@@ -53,14 +68,7 @@ export const SignInForm = () => {
               <StyledInput
                 type="text"
                 placeholder="Your email"
-                {...register("email", {
-                  required: "*email is required",
-                  pattern: { value: /^(.+)@(.+)$/, message: "Enter a valid email" },
-                  maxLength: {
-                    value: 30,
-                    message: "*max 30 characters",
-                  },
-                })}
+                {...register("email", emailValidation())}
               />
             </StyledLabel>
             {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
@@ -71,20 +79,15 @@ export const SignInForm = () => {
               <StyledInput
                 type="password"
                 placeholder="Your password"
-                {...register("password", {
-                  required: "*password is required",
-                  minLength: {
-                    value: 8,
-                    message: "*min 8 characters",
-                  },
-                })}
+                {...register("password", passwordValidation())}
               />
             </StyledLabel>
             {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
             <StyledLink to={ROUTE.RESET_PASSWORD}>Forgot password?</StyledLink>
+            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
           </Container>
         </InputsContainer>
-        <Button primary type="submit" label="Sign in" />
+        <Button primary type="submit" label="Sign in" loader={isLoading} />
         <StyledText>
           Don’t have an account? <LinkSignUp to={ROUTE.SIGN_UP}>Sign Up</LinkSignUp>
         </StyledText>

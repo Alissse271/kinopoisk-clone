@@ -46,5 +46,8 @@ interface IMovieInfo {
   poster: string;
   imdbID: string;
 }
-
-export type { IMovie, IMovieAPI, IMovieInfoAPI, IMovieInfo };
+interface FilterValue {
+  s: string;
+  y: string;
+}
+export type { IMovie, IMovieAPI, IMovieInfoAPI, IMovieInfo, FilterValue };

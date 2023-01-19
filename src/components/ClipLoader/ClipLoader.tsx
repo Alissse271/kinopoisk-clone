@@ -1,14 +1,14 @@
-import ClipLoader from "react-spinners/ClipLoader";
 import { Color } from "ui";
+import { StyledClipLoader } from "./styles";
 
 interface IProps {
   loading: boolean;
   className?: string;
 }
 
-export const ShowMoreLoader = ({ loading, className }: IProps) => {
+export const ClipLoader = ({ loading, className }: IProps) => {
   return (
-    <ClipLoader
+    <StyledClipLoader
       className={className}
       color={Color.PRIMARY}
       loading={loading}

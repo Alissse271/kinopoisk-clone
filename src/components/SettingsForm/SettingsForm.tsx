@@ -29,6 +29,7 @@ interface IFormValues {
 
 export const SettingsForm = () => {
   const { name, email, error, password } = useAppSelector(getUserInfo);
+  console.log(` ${password}`);
 
   const {
     register,

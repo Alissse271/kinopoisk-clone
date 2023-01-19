@@ -1,7 +1,6 @@
 import { emptyFavorites } from "assets";
 import { MovieList } from "components";
 import { useWindowSize } from "hooks";
-import { useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import { ROUTE } from "router";
 import { getAllFavorites, getUserInfo, useAppSelector } from "store";

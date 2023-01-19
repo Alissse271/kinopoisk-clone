@@ -1,6 +1,8 @@
 import { Button, TitleMedium } from "components";
 import { useState } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { getUserInfo, resetUserPassword, useAppDispatch, useAppSelector } from "store";
+import { emailValidation } from "utils";
 import {
   FormContainer,
   StyledForm,
@@ -8,6 +10,7 @@ import {
   StyledLabel,
   Container,
   ErrorMessage,
+  InfoMessage,
 } from "./styles";
 
 interface IFormValues {
@@ -15,37 +18,52 @@ interface IFormValues {
 }
 
 export const ResetForm = () => {
-  // const [isShown, setIsShown] = useState(false);
+  const [isMessageShown, setIsMessageShown] = useState(false);
+  const dispatch = useAppDispatch();
+  const { isLoading } = useAppSelector(getUserInfo);
+
   const {
     register,
     handleSubmit,
     reset,
+    getValues,
     formState: { errors },
   } = useForm<IFormValues>();
 
+  const email = getValues("email");
+
+  const onSubmit: SubmitHandler<IFormValues> = (email) => {
+    dispatch(resetUserPassword(email))
+      .then(() => {
+        setIsMessageShown((isMessageShown) => !isMessageShown);
+      })
+      .catch(() => {
+        alert("ERROR");
+        reset();
+      });
+  };
+
   return (
     <FormContainer>
-      <StyledForm>
+      <StyledForm onSubmit={handleSubmit(onSubmit)}>
         <TitleMedium label="Reset password" />
         <Container>
+          {isMessageShown && (
+            <InfoMessage>
+              You will receive an email {email} with a link to reset your password!
+            </InfoMessage>
+          )}
           <StyledLabel>
             Email
             <StyledInput
               type="text"
               placeholder="Your email"
-              {...register("email", {
-                required: "*email is required",
-                pattern: { value: /^(.+)@(.+)$/, message: "Enter a valid email" },
-                maxLength: {
-                  value: 30,
-                  message: "*max 30 characters",
-                },
-              })}
+              {...register("email", emailValidation())}
             />
           </StyledLabel>
           {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
         </Container>
-        <Button primary type="submit" label="Reset" />
+        <Button primary type="submit" label="Reset" loader={isLoading} />
       </StyledForm>
     </FormContainer>
   );

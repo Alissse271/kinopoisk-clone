@@ -1,4 +1,3 @@
-import { ShowMoreLoader } from "components/ShowMoreLoader/ShowMoreLoader";
 import styled from "styled-components";
 import { Color, Typography } from "ui";
 
@@ -21,8 +20,5 @@ const StyledButton = styled.button`
     background: ${Color.SECONDARY};
   }
 `;
-const StyledShowMoreLoader = styled(ShowMoreLoader)`
-  margin-left: 12px;
-`;
 
-export { StyledButton, StyledShowMoreLoader };
+export { StyledButton };

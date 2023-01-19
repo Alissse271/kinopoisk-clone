@@ -1,9 +1,9 @@
 import { Loader, MovieList } from "components";
 import { useWindowSize } from "hooks";
 import { useEffect } from "react";
-import { useAppSelector, useAppDispatch, fetchMovies, getTrends } from "store";
-import { fetchTrends } from "store/trends/trendsSlice";
-import { Container, StyledTitle } from "./styles";
+import { useAppSelector, useAppDispatch, getTrends } from "store";
+import { fetchTrends } from "store/features/trends/trendsSlice";
+import { Container, StyledTitle, ErrorText } from "./styles";
 
 export const TrendsPage = () => {
   const { isLoading, trends, error } = useAppSelector(getTrends);
@@ -15,7 +15,8 @@ export const TrendsPage = () => {
   return (
     <Container>
       {width < 1440 && <StyledTitle label="Trends" />}
-      <Loader loading={isLoading} />
+      {isLoading && <Loader loading={isLoading} />}
+      {error && <ErrorText>Error</ErrorText>}
       {trends && trends.length > 0 && <MovieList trends movies={trends} />}
     </Container>
   );

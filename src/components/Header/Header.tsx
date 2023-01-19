@@ -5,6 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTE } from "router";
 import { fetchMoviesBySearch, useAppDispatch } from "store";
+import { FilterValue } from "types";
 
 import { Color } from "ui";
 import { StyledForm, StyledHeader, StyledInput, FiltersButton, InputContainer } from "./styles";
@@ -13,20 +14,16 @@ interface IProps {
   className?: string;
   toggleModal: (value: boolean) => void;
 }
-interface IFormValues {
-  searchValue: string;
-}
 
 export const Header = ({ className, toggleModal }: IProps) => {
   const navigate = useNavigate();
   // const debouncedValue = useDebounce(searchValue, 500);
   const dispatch = useAppDispatch();
   const { width = 0 } = useWindowSize();
-  const { register, handleSubmit, getValues, reset } = useForm<IFormValues>();
+  const { register, handleSubmit, reset } = useForm<FilterValue>();
 
-  const onSubmit: SubmitHandler<IFormValues> = () => {
-    const searchValue = getValues("searchValue");
-    dispatch(fetchMoviesBySearch(searchValue));
+  const onSubmit: SubmitHandler<FilterValue> = (info) => {
+    dispatch(fetchMoviesBySearch(info));
     reset();
   };
   const handleOpenFilters = () => {
@@ -46,7 +43,7 @@ export const Header = ({ className, toggleModal }: IProps) => {
             type="text"
             placeholder="Search"
             onClick={() => navigate(ROUTE.HOME)}
-            {...register("searchValue")}
+            {...register("s")}
           />
         </StyledForm>
         <FiltersButton onClick={handleOpenFilters}>

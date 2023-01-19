@@ -1,8 +1,13 @@
-import { getLogOutUser, signInUser, signUpUser } from "./auth/authSlice";
-import { addFavorite, removeFavorite } from "./favorites/favoritesSlice";
+import {
+  getLogOutUser,
+  resetUserPassword,
+  signInUser,
+  signUpUser,
+} from "./features/auth/authSlice";
+import { addFavorite, removeFavorite } from "./features/favorites/favoritesSlice";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
-import { fetchMovieInfo } from "./movieInfo/movieInfoSlice";
-import { fetchMoreMovies, fetchMovies, fetchMoviesBySearch } from "./movies/moviesSlice";
+import { fetchMovieInfo } from "./features/movieInfo/movieInfoSlice";
+import { fetchMoreMovies, fetchMovies, fetchMoviesBySearch } from "./features/movies/moviesSlice";
 import { getUserInfo } from "./selectors/authSelector";
 import { getAllFavorites } from "./selectors/favoritesSelector";
 import { getMovieInfo } from "./selectors/movieInfoSelector";
@@ -10,7 +15,7 @@ import { getAllMovies, getMovieByIMDB } from "./selectors/moviesSelector";
 import { getTheme } from "./selectors/themeSelector";
 import { getTrends } from "./selectors/trendsSelector";
 import { store } from "./store";
-import { toggleTheme } from "./theme/themeSlice";
+import { toggleTheme } from "./features/theme/themeSlice";
 
 export {
   useAppSelector,
@@ -25,12 +30,13 @@ export {
   getMovieByIMDB,
   signUpUser,
   signInUser,
+  resetUserPassword,
   getUserInfo,
   getLogOutUser,
   getAllFavorites,
   addFavorite,
   removeFavorite,
   getTrends,
-  fetchMoreMovies,
   getMovieInfo,
+  fetchMoreMovies,
 };

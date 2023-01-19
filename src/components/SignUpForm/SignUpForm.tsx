@@ -11,9 +11,10 @@ import {
   StyledText,
   LinkSignUp,
 } from "./styles";
-import { signUpUser, useAppDispatch } from "store";
+import { getUserInfo, signUpUser, useAppDispatch, useAppSelector } from "store";
 import { ROUTE } from "router";
 import { useNavigate } from "react-router-dom";
+import { emailValidation, nameValidation, passwordValidation } from "utils";
 
 interface IFormValues {
   userName: string;
@@ -24,11 +25,13 @@ interface IFormValues {
 interface IUserInfo {
   name: string;
   email: string;
+  isAuth: boolean;
 }
 
 export const SignUpForm = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { isLoading } = useAppSelector(getUserInfo);
   const {
     register,
     handleSubmit,
@@ -39,12 +42,11 @@ export const SignUpForm = () => {
   } = useForm<IFormValues>();
 
   const onSubmit: SubmitHandler<IFormValues> = (userInfo) => {
-    const userInfoToSave: IUserInfo[] = [
-      {
-        name: userInfo.userName,
-        email: userInfo.email,
-      },
-    ];
+    const userInfoToSave: IUserInfo = {
+      name: userInfo.userName,
+      email: userInfo.email,
+      isAuth: true,
+    };
     dispatch(signUpUser(userInfo))
       .then(() => {
         navigate(ROUTE.HOME);
@@ -69,14 +71,7 @@ export const SignUpForm = () => {
               <StyledInput
                 type="name"
                 placeholder="Your name"
-                {...register("userName", {
-                  required: "*name is required",
-                  pattern: { value: /^[a-zA-ZА-ЯЁа-яё\s]*$/, message: "Enter a valid name" },
-                  maxLength: {
-                    value: 15,
-                    message: "*max 15 characters",
-                  },
-                })}
+                {...register("userName", nameValidation())}
               />
             </StyledLabel>
             {errors.userName && <ErrorMessage>{errors.userName.message}</ErrorMessage>}
@@ -87,14 +82,7 @@ export const SignUpForm = () => {
               <StyledInput
                 type="text"
                 placeholder="Your email"
-                {...register("email", {
-                  required: "*email is required",
-                  pattern: { value: /^(.+)@(.+)$/, message: "Enter a valid email" },
-                  maxLength: {
-                    value: 30,
-                    message: "*max 30 characters",
-                  },
-                })}
+                {...register("email", emailValidation())}
               />
             </StyledLabel>
             {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
@@ -105,13 +93,7 @@ export const SignUpForm = () => {
               <StyledInput
                 type="password"
                 placeholder="Your password"
-                {...register("password", {
-                  required: "*password is required",
-                  minLength: {
-                    value: 8,
-                    message: "*min 8 characters",
-                  },
-                })}
+                {...register("password", passwordValidation())}
               />
             </StyledLabel>
             {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
@@ -128,12 +110,9 @@ export const SignUpForm = () => {
             {watch("confirmPassword") !== watch("password") && getValues("confirmPassword") ? (
               <ErrorMessage>*password not match</ErrorMessage>
             ) : null}
-            {/* {errors.confirmPassword && (
-              <ErrorMessage>{errors.confirmPassword.message}</ErrorMessage>
-            )} */}
           </Container>
         </InputsContainer>
-        <Button primary type="submit" label="Sign up" />
+        <Button primary type="submit" label="Sign up" loader={isLoading} />
         <StyledText>
           Already have an account? <LinkSignUp to={"../"}>Sign In</LinkSignUp>
         </StyledText>

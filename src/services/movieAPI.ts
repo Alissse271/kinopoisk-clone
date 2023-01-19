@@ -1,4 +1,5 @@
 import axios from "axios";
+import { FilterValue } from "types";
 
 class MovieAPI {
   private readonly BASE_URL = process.env.REACT_APP_SERVICES_MOVIE_API_BASE_URL;
@@ -14,6 +15,7 @@ class MovieAPI {
     "love",
     "war",
     "money",
+    "man",
   ];
   private randomMovieTrendsCollection = [
     "Star Wars",
@@ -36,6 +38,15 @@ class MovieAPI {
     baseURL: this.BASE_URL,
   });
 
+  // public async getRandomMovies(page: string) {
+  //   const params = {
+  //     s: this.randomMovie,
+  //     page: page,
+  //   };
+
+  //   const { data } = await this.API.get("", { params });
+  //   return data;
+  // }
   public async getRandomMovies() {
     const params = {
       s: this.randomMovie,
@@ -53,9 +64,9 @@ class MovieAPI {
     const { data } = await this.API.get("", { params });
     return data;
   }
-  public async getMoviesBySearch(searchValue: string) {
+  public async getMoviesBySearch(values: FilterValue) {
     const params = {
-      s: searchValue,
+      ...values,
     };
     const { data } = await this.API.get("", { params });
 

@@ -15,14 +15,13 @@ import { MovieList } from "./MovieList/MovieList";
 import { MovieInfo } from "./MovieInfo/MovieInfo";
 import { Badge } from "./Badge/Badge";
 import { Portal, PortalTarget } from "./Portal/Portal";
-import { AccountPortal } from "./AccountPortal/AccountPortal";
 import { TitleMain } from "./TitleMain/TitleMain";
 import { ColorMode } from "./ColorMode/ColorMode";
 import { Filters } from "./Filters/Filters";
 import { Loader } from "./Loader/Loader";
 import { Slider } from "./Slider/Slider";
 import { ShowMoreButton } from "./ShowMoreButton/ShowMoreButton";
-import { ShowMoreLoader } from "./ShowMoreLoader/ShowMoreLoader";
+import { ClipLoader } from "./ClipLoader/ClipLoader";
 import { Slide } from "./Slide/Slide";
 import { FiltersModal } from "./FiltersModal/FiltersModal";
 import { SettingsForm } from "./SettingsForm/SettingsForm";
@@ -46,14 +45,13 @@ export {
   MovieInfo,
   Badge,
   Portal,
-  AccountPortal,
   PortalTarget,
   ColorMode,
   Filters,
   Loader,
   Slider,
   ShowMoreButton,
-  ShowMoreLoader,
+  ClipLoader,
   Slide,
   FiltersModal,
   SettingsForm,

@@ -2,6 +2,10 @@ import styled from "styled-components";
 import { Color, Typography } from "ui";
 
 const StyledButton = styled.button<{ primary?: boolean; secondary?: boolean }>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
 
   padding: 16px 0;

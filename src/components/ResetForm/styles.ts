@@ -48,9 +48,21 @@ const StyledInput = styled.input`
   ${inputStyles}
 `;
 
+const InfoMessage = styled.span`
+  ${Typography.S5}
+  color: ${Color.DARK_THEME};
+`;
 const ErrorMessage = styled.span`
   ${Typography.S5}
   color: ${Color.ERROR};
 `;
 
-export { FormContainer, StyledForm, StyledLabel, StyledInput, Container, ErrorMessage };
+export {
+  FormContainer,
+  StyledForm,
+  StyledLabel,
+  StyledInput,
+  Container,
+  ErrorMessage,
+  InfoMessage,
+};

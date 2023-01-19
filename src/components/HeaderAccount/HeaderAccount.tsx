@@ -1,9 +1,8 @@
 import { User, RightArrow, DownArrow } from "assets";
 import { useOnClickOutside, useToggle } from "hooks";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { ROUTE } from "router";
 import { getLogOutUser, getUserInfo, useAppDispatch, useAppSelector } from "store";
-import { AccountPortal } from "components";
 import {
   StyledLink,
   BadgeContainer,
@@ -19,7 +18,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 export const HeaderAccount = () => {
-  const { isAuth } = useAppSelector(getUserInfo);
+  const { isAuth, name } = useAppSelector(getUserInfo);
   const [isOpen, setOpen] = useToggle(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -27,38 +26,41 @@ export const HeaderAccount = () => {
   const handleAccountPortal = () => {
     setOpen();
   };
-
+  const userInfo = JSON.parse(localStorage.getItem("userInfo")!);
+  if (userInfo) {
+    userInfo.isAuth = false;
+  }
   const handleLogOutUser = () => {
     dispatch(getLogOutUser());
+    localStorage.length > 0 && localStorage.setItem("userInfo", JSON.stringify(userInfo));
     navigate(ROUTE.HOME);
   };
 
   const ref = useRef<HTMLDivElement>(null);
   useOnClickOutside(ref, handleAccountPortal);
 
-  const users = JSON.parse(localStorage.getItem("userInfo")!);
   return (
     <>
       {isAuth ? (
         <UserInfo>
           <BadgeContainer>
             <UserInitials>
-              {users !== null &&
-                users.map((user: any) =>
-                  user.name
+              {name && name.split("").length > 1
+                ? name
                     .split(" ")
                     .map((name: string) => name[0])
                     .join("")
-                    .toUpperCase(),
-                )}
+                    .toUpperCase()
+                : name && name.split("").length === 1
+                ? name[0].toUpperCase()
+                : ""}
             </UserInitials>
           </BadgeContainer>
-          <UserName>{users !== null && users.map((user: any) => user.name)}</UserName>
+          <UserName>{name ? name : "User name"}</UserName>
           <StyledButton onClick={handleAccountPortal}>
             <DownArrow />
           </StyledButton>
           {isOpen && (
-            // <AccountPortal />
             <DetailsContainer ref={ref} onClick={handleAccountPortal}>
               <EditProfileButton to={ROUTE.SETTINGS}>Edit profile</EditProfileButton>
               <LogOutButton onClick={handleLogOutUser}>Log Out</LogOutButton>

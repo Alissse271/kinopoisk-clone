@@ -3,10 +3,10 @@ import { transrormMovieInfo } from "mappers";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { fetchMovieInfo, getMovieByIMDB, useAppDispatch, useAppSelector } from "store";
-import { LoadingText } from "./styles";
+import { ErrorText, LoadingText } from "./styles";
 
 export const MovieInfoPage = () => {
-  const { movieInfo, isLoading } = useAppSelector(getMovieByIMDB);
+  const { movieInfo, isLoading, error } = useAppSelector(getMovieByIMDB);
   const dispatch = useAppDispatch();
   const { imdb = "" } = useParams();
   useEffect(() => {
@@ -16,6 +16,7 @@ export const MovieInfoPage = () => {
   return (
     <div>
       {isLoading && <LoadingText>Loading</LoadingText>}
+      {error && <ErrorText>Error</ErrorText>}
       {movieInfo && <MovieInfo movie={movie} />}
     </div>
   );

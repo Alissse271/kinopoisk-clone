@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { transrormMovies } from "mappers";
 import { movieAPI } from "services";
-import { IMovie } from "types";
+import { FilterValue, IMovie } from "types";
 
 interface IMoviesState {
   movies: IMovie[];
@@ -18,6 +18,18 @@ const initialState: IMoviesState = {
   error: null,
 };
 
+// export const fetchMovies = createAsyncThunk<IMovie[], string, { rejectValue: string }>(
+//   "movies/fetchMovies",
+//   async (page, { rejectWithValue }) => {
+//     try {
+//       const response = await movieAPI.getRandomMovies(page);
+//       return transrormMovies(response.Search);
+//     } catch (error) {
+//       return rejectWithValue("Error");
+//     }
+//   },
+// );
+
 export const fetchMovies = createAsyncThunk<IMovie[], undefined, { rejectValue: string }>(
   "movies/fetchMovies",
   async (_, { rejectWithValue }) => {
@@ -30,7 +42,7 @@ export const fetchMovies = createAsyncThunk<IMovie[], undefined, { rejectValue: 
   },
 );
 
-export const fetchMoviesBySearch = createAsyncThunk<IMovie[], string, { rejectValue: string }>(
+export const fetchMoviesBySearch = createAsyncThunk<IMovie[], FilterValue, { rejectValue: string }>(
   "movies/fetchMoviesBySearch",
   async (value, { rejectWithValue }) => {
     try {
@@ -41,6 +53,7 @@ export const fetchMoviesBySearch = createAsyncThunk<IMovie[], string, { rejectVa
     }
   },
 );
+
 export const fetchMoreMovies = createAsyncThunk<IMovie[], string, { rejectValue: string }>(
   "movies/fetchMoreMovies",
   async (page, { rejectWithValue }) => {
@@ -59,28 +72,15 @@ const moviesSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder.addCase(fetchMovies.pending, (state) => {
-      state.isLoading = true;
-      state.error = null;
-    });
-    builder.addCase(fetchMovies.fulfilled, (state, { payload }) => {
-      state.isLoading = false;
-      state.movies = payload;
-    });
-    builder.addCase(fetchMovies.rejected, (state, { payload }) => {
-      if (payload) {
-        state.isLoading = false;
-        state.error = payload;
-      }
-    });
-    builder.addCase(fetchMoreMovies.pending, (state) => {
       state.isLoadingMoreMovies = true;
       state.error = null;
     });
-    builder.addCase(fetchMoreMovies.fulfilled, (state, { payload }) => {
+    builder.addCase(fetchMovies.fulfilled, (state, { payload }) => {
       state.isLoadingMoreMovies = false;
-      state.movies = state.movies.concat(payload);
+      state.movies = payload;
+      // state.movies = state.movies.concat(payload);
     });
-    builder.addCase(fetchMoreMovies.rejected, (state, { payload }) => {
+    builder.addCase(fetchMovies.rejected, (state, { payload }) => {
       if (payload) {
         state.isLoadingMoreMovies = false;
         state.error = payload;
@@ -97,6 +97,21 @@ const moviesSlice = createSlice({
     builder.addCase(fetchMoviesBySearch.rejected, (state, { payload }) => {
       if (payload) {
         state.isLoading = false;
+        state.error = payload;
+      }
+    });
+
+    builder.addCase(fetchMoreMovies.pending, (state) => {
+      state.isLoadingMoreMovies = true;
+      state.error = null;
+    });
+    builder.addCase(fetchMoreMovies.fulfilled, (state, { payload }) => {
+      state.isLoadingMoreMovies = false;
+      state.movies = state.movies.concat(payload);
+    });
+    builder.addCase(fetchMoreMovies.rejected, (state, { payload }) => {
+      if (payload) {
+        state.isLoadingMoreMovies = false;
         state.error = payload;
       }
     });

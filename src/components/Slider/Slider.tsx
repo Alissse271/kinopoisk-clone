@@ -1,18 +1,10 @@
 import { Navigation } from "swiper";
-import { Swiper, SwiperSlide } from "swiper/react";
+import { SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { MovieCard, Slide, TitleMedium } from "components";
+import { Slide, TitleMedium } from "components";
 import { SliderLeftArrow, SliderRightArrow } from "assets";
-import {
-  Header,
-  Arrows,
-  PreviousButton,
-  NextButton,
-  Container,
-  StyledSwiper,
-  StyledSlide,
-} from "./styles";
+import { Header, Arrows, PreviousButton, NextButton, StyledSwiper } from "./styles";
 import { getAllMovies, useAppSelector } from "store";
 import { useWindowSize } from "hooks";
 
@@ -49,13 +41,11 @@ export const Slider = () => {
         slidesPerView={getSlidesAmount()}
         navigation={{ nextEl: ".next_btn", prevEl: ".prev_btn" }}
       >
-        {movies.map((movie) => {
+        {movies.map((movie, index) => {
           return (
-            <StyledSlide>
-              <Container>
-                <Slide key={movie.id} movie={movie} />
-              </Container>
-            </StyledSlide>
+            <SwiperSlide key={`${movie.id}-${index}`}>
+              <Slide movie={movie} />
+            </SwiperSlide>
           );
         })}
       </StyledSwiper>

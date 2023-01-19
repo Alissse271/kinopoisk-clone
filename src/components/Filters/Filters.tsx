@@ -3,6 +3,8 @@ import { Button } from "components";
 import { TitleMedium } from "components/TitleMedium/TitleMedium";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { fetchMoviesBySearch, useAppDispatch } from "store";
+import { FilterValue } from "types";
+import { titleValidation, yearValidation } from "utils";
 import {
   StyledFilters,
   TitleContainer,
@@ -11,8 +13,8 @@ import {
   Container,
   StyledInput,
   FiltersContainer,
-  YearsContainer,
   Buttons,
+  ErrorMessage,
 } from "./styles";
 
 interface IProps {
@@ -25,15 +27,20 @@ interface IFormValues {
 
 export const Filters = ({ toggleModal }: IProps) => {
   const dispatch = useAppDispatch();
-  const { register, handleSubmit, getValues, reset } = useForm<IFormValues>();
+  const {
+    register,
+    handleSubmit,
+    getValues,
+    reset,
+    formState: { errors },
+  } = useForm<FilterValue>();
 
   const handleReset = () => {
     reset();
   };
 
-  const onSubmit: SubmitHandler<IFormValues> = () => {
-    const searchValue = getValues("searchValue");
-    dispatch(fetchMoviesBySearch(searchValue));
+  const onSubmit: SubmitHandler<FilterValue> = (info) => {
+    dispatch(fetchMoviesBySearch(info));
     toggleModal(false);
     reset();
   };
@@ -54,14 +61,13 @@ export const Filters = ({ toggleModal }: IProps) => {
       <FiltersContainer>
         <Container>
           <Subtitle>Full or short movie name</Subtitle>
-          <StyledInput type="text" placeholder="Your text" {...register("searchValue")} />
+          <StyledInput type="text" placeholder="Your text" {...register("s", titleValidation())} />
+          {errors.s && <ErrorMessage>{errors.s.message}</ErrorMessage>}
         </Container>
         <Container>
           <Subtitle>Years</Subtitle>
-          <YearsContainer>
-            <StyledInput type="number" placeholder="From" />
-            <StyledInput type="number" placeholder="To" />
-          </YearsContainer>
+          <StyledInput type="number" placeholder="Year" {...register("y", yearValidation())} />
+          {errors.y && <ErrorMessage>{errors.y.message}</ErrorMessage>}
         </Container>
       </FiltersContainer>
       <Buttons>
