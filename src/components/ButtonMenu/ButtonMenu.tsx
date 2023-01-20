@@ -2,16 +2,13 @@ import { StyledButton } from "./styles";
 
 interface IButton {
   type: "button";
-  label: string;
   className?: string;
   open: boolean;
-  setOpen: (open: boolean) => void;
+  togleMenu: () => void;
 }
 
-export const ButtonMenu = ({ type, label, className, open, setOpen }: IButton) => {
+export const ButtonMenu = ({ type, className, open, togleMenu }: IButton) => {
   return (
-    <StyledButton className={className} type={type} open={open} onClick={() => setOpen(!open)}>
-      {label}
-    </StyledButton>
+    <StyledButton className={className} type={type} open={open} onClick={togleMenu}></StyledButton>
   );
 };

@@ -1,7 +1,7 @@
-import { Loader, MovieList } from "components";
+import { MovieList } from "components";
 import { useEffect, useState } from "react";
 import { fetchMoreMovies, fetchMovies, getAllMovies, useAppDispatch, useAppSelector } from "store";
-import { Container, ErrorText, StyledShowMoreButton } from "./styles";
+import { Container, ErrorText, StyledLoader, StyledShowMoreButton } from "./styles";
 
 export const HomePage = () => {
   const { isLoading, movies, error, isLoadingMoreMovies, page, isFoundMovies } =
@@ -23,7 +23,7 @@ export const HomePage = () => {
   }, [dispatch]);
   return (
     <Container>
-      {isLoading && <Loader loading={isLoading} />}
+      {isLoading && <StyledLoader loading={isLoading} />}
       {error && <ErrorText>No such movies</ErrorText>}
       {isFoundMovies && movies && movies.length > 0 && (
         <>

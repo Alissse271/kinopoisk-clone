@@ -51,7 +51,6 @@ export const SignInForm = () => {
       })
       .catch((error) => {
         setErrorMessage(error);
-        console.log(error);
       })
       .finally(() => {
         reset();

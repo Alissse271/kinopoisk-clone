@@ -3,6 +3,7 @@ import { CustomNavLink } from "components";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Color, Media, Typography } from "ui";
+import { motion } from "framer-motion";
 
 const Container = styled.div`
   display: grid;
@@ -20,7 +21,7 @@ const StyledLogo = styled(Link)`
   padding-top: 8px;
 `;
 
-const StyledNavigation = styled.div<{ open: boolean }>`
+const StyledNavigation = styled(motion.div)`
   position: fixed;
   right: 0;
   top: 0;
@@ -35,13 +36,9 @@ const StyledNavigation = styled.div<{ open: boolean }>`
 
   background: ${Color.WHITE_THEME};
   z-index: 2;
-  transition: all 0.3s ease;
-  transform: ${({ open }) => (open ? "translateX(0%)" : "translateX(100%)")};
-  ${Media.MD} {
+
+  ${Media.SM} {
     width: 320px;
-  }
-  ${Media.XXL} {
-    width: 220px;
   }
   ${Media.XXXL} {
     position: relative;
@@ -72,16 +69,4 @@ const CopyRight = styled.p`
   ${Typography.S5}
   color: ${Color.LIGHT};
 `;
-const StyledMenuButton = styled(ButtonMenu)`
-  z-index: 3;
-  justify-self: end;
-`;
-export {
-  StyledNavigation,
-  Links,
-  Container,
-  CopyRight,
-  StyledMenuButton,
-  StyledLogo,
-  StyledCustomNavLink,
-};
+export { StyledNavigation, Links, Container, CopyRight, StyledLogo, StyledCustomNavLink };

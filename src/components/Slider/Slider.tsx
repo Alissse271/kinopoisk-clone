@@ -12,12 +12,12 @@ export const Slider = () => {
   const { movies } = useAppSelector(getAllMovies);
   const { width = 0 } = useWindowSize();
   const getSlidesAmount = () => {
-    if (width <= 768) {
+    if (width <= 568) {
       return 1;
-    } else if (width >= 768) {
-      return 2;
     } else if (width >= 1920) {
-      return 3;
+      return 4;
+    } else if (width >= 568) {
+      return 2;
     }
   };
   return (

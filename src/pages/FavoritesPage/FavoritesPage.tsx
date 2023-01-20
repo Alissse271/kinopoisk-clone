@@ -13,14 +13,16 @@ export const FavoritesPage = () => {
   return isAuth ? (
     <>
       {favorites.length === 0 && (
-        <EmptyFavoritesContainer>
-          <img src={emptyFavorites} alt="Empty list of favorites"></img>
-          <EmptyText>No favorite movies</EmptyText>
-        </EmptyFavoritesContainer>
+        <>
+          {width < 1440 && <StyledTitle label="Favorites" />}
+          <EmptyFavoritesContainer>
+            <img src={emptyFavorites} alt="Empty list of favorites"></img>
+            <EmptyText>No favorite movies</EmptyText>
+          </EmptyFavoritesContainer>
+        </>
       )}
       {favorites && favorites.length > 0 && (
         <>
-          {width < 1440 && <StyledTitle label="Favorites" />}
           <MovieList favorites movies={favorites} />
         </>
       )}

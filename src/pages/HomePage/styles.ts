@@ -1,4 +1,4 @@
-import { ShowMoreButton } from "components";
+import { Loader, ShowMoreButton } from "components";
 import styled from "styled-components";
 import { Color, Media, Typography } from "ui";
 
@@ -17,10 +17,13 @@ const StyledShowMoreButton = styled(ShowMoreButton)`
   }
 `;
 
+const StyledLoader = styled(Loader)`
+  margin-bottom: 20px;
+`;
 const ErrorText = styled.p`
   padding: 20px 0;
   ${Typography.S2};
   color: ${Color.ERROR};
 `;
 
-export { Container, ErrorText, StyledShowMoreButton };
+export { Container, ErrorText, StyledShowMoreButton, StyledLoader };

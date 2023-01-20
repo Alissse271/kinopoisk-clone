@@ -11,15 +11,16 @@ const StyledSlide = styled(Link)`
 
 const Poster = styled.img`
   width: 100%;
-  height: 357px;
+  height: 365px;
   object-fit: cover;
   border-radius: 20px;
   margin-bottom: 14px;
-  ${Media.LG} {
-    height: 276px;
-  }
+
   ${Media.SM} {
-    height: 266px;
+    height: 279px;
+  }
+  ${Media.LG} {
+    height: 357px;
   }
 `;
 

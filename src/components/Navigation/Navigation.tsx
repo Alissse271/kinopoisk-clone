@@ -3,25 +3,32 @@ import {
   Links,
   Container,
   CopyRight,
-  StyledMenuButton,
   StyledNavigation,
   StyledLogo,
   StyledCustomNavLink,
 } from "./styles";
 import { Color } from "ui";
-
 import { FavoritesIcon, HomeIcon, LogoIcon, SettingsIcon, TrendsIcon } from "assets";
 import { useWindowSize } from "hooks";
-import { useState } from "react";
+import { ButtonMenu } from "components";
 
 interface IProps {
   className?: string;
+  isOpen: boolean;
+  isMobile: boolean;
+  handleClose: () => void;
 }
 
-export const Navigation = ({ className }: IProps) => {
-  const [open, setOpen] = useState(false);
+const menuVariants = {
+  open: { opacity: 1, x: 0 },
+  closed: { opacity: 0, x: "100%" },
+  idle: {},
+};
+
+export const Navigation = ({ isOpen, isMobile, handleClose, className }: IProps) => {
+  const currentVariant = isMobile ? (isOpen ? "open" : "closed") : "idle";
   const { width = 0 } = useWindowSize();
-  const handleClose = () => setOpen(!open);
+
   return (
     <Container className={className}>
       {(width >= 1440 || width < 768) && (
@@ -29,8 +36,8 @@ export const Navigation = ({ className }: IProps) => {
           <LogoIcon fill={Color.DARK_THEME} />
         </StyledLogo>
       )}
-      {width < 1440 && <StyledMenuButton type="button" label="" open={open} setOpen={setOpen} />}
-      <StyledNavigation open={open}>
+      {width < 1440 && <ButtonMenu type="button" open={isOpen} togleMenu={handleClose} />}
+      <StyledNavigation animate={currentVariant} variants={menuVariants} initial="idle">
         <Links>
           <StyledCustomNavLink onClick={handleClose} to={ROUTE.HOME}>
             <HomeIcon />

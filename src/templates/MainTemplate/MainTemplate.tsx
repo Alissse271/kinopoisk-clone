@@ -7,8 +7,10 @@ import { FiltersModal, Header } from "components";
 
 export const MainTemplate = () => {
   const [isOpen, toggleModal] = useToggle();
+  const [isMenuOpen, toggleMenu] = useToggle();
   const { width = 0 } = useWindowSize();
   const { theme } = useAppSelector(getTheme);
+  const isMobile = width <= 1440;
   useEffect(() => {
     document.documentElement.setAttribute("theme", theme);
   }, [theme]);
@@ -16,12 +18,12 @@ export const MainTemplate = () => {
     <StyledTemplate>
       {width >= 1440 ? (
         <>
-          <StyledNavigation />
+          <StyledNavigation isOpen={isMenuOpen} isMobile={isMobile} handleClose={toggleMenu} />
           <Header toggleModal={toggleModal} />
         </>
       ) : (
         <Container>
-          <StyledNavigation />
+          <StyledNavigation isOpen={isMenuOpen} isMobile={isMobile} handleClose={toggleMenu} />
           <Header toggleModal={toggleModal} />
         </Container>
       )}

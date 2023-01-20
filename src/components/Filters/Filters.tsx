@@ -21,10 +21,6 @@ interface IProps {
   toggleModal: (value: boolean) => void;
 }
 
-interface IFormValues {
-  searchValue: string;
-}
-
 export const Filters = ({ toggleModal }: IProps) => {
   const dispatch = useAppDispatch();
   const {
@@ -40,7 +36,7 @@ export const Filters = ({ toggleModal }: IProps) => {
   };
 
   const onSubmit: SubmitHandler<FilterValue> = (info) => {
-    dispatch(fetchMoviesBySearch(info));
+    dispatch(fetchMoviesBySearch(info)).unwrap();
     toggleModal(false);
     reset();
   };
