@@ -41,8 +41,8 @@ interface IProps {
   movie: IMovieInfo;
 }
 
-export const MovieInfo = ({
-  movie: {
+export const MovieInfo = ({ movie }: IProps) => {
+  const {
     title,
     year,
     released,
@@ -57,8 +57,7 @@ export const MovieInfo = ({
     imdbRating,
     poster,
     imdbID,
-  },
-}: IProps) => {
+  } = movie;
   const { favorites } = useAppSelector(getAllFavorites);
   const { isLoading, error } = useAppSelector(getMovieInfo);
   const { isAuth } = useAppSelector(getUserInfo);
@@ -84,7 +83,7 @@ export const MovieInfo = ({
   ) : (
     <Container>
       <GenresList>
-        {genre?.split(",").map((genre) => {
+        {genre.split(",").map((genre) => {
           return <Genres key={genre}>{genre}</Genres>;
         })}
       </GenresList>
@@ -101,7 +100,7 @@ export const MovieInfo = ({
           {poster === "N/A" ? (
             <MovieImage src={imageNotFound} alt="Movie poster"></MovieImage>
           ) : (
-            <MovieImage src={poster} alt="Movie poster"></MovieImage>
+            <MovieImage src={poster} alt={title}></MovieImage>
           )}
         </ImageWrap>
         <ButtonsContainer>

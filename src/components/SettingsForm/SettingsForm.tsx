@@ -1,6 +1,7 @@
 import { Button, ColorMode, TitleMedium } from "components";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { getUserInfo, useAppSelector } from "store";
+import { emailValidation, nameValidation, passwordValidation } from "utils";
 import {
   StyledAccountInfo,
   AccountContainer,
@@ -29,12 +30,10 @@ interface IFormValues {
 
 export const SettingsForm = () => {
   const { name, email, error, password } = useAppSelector(getUserInfo);
-  console.log(` ${password}`);
 
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
     watch,
     getValues,
@@ -56,13 +55,7 @@ export const SettingsForm = () => {
                 type="text"
                 placeholder="Your name"
                 defaultValue={name ? name : "User name"}
-                {...register("userName", {
-                  required: "*name is required",
-                  maxLength: {
-                    value: 50,
-                    message: "*max 50 characters",
-                  },
-                })}
+                {...register("userName", nameValidation())}
               />
             </Container>
             <Container>
@@ -71,13 +64,7 @@ export const SettingsForm = () => {
                 type="text"
                 placeholder="Your email"
                 defaultValue={email ? email : "User email"}
-                {...register("email", {
-                  required: "*email is required",
-                  maxLength: {
-                    value: 50,
-                    message: "*max 50 characters",
-                  },
-                })}
+                {...register("email", emailValidation())}
               />
             </Container>
           </AccountContainer>
@@ -91,13 +78,7 @@ export const SettingsForm = () => {
                 type="password"
                 placeholder="Your password"
                 defaultValue={password ? password : "User password"}
-                {...register("password", {
-                  required: "*password is required",
-                  minLength: {
-                    value: 8,
-                    message: "*min 8 characters",
-                  },
-                })}
+                {...register("password", passwordValidation())}
               />
               {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
             </PasswordContainer>
@@ -107,13 +88,7 @@ export const SettingsForm = () => {
                 <StyledInput
                   type="password"
                   placeholder="New password"
-                  {...register("newPassword", {
-                    required: "*new password is required",
-                    minLength: {
-                      value: 8,
-                      message: "*min 8 characters",
-                    },
-                  })}
+                  {...register("newPassword", passwordValidation())}
                 />
                 {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
               </NewPassword>

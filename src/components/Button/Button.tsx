@@ -1,8 +1,9 @@
 import { ClipLoader } from "components";
+import { ButtonHTMLAttributes } from "react";
 import { StyledButton } from "./styles";
 
 interface IButton {
-  type: "button" | "submit" | "reset";
+  type: ButtonHTMLAttributes<HTMLButtonElement>["type"];
   label: string;
   onClick?: () => void;
   primary?: boolean;

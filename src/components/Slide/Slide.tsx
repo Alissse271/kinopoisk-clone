@@ -14,7 +14,7 @@ export const Slide = ({ movie: { poster, id, title } }: IProps) => {
       {poster === "N/A" ? (
         <Poster src={imageNotFound} alt="Movie" />
       ) : (
-        <Poster src={poster} alt="Movie" />
+        <Poster src={poster} alt={title} />
       )}
       <Title>{title}</Title>
     </StyledSlide>

@@ -15,10 +15,7 @@ interface IProps {
 export const MovieCard = ({ movie: { id, poster, title, year }, favorites, trends }: IProps) => {
   return (
     <Card>
-      <Link
-        style={{ textDecoration: "none" }}
-        to={generatePath(`${ROUTE.HOME}` + `${ROUTE.MOVIE_INFO}`, { imdb: id })}
-      >
+      <Link to={generatePath(ROUTE.HOME + ROUTE.MOVIE_INFO, { imdb: id })}>
         {favorites && (
           <FavoriteLabel>
             <FavoritesMark fill={Color.PRIMARY} />
@@ -33,7 +30,7 @@ export const MovieCard = ({ movie: { id, poster, title, year }, favorites, trend
           {poster === "N/A" ? (
             <Image src={imageNotFound} alt="Movie" />
           ) : (
-            <Image src={poster} alt="Movie" />
+            <Image src={poster} alt={title} />
           )}
         </ImageContainer>
         <Name>

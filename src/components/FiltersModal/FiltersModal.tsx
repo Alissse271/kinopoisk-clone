@@ -11,7 +11,7 @@ export const FiltersModal = ({ toggleModal, isOpen }: IProps) => {
     <Portal target={PortalTarget.FILTERS}>
       {isOpen && (
         <Container>
-          <Filters toggleModal={toggleModal} />
+          <Filters toggleModal={toggleModal} isOpen={isOpen} />
         </Container>
       )}
     </Portal>

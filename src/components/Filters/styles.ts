@@ -1,7 +1,8 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { Color, inputStyles, Media, Typography } from "ui";
 
-const StyledFilters = styled.form`
+const StyledFilters = styled(motion.form)`
   position: fixed;
   width: 100%;
   height: 100vh;

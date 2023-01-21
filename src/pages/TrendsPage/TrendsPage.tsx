@@ -17,7 +17,7 @@ export const TrendsPage = () => {
       {width < 1440 && <StyledTitle label="Trends" />}
       {isLoading && <Loader loading={isLoading} />}
       {error && <ErrorText>Error</ErrorText>}
-      {trends && trends.length > 0 && <MovieList trends movies={trends} />}
+      {trends && trends.length > 0 && <MovieList isTrends movies={trends} />}
     </Container>
   );
 };

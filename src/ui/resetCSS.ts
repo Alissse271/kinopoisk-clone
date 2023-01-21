@@ -12,4 +12,7 @@ export const resetCSS = css`
     border: 0;
     box-sizing: border-box;
   }
+  a {
+    text-decoration: none;
+  }
 `;

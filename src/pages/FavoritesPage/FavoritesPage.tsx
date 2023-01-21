@@ -23,7 +23,7 @@ export const FavoritesPage = () => {
       )}
       {favorites && favorites.length > 0 && (
         <>
-          <MovieList favorites movies={favorites} />
+          <MovieList isFavorites movies={favorites} />
         </>
       )}
     </>
