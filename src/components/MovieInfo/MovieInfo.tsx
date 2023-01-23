@@ -69,7 +69,7 @@ export const MovieInfo = ({ movie }: IProps) => {
 
   const handleAddToFavorites = (event: MouseEvent<HTMLButtonElement>): void => {
     event.preventDefault();
-    isAuth ? dispach(addFavorite(favorite)) : navigate(`${ROUTE.HOME}` + `${ROUTE.SIGN_IN}`);
+    isAuth ? dispach(addFavorite(favorite)) : navigate(ROUTE.HOME + ROUTE.SIGN_IN);
   };
 
   const handleRemoveFromFavorites = () => {
@@ -83,7 +83,7 @@ export const MovieInfo = ({ movie }: IProps) => {
   ) : (
     <Container>
       <GenresList>
-        {genre.split(",").map((genre) => {
+        {genre?.split(",").map((genre) => {
           return <Genres key={genre}>{genre}</Genres>;
         })}
       </GenresList>

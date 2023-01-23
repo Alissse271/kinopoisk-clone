@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Media } from "ui";
 
 const Container = styled.div`
   position: fixed;
@@ -9,8 +10,11 @@ const Container = styled.div`
   width: 100%;
   height: 100vh;
 
-  background: rgba(16, 16, 16, 0.7);
   z-index: 10;
+
+  ${Media.LG} {
+    background: rgba(16, 16, 16, 0.7);
+  }
 `;
 
 export { Container };

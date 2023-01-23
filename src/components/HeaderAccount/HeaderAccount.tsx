@@ -39,43 +39,39 @@ export const HeaderAccount = () => {
   const ref = useRef<HTMLDivElement>(null);
   useOnClickOutside(ref, handleAccount);
 
-  return (
-    <>
-      {isAuth ? (
-        <UserInfo>
-          <BadgeContainer>
-            <UserInitials>
-              {name && name.split("").length > 1
-                ? name
-                    .split(" ")
-                    .map((name: string) => name[0])
-                    .join("")
-                    .toUpperCase()
-                : name && name.split("").length === 1
-                ? name[0].toUpperCase()
-                : ""}
-            </UserInitials>
-          </BadgeContainer>
-          <UserName>{name ? name : "User name"}</UserName>
-          <StyledButton onClick={handleAccount}>
-            <DownArrow />
-          </StyledButton>
-          {isOpen && (
-            <DetailsContainer ref={ref} onClick={handleAccount}>
-              <EditProfileButton to={ROUTE.SETTINGS}>Edit profile</EditProfileButton>
-              <LogOutButton onClick={handleLogOutUser}>Log Out</LogOutButton>
-            </DetailsContainer>
-          )}
-        </UserInfo>
-      ) : (
-        <StyledLink to={ROUTE.SIGN_IN}>
-          <BadgeContainer>
-            <UserIcon />
-          </BadgeContainer>
-          <SingInText>Sign In</SingInText>
-          <RightArrow />
-        </StyledLink>
+  return isAuth ? (
+    <UserInfo>
+      <BadgeContainer>
+        <UserInitials>
+          {name && name.split("").length > 1
+            ? name
+                .split(" ")
+                .map((name: string) => name[0])
+                .join("")
+                .toUpperCase()
+            : name && name.split("").length === 1
+            ? name[0].toUpperCase()
+            : ""}
+        </UserInitials>
+      </BadgeContainer>
+      <UserName>{name ? name : "User name"}</UserName>
+      <StyledButton onClick={handleAccount}>
+        <DownArrow />
+      </StyledButton>
+      {isOpen && (
+        <DetailsContainer ref={ref} onClick={handleAccount}>
+          <EditProfileButton to={ROUTE.SETTINGS}>Edit profile</EditProfileButton>
+          <LogOutButton onClick={handleLogOutUser}>Log Out</LogOutButton>
+        </DetailsContainer>
       )}
-    </>
+    </UserInfo>
+  ) : (
+    <StyledLink to={ROUTE.SIGN_IN}>
+      <BadgeContainer>
+        <UserIcon />
+      </BadgeContainer>
+      <SingInText>Sign In</SingInText>
+      <RightArrow />
+    </StyledLink>
   );
 };

@@ -4,10 +4,11 @@ import { Color, inputStyles, Media, Typography } from "ui";
 
 const StyledFilters = styled(motion.form)`
   position: fixed;
-  width: 100%;
-  height: 100vh;
   right: 0;
   top: 0;
+
+  width: 100%;
+  height: 100vh;
 
   display: flex;
   flex-direction: column;
