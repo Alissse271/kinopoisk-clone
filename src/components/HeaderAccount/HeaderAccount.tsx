@@ -1,4 +1,4 @@
-import { User, RightArrow, DownArrow } from "assets";
+import { UserIcon, RightArrow, DownArrow } from "assets";
 import { useOnClickOutside, useToggle } from "hooks";
 import { useRef } from "react";
 import { ROUTE } from "router";
@@ -23,7 +23,7 @@ export const HeaderAccount = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const handleAccountPortal = () => {
+  const handleAccount = () => {
     setOpen();
   };
   const userInfo = JSON.parse(localStorage.getItem("userInfo")!);
@@ -37,7 +37,7 @@ export const HeaderAccount = () => {
   };
 
   const ref = useRef<HTMLDivElement>(null);
-  useOnClickOutside(ref, handleAccountPortal);
+  useOnClickOutside(ref, handleAccount);
 
   return (
     <>
@@ -57,11 +57,11 @@ export const HeaderAccount = () => {
             </UserInitials>
           </BadgeContainer>
           <UserName>{name ? name : "User name"}</UserName>
-          <StyledButton onClick={handleAccountPortal}>
+          <StyledButton onClick={handleAccount}>
             <DownArrow />
           </StyledButton>
           {isOpen && (
-            <DetailsContainer ref={ref} onClick={handleAccountPortal}>
+            <DetailsContainer ref={ref} onClick={handleAccount}>
               <EditProfileButton to={ROUTE.SETTINGS}>Edit profile</EditProfileButton>
               <LogOutButton onClick={handleLogOutUser}>Log Out</LogOutButton>
             </DetailsContainer>
@@ -70,7 +70,7 @@ export const HeaderAccount = () => {
       ) : (
         <StyledLink to={ROUTE.SIGN_IN}>
           <BadgeContainer>
-            <User />
+            <UserIcon />
           </BadgeContainer>
           <SingInText>Sign In</SingInText>
           <RightArrow />

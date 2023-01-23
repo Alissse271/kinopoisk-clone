@@ -51,7 +51,7 @@ const StyledNavigation = styled(motion.div)`
 `;
 const Links = styled.nav`
   display: grid;
-  grid-template-rows: repeat(4, 24px);
+  grid-template-rows: repeat(5, 24px);
   grid-row-gap: 40px;
   flex-grow: 1;
 

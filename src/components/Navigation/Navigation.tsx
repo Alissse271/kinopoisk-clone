@@ -8,9 +8,11 @@ import {
   StyledCustomNavLink,
 } from "./styles";
 import { Color } from "ui";
-import { FavoritesIcon, HomeIcon, LogoIcon, SettingsIcon, TrendsIcon } from "assets";
+import { FavoritesIcon, HomeIcon, LogoIcon, SettingsIcon, TrendsIcon, UserIcon } from "assets";
 import { useWindowSize } from "hooks";
 import { ButtonMenu } from "components";
+import { getLogOutUser, useAppDispatch } from "store";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {
   className?: string;
@@ -26,9 +28,14 @@ const menuVariants = {
 };
 
 export const Navigation = ({ isOpen, isMobile, handleClose, className }: IProps) => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const currentVariant = isMobile ? (isOpen ? "open" : "closed") : "idle";
   const { width = 0 } = useWindowSize();
-
+  const handleLogOut = () => {
+    dispatch(getLogOutUser());
+    navigate(ROUTE.HOME);
+  };
   return (
     <Container className={className}>
       {(width >= 1440 || width < 768) && (
@@ -55,6 +62,12 @@ export const Navigation = ({ isOpen, isMobile, handleClose, className }: IProps)
             <SettingsIcon />
             Settings
           </StyledCustomNavLink>
+          {width < 1440 && (
+            <StyledCustomNavLink onClick={handleLogOut} to={ROUTE.SETTINGS}>
+              <UserIcon />
+              Log Out
+            </StyledCustomNavLink>
+          )}
         </Links>
         <CopyRight>© All Rights Reserved</CopyRight>
       </StyledNavigation>
