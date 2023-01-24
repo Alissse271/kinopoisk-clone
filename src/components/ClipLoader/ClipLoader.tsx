@@ -10,7 +10,7 @@ export const ClipLoader = ({ loading, className }: IProps) => {
   return (
     <StyledClipLoader
       className={className}
-      color={Color.PRIMARY}
+      color={Color.WHITE}
       loading={loading}
       aria-label="Loading Spinner"
       data-testid="loader"
