@@ -1,18 +1,20 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { transrormMovieInfo } from "mappers";
 import { movieAPI } from "services";
-import { IMovieInfoAPI } from "types";
+import { IMovieInfo } from "types";
 
 interface IMovieInfoState {
-  movieInfo: IMovieInfoAPI;
+  movieInfo: IMovieInfo;
   isLoading: boolean;
   error: null | string;
 }
 
-export const fetchMovieInfo = createAsyncThunk<IMovieInfoAPI, string, { rejectValue: string }>(
+export const fetchMovieInfo = createAsyncThunk<IMovieInfo, string, { rejectValue: string }>(
   "movie/fetchMovieInfo",
   async (imdb: string, { rejectWithValue }) => {
     try {
-      return movieAPI.getMovieByIMDB(imdb);
+      const movieInfo = await movieAPI.getMovieByIMDB(imdb);
+      return transrormMovieInfo(movieInfo);
     } catch (error) {
       return rejectWithValue("Error");
     }
@@ -20,7 +22,7 @@ export const fetchMovieInfo = createAsyncThunk<IMovieInfoAPI, string, { rejectVa
 );
 
 const initialState: IMovieInfoState = {
-  movieInfo: {} as IMovieInfoAPI,
+  movieInfo: {} as IMovieInfo,
   isLoading: false,
   error: null,
 };

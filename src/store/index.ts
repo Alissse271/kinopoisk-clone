@@ -11,7 +11,7 @@ import { fetchMoreMovies, fetchMovies, fetchMoviesBySearch } from "./features/mo
 import { getUserInfo } from "./selectors/authSelector";
 import { getAllFavorites } from "./selectors/favoritesSelector";
 import { getMovieInfo } from "./selectors/movieInfoSelector";
-import { getAllMovies, getMovieByIMDB } from "./selectors/moviesSelector";
+import { getAllMovies } from "./selectors/moviesSelector";
 import { getTheme } from "./selectors/themeSelector";
 import { getTrends } from "./selectors/trendsSelector";
 import { store } from "./store";
@@ -27,7 +27,6 @@ export {
   fetchMovieInfo,
   fetchMoviesBySearch,
   getAllMovies,
-  getMovieByIMDB,
   signUpUser,
   signInUser,
   resetUserPassword,

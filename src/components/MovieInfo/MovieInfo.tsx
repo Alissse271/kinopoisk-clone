@@ -83,9 +83,10 @@ export const MovieInfo = ({ movie }: IProps) => {
   ) : (
     <Container>
       <GenresList>
-        {genre?.split(",").map((genre) => {
-          return <Genres key={genre}>{genre}</Genres>;
-        })}
+        {genre &&
+          genre.split(",").map((genre) => {
+            return <Genres key={genre}>{genre}</Genres>;
+          })}
       </GenresList>
       <Title>
         {title}: {year}
