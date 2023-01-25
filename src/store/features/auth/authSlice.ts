@@ -9,7 +9,7 @@ import { FirebaseErrorCode, FirebaseErrorMessage, getFBErrorMessage } from "util
 
 interface IAuth {
   name: string;
-  email: null | string;
+  email: string | null;
   password: string;
   isAuth: boolean;
   error: null | string;
@@ -21,7 +21,7 @@ const userInfo = JSON.parse(localStorage.getItem("userInfo")!);
 const initialState: IAuth = {
   name: userInfo && userInfo.name,
   email: userInfo && userInfo.email,
-  password: userInfo && userInfo.password,
+  password: "",
   isAuth: userInfo && userInfo.isAuth,
   isLoading: false,
   error: null,
@@ -56,7 +56,6 @@ export const signInUser = createAsyncThunk<
     return { userEmail };
   } catch (error) {
     const firebaseError = error as { code: FirebaseErrorCode };
-
     return rejectWithValue(getFBErrorMessage(firebaseError.code));
   }
 });
@@ -121,9 +120,9 @@ const authSlice = createSlice({
     });
     builder.addCase(signInUser.rejected, (state, { payload }) => {
       if (payload) {
-        state.isLoading = false;
         state.isAuth = false;
         state.error = payload;
+        state.isLoading = false;
       }
     });
     builder.addCase(resetUserPassword.pending, (state) => {
@@ -142,8 +141,7 @@ const authSlice = createSlice({
     });
   },
 });
+export default authSlice.reducer;
 
 export const { getUserName } = authSlice.actions;
 export const { getLogOutUser } = authSlice.actions;
-
-export default authSlice.reducer;

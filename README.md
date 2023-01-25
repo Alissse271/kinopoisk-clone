@@ -15,7 +15,7 @@
     New service for finding movies!
     <br />
     <br />
-    You can click <a href=" https://alissse271.github.io/kinopoisk-clone/">here</a> and visit this site!
+    You can click <a href=" https://alissse271.github.io/kinopoisk-clone">here</a> and visit this site!
   </p>
 </div>
 

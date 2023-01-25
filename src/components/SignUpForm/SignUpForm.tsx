@@ -48,14 +48,12 @@ export const SignUpForm = () => {
     dispatch(signUpUser(userInfo))
       .unwrap()
       .then(() => {
+        localStorage.setItem("userInfo", JSON.stringify(userInfoToSave));
         navigate(ROUTE.HOME);
         reset();
       })
-      .then(() => {
-        localStorage.setItem("userInfo", JSON.stringify(userInfoToSave));
-      })
-      .catch(() => {
-        alert("ERROR");
+      .catch((error) => {
+        setErrorMessage(error);
       });
   };
 

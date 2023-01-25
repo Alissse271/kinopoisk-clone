@@ -22,12 +22,6 @@ interface IFormValues {
   email: string;
   password: string;
 }
-
-interface IUserInfo {
-  email: string;
-  isAuth: boolean;
-}
-
 export const SignInForm = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -48,17 +42,16 @@ export const SignInForm = () => {
   }
 
   const onSubmit: SubmitHandler<IFormValues> = (userInfo) => {
+    setErrorMessage(null);
     dispatch(signInUser(userInfo))
       .unwrap()
       .then(() => {
         localStorage.length > 0 && localStorage.setItem("userInfo", JSON.stringify(userInfoToSave));
+        navigate(`${ROUTE.HOME}`);
       })
       .catch((error) => {
         setErrorMessage(error);
         reset();
-      })
-      .then(() => {
-        navigate(`${ROUTE.HOME}`);
       });
   };
 
@@ -71,7 +64,7 @@ export const SignInForm = () => {
             <StyledLabel>
               Email
               <StyledInput
-                type="text"
+                type="email"
                 placeholder="Your email"
                 {...register("email", emailValidation())}
               />

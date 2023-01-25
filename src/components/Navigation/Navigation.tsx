@@ -21,11 +21,7 @@ interface IProps {
   isMobile: boolean;
   handleClose: () => void;
 }
-interface IUserInfo {
-  name: string;
-  email: string;
-  isAuth: boolean;
-}
+
 const menuVariants = {
   open: { opacity: 1, x: 0 },
   closed: { opacity: 0, x: "100%" },
@@ -38,15 +34,14 @@ export const Navigation = memo(({ isOpen, isMobile, handleClose, className }: IP
   const navigate = useNavigate();
   const currentVariant = isMobile ? (isOpen ? "open" : "closed") : "idle";
   const { width = 0 } = useWindowSize();
-  const users: IUserInfo[] = JSON.parse(localStorage.getItem("userInfo") || "[]");
+  const userInfo = JSON.parse(localStorage.getItem("userInfo")!);
+  if (userInfo) {
+    userInfo.isAuth = false;
+  }
   const handleLogOut = () => {
+    handleClose();
     dispatch(getLogOutUser(false));
-    const user = users.find((user) => user.email === email);
-    if (user) {
-      user.isAuth = false;
-    }
-    localStorage.setItem("userInfo", JSON.stringify(users));
-    navigate(ROUTE.HOME);
+    localStorage.length > 0 && localStorage.setItem("userInfo", JSON.stringify(userInfo));
   };
   return (
     <Container className={className}>
@@ -75,7 +70,7 @@ export const Navigation = memo(({ isOpen, isMobile, handleClose, className }: IP
             Settings
           </StyledCustomNavLink>
           {width < 1440 && (
-            <StyledCustomNavLink onClick={handleLogOut} to={ROUTE.SETTINGS}>
+            <StyledCustomNavLink onClick={handleLogOut} to={ROUTE.HOME}>
               <UserIcon />
               Log Out
             </StyledCustomNavLink>
