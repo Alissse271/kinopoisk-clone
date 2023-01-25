@@ -15,7 +15,7 @@
     New service for finding movies!
     <br />
     <br />
-    You can click <a href=" https://alissse271.github.io/kinopoisk-clone">here</a> and visit this site!
+    You can click <a href="https://alissse271.github.io/kinopoisk-clone">here</a> and visit this site!
   </p>
 </div>
 
@@ -136,6 +136,7 @@ Other features you can find out by testing it!
 
 Alisa Gusarova
 Telegram: [@Alice_xv](telegram)
+<br />
 LinkedIn: [https://www.linkedin.com/in/alisa-gusarova/](linkedin)
 
 Project Link: [https://github.com/Alissse271/kinopoisk-clone](https://github.com/Alissse271/kinopoisk-clone)
