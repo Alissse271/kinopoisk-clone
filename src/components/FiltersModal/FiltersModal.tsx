@@ -1,4 +1,5 @@
 import { Filters, Portal, PortalTarget } from "components";
+import { memo } from "react";
 import { Container } from "./styles";
 
 interface IProps {
@@ -6,7 +7,7 @@ interface IProps {
   isOpen: boolean;
 }
 
-export const FiltersModal = ({ toggleModal, isOpen }: IProps) => {
+export const FiltersModal = memo(({ toggleModal, isOpen }: IProps) => {
   return (
     <Portal target={PortalTarget.FILTERS}>
       {isOpen && (
@@ -16,4 +17,4 @@ export const FiltersModal = ({ toggleModal, isOpen }: IProps) => {
       )}
     </Portal>
   );
-};
+});

@@ -1,4 +1,5 @@
 import { ClipLoader } from "components";
+import { memo } from "react";
 import { StyledButton } from "./styles";
 
 interface IProps {
@@ -7,11 +8,11 @@ interface IProps {
   className?: string;
 }
 
-export const ShowMoreButton = ({ onClick, isLoadingMoreMovies, className }: IProps) => {
+export const ShowMoreButton = memo(({ onClick, isLoadingMoreMovies, className }: IProps) => {
   return (
     <StyledButton className={className} type="button" onClick={onClick}>
       Show More
       {isLoadingMoreMovies && <ClipLoader loading={isLoadingMoreMovies} />}
     </StyledButton>
   );
-};
+});

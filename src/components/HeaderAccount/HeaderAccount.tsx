@@ -31,7 +31,7 @@ export const HeaderAccount = () => {
     userInfo.isAuth = false;
   }
   const handleLogOutUser = () => {
-    dispatch(getLogOutUser());
+    dispatch(getLogOutUser(false));
     localStorage.length > 0 && localStorage.setItem("userInfo", JSON.stringify(userInfo));
     navigate(ROUTE.HOME);
   };

@@ -1,6 +1,6 @@
 import { FavoritesMark, imageNotFound, ShareMark } from "assets";
 import { Badge, Loader, Slider } from "components";
-import { MouseEvent } from "react";
+import { memo, MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import { ROUTE } from "router";
 import {
@@ -41,7 +41,7 @@ interface IProps {
   movie: IMovieInfo;
 }
 
-export const MovieInfo = ({ movie }: IProps) => {
+export const MovieInfo = memo(({ movie }: IProps) => {
   const {
     title,
     year,
@@ -170,4 +170,4 @@ export const MovieInfo = ({ movie }: IProps) => {
       <Slider />
     </Container>
   );
-};
+});

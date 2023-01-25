@@ -1,5 +1,5 @@
 import { ClipLoader } from "components";
-import { ButtonHTMLAttributes } from "react";
+import { ButtonHTMLAttributes, memo } from "react";
 import { StyledButton } from "./styles";
 
 interface IButton {
@@ -11,11 +11,11 @@ interface IButton {
   loader?: boolean;
 }
 
-export const Button = ({ type, label, onClick, secondary, primary, loader }: IButton) => {
+export const Button = memo(({ type, label, onClick, secondary, primary, loader }: IButton) => {
   return (
     <StyledButton primary={primary} secondary={secondary} type={type} onClick={onClick}>
       {label}
       {loader && <ClipLoader loading={loader} />}
     </StyledButton>
   );
-};
+});

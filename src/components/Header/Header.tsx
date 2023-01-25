@@ -1,6 +1,7 @@
 import { FiltersMark, LogoIcon } from "assets";
 import { HeaderAccount } from "components";
 import { useDebounce, useWindowSize } from "hooks";
+import { memo } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTE } from "router";
@@ -15,7 +16,7 @@ interface IProps {
   toggleModal: (value: boolean) => void;
 }
 
-export const Header = ({ className, toggleModal }: IProps) => {
+export const Header = memo(({ className, toggleModal }: IProps) => {
   const navigate = useNavigate();
   // const debouncedValue = useDebounce(searchValue, 500);
   const dispatch = useAppDispatch();
@@ -53,4 +54,4 @@ export const Header = ({ className, toggleModal }: IProps) => {
       {width >= 1440 && <HeaderAccount />}
     </StyledHeader>
   );
-};
+});

@@ -1,4 +1,5 @@
 import { MovieCard } from "components";
+import { memo } from "react";
 import { IMovie } from "types";
 import { StyledMovieList } from "./styles";
 
@@ -7,7 +8,7 @@ interface IProps {
   isFavorites?: boolean;
   isTrends?: boolean;
 }
-export const MovieList = ({ movies, isFavorites, isTrends }: IProps) => {
+export const MovieList = memo(({ movies, isFavorites, isTrends }: IProps) => {
   return (
     <StyledMovieList>
       {movies.map((movie) => {
@@ -15,4 +16,4 @@ export const MovieList = ({ movies, isFavorites, isTrends }: IProps) => {
       })}
     </StyledMovieList>
   );
-};
+});

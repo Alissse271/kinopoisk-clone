@@ -15,6 +15,10 @@ const StyledButton = styled.button`
 
   cursor: pointer;
 
+  &:hover {
+    box-shadow: ${Color.SECONDARY_THEME} 0px 22px 70px 4px;
+  }
+
   &:disabled {
     color: ${Color.LIGHT};
     background: ${Color.SECONDARY};

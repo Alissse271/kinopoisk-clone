@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Color } from "ui";
 import { StyledClipLoader } from "./styles";
 
@@ -6,7 +7,7 @@ interface IProps {
   className?: string;
 }
 
-export const ClipLoader = ({ loading, className }: IProps) => {
+export const ClipLoader = memo(({ loading, className }: IProps) => {
   return (
     <StyledClipLoader
       className={className}
@@ -17,4 +18,4 @@ export const ClipLoader = ({ loading, className }: IProps) => {
       size={20}
     />
   );
-};
+});

@@ -1,13 +1,13 @@
-import { ChangeEvent, HTMLInputTypeAttribute } from "react";
+import { ChangeEvent, HTMLInputTypeAttribute, memo } from "react";
 import { StyledSearch } from "./styles";
 
-interface IInput {
+interface InputProps {
   type: HTMLInputTypeAttribute;
   placeholder: string;
   value: string;
   onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
-export const Input = (props: IInput) => {
+export const Input = memo((props: InputProps) => {
   return <StyledSearch {...props} />;
-};
+});

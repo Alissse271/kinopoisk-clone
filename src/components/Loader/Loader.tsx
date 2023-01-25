@@ -1,3 +1,4 @@
+import { memo } from "react";
 import BarLoader from "react-spinners/BarLoader";
 import { Color } from "ui";
 
@@ -6,7 +7,7 @@ interface IProps {
   className?: string;
 }
 
-export const Loader = ({ loading, className }: IProps) => {
+export const Loader = memo(({ loading, className }: IProps) => {
   return (
     <BarLoader
       className={className}
@@ -16,4 +17,4 @@ export const Loader = ({ loading, className }: IProps) => {
       data-testid="loader"
     />
   );
-};
+});

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { StyledBadge, StyledIcon } from "./styles";
 
 interface IProps {
@@ -7,11 +8,11 @@ interface IProps {
   className?: string;
 }
 
-export const Badge = ({ color, label, icon, className }: IProps) => {
+export const Badge = memo(({ color, label, icon, className }: IProps) => {
   return (
     <StyledBadge className={className} color={color}>
       {icon && <StyledIcon />}
       {label}
     </StyledBadge>
   );
-};
+});

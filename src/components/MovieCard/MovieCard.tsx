@@ -5,6 +5,7 @@ import { IMovie } from "types";
 import { Name, Card, Image, ImageContainer, FavoriteLabel, TrendsLabel } from "./styles";
 import { FavoritesMark, TrendsMark } from "assets";
 import { Color } from "ui";
+import { memo } from "react";
 
 interface IProps {
   movie: IMovie;
@@ -12,31 +13,33 @@ interface IProps {
   trends?: boolean;
 }
 
-export const MovieCard = ({ movie: { id, poster, title, year }, favorites, trends }: IProps) => {
-  return (
-    <Card>
-      <Link to={generatePath(ROUTE.HOME + ROUTE.MOVIE_INFO, { imdb: id })}>
-        {favorites && (
-          <FavoriteLabel>
-            <FavoritesMark fill={Color.PRIMARY} />
-          </FavoriteLabel>
-        )}
-        {trends && (
-          <TrendsLabel>
-            <TrendsMark />
-          </TrendsLabel>
-        )}
-        <ImageContainer>
-          {poster === "N/A" ? (
-            <Image src={imageNotFound} alt="Movie" />
-          ) : (
-            <Image src={poster} alt={title} />
+export const MovieCard = memo(
+  ({ movie: { id, poster, title, year }, favorites, trends }: IProps) => {
+    return (
+      <Card whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+        <Link to={generatePath(ROUTE.HOME + ROUTE.MOVIE_INFO, { imdb: id })}>
+          {favorites && (
+            <FavoriteLabel>
+              <FavoritesMark fill={Color.PRIMARY} />
+            </FavoriteLabel>
           )}
-        </ImageContainer>
-        <Name>
-          {title}: {year}
-        </Name>
-      </Link>
-    </Card>
-  );
-};
+          {trends && (
+            <TrendsLabel>
+              <TrendsMark />
+            </TrendsLabel>
+          )}
+          <ImageContainer>
+            {poster === "N/A" ? (
+              <Image src={imageNotFound} alt="Movie" />
+            ) : (
+              <Image src={poster} alt={title} />
+            )}
+          </ImageContainer>
+          <Name>
+            {title}: {year}
+          </Name>
+        </Link>
+      </Card>
+    );
+  },
+);

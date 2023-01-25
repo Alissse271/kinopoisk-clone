@@ -15,6 +15,8 @@ import { getUserInfo, signUpUser, useAppDispatch, useAppSelector } from "store";
 import { ROUTE } from "router";
 import { useNavigate } from "react-router-dom";
 import { emailValidation, nameValidation, passwordValidation } from "utils";
+import { useState } from "react";
+import { IUserInfo } from "types";
 
 interface IFormValues {
   userName: string;
@@ -22,16 +24,12 @@ interface IFormValues {
   password: string;
   confirmPassword: string;
 }
-interface IUserInfo {
-  name: string;
-  email: string;
-  isAuth: boolean;
-}
 
 export const SignUpForm = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { isLoading } = useAppSelector(getUserInfo);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const {
     register,
     handleSubmit,
@@ -111,6 +109,7 @@ export const SignUpForm = () => {
             {watch("confirmPassword") !== watch("password") && getValues("confirmPassword") ? (
               <ErrorMessage>*password not match</ErrorMessage>
             ) : null}
+            {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
           </Container>
         </InputsContainer>
         <Button primary type="submit" label="Sign up" loader={isLoading} />

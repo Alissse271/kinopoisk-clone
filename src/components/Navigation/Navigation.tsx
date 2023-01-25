@@ -11,8 +11,9 @@ import { Color } from "ui";
 import { FavoritesIcon, HomeIcon, LogoIcon, SettingsIcon, TrendsIcon, UserIcon } from "assets";
 import { useWindowSize } from "hooks";
 import { ButtonMenu } from "components";
-import { getLogOutUser, useAppDispatch } from "store";
+import { getLogOutUser, getUserInfo, useAppDispatch, useAppSelector } from "store";
 import { useNavigate } from "react-router-dom";
+import { memo } from "react";
 
 interface IProps {
   className?: string;
@@ -20,20 +21,31 @@ interface IProps {
   isMobile: boolean;
   handleClose: () => void;
 }
-
+interface IUserInfo {
+  name: string;
+  email: string;
+  isAuth: boolean;
+}
 const menuVariants = {
   open: { opacity: 1, x: 0 },
   closed: { opacity: 0, x: "100%" },
   idle: {},
 };
 
-export const Navigation = ({ isOpen, isMobile, handleClose, className }: IProps) => {
+export const Navigation = memo(({ isOpen, isMobile, handleClose, className }: IProps) => {
   const dispatch = useAppDispatch();
+  const { email } = useAppSelector(getUserInfo);
   const navigate = useNavigate();
   const currentVariant = isMobile ? (isOpen ? "open" : "closed") : "idle";
   const { width = 0 } = useWindowSize();
+  const users: IUserInfo[] = JSON.parse(localStorage.getItem("userInfo") || "[]");
   const handleLogOut = () => {
-    dispatch(getLogOutUser());
+    dispatch(getLogOutUser(false));
+    const user = users.find((user) => user.email === email);
+    if (user) {
+      user.isAuth = false;
+    }
+    localStorage.setItem("userInfo", JSON.stringify(users));
     navigate(ROUTE.HOME);
   };
   return (
@@ -73,4 +85,4 @@ export const Navigation = ({ isOpen, isMobile, handleClose, className }: IProps)
       </StyledNavigation>
     </Container>
   );
-};
+});

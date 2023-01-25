@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { Color, Media, Typography } from "ui";
+import { motion } from "framer-motion";
 
-const Card = styled.div`
+const Card = styled(motion.div)`
   position: relative;
   max-width: 272px;
   width: 100%;

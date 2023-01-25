@@ -11,7 +11,10 @@ const nameValidation = () => {
 const emailValidation = () => {
   return {
     required: "*email is required",
-    pattern: { value: /^(.+)@(.+)$/, message: "Enter a valid email" },
+    pattern: {
+      value: /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/,
+      message: "Enter a valid email",
+    },
     maxLength: {
       value: 30,
       message: "*max 30 characters",

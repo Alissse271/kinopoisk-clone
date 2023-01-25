@@ -50,4 +50,9 @@ interface FilterValue {
   s: string;
   y: string;
 }
-export type { IMovie, IMovieAPI, IMovieInfoAPI, IMovieInfo, FilterValue };
+interface IUserInfo {
+  name: string;
+  email: string;
+  isAuth: boolean;
+}
+export type { IMovie, IMovieAPI, IMovieInfoAPI, IMovieInfo, FilterValue, IUserInfo };

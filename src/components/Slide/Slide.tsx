@@ -1,4 +1,5 @@
 import { imageNotFound } from "assets";
+import { memo } from "react";
 import { generatePath } from "react-router-dom";
 import { ROUTE } from "router";
 import { IMovie } from "types";
@@ -8,7 +9,7 @@ interface IProps {
   movie: IMovie;
 }
 
-export const Slide = ({ movie: { poster, id, title } }: IProps) => {
+export const Slide = memo(({ movie: { poster, id, title } }: IProps) => {
   return (
     <StyledSlide to={generatePath(`${ROUTE.HOME}` + `${ROUTE.MOVIE_INFO}`, { imdb: id })}>
       {poster === "N/A" ? (
@@ -19,4 +20,4 @@ export const Slide = ({ movie: { poster, id, title } }: IProps) => {
       <Title>{title}</Title>
     </StyledSlide>
   );
-};
+});

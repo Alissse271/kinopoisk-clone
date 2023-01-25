@@ -52,10 +52,11 @@ export const signInUser = createAsyncThunk<
   try {
     const auth = getAuth();
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
-    const userEmail = userCredential.user.email as string;
+    const userEmail = userCredential.user.email;
     return { userEmail };
   } catch (error) {
     const firebaseError = error as { code: FirebaseErrorCode };
+
     return rejectWithValue(getFBErrorMessage(firebaseError.code));
   }
 });
@@ -82,8 +83,8 @@ const authSlice = createSlice({
       state.name = payload;
       state.email = payload;
     },
-    getLogOutUser: (state) => {
-      state.isAuth = false;
+    getLogOutUser: (state, { payload }: PayloadAction<boolean>) => {
+      state.isAuth = payload;
     },
   },
   extraReducers(builder) {

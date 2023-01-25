@@ -2,6 +2,7 @@ import { Close } from "assets";
 import { Button } from "components";
 import { TitleMedium } from "components/TitleMedium/TitleMedium";
 import { AnimatePresence } from "framer-motion";
+import { memo } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { fetchMoviesBySearch, useAppDispatch } from "store";
 import { FilterValue } from "types";
@@ -23,7 +24,7 @@ interface IProps {
   isOpen: boolean;
 }
 
-export const Filters = ({ toggleModal, isOpen }: IProps) => {
+export const Filters = memo(({ toggleModal, isOpen }: IProps) => {
   const dispatch = useAppDispatch();
   const {
     register,
@@ -74,7 +75,7 @@ export const Filters = ({ toggleModal, isOpen }: IProps) => {
               {errors.s && <ErrorMessage>{errors.s.message}</ErrorMessage>}
             </Container>
             <Container>
-              <Subtitle>Years</Subtitle>
+              <Subtitle>Year</Subtitle>
               <StyledInput type="number" placeholder="Year" {...register("y", yearValidation())} />
               {errors.y && <ErrorMessage>{errors.y.message}</ErrorMessage>}
             </Container>
@@ -87,4 +88,4 @@ export const Filters = ({ toggleModal, isOpen }: IProps) => {
       )}
     </AnimatePresence>
   );
-};
+});

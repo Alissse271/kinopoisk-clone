@@ -23,6 +23,11 @@ interface IFormValues {
   password: string;
 }
 
+interface IUserInfo {
+  email: string;
+  isAuth: boolean;
+}
+
 export const SignInForm = () => {
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
@@ -37,23 +42,23 @@ export const SignInForm = () => {
     formState: { errors },
   } = useForm<IFormValues>();
 
-  const userInfo = JSON.parse(localStorage.getItem("userInfo")!);
-  if (userInfo) {
-    userInfo.isAuth = true;
+  const userInfoToSave = JSON.parse(localStorage.getItem("userInfo")!);
+  if (userInfoToSave) {
+    userInfoToSave.isAuth = true;
   }
 
   const onSubmit: SubmitHandler<IFormValues> = (userInfo) => {
     dispatch(signInUser(userInfo))
       .unwrap()
       .then(() => {
-        localStorage.length > 0 && localStorage.setItem("userInfo", JSON.stringify(userInfo));
-        navigate(`${ROUTE.HOME}`);
+        localStorage.length > 0 && localStorage.setItem("userInfo", JSON.stringify(userInfoToSave));
       })
       .catch((error) => {
         setErrorMessage(error);
-      })
-      .finally(() => {
         reset();
+      })
+      .then(() => {
+        navigate(`${ROUTE.HOME}`);
       });
   };
 

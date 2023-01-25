@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { StyledButton } from "./styles";
 
 interface IButton {
@@ -7,8 +8,8 @@ interface IButton {
   togleMenu: () => void;
 }
 
-export const ButtonMenu = ({ type, className, open, togleMenu }: IButton) => {
+export const ButtonMenu = memo(({ type, className, open, togleMenu }: IButton) => {
   return (
     <StyledButton className={className} type={type} open={open} onClick={togleMenu}></StyledButton>
   );
-};
+});

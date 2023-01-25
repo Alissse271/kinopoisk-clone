@@ -1,10 +1,11 @@
+import { memo } from "react";
 import { StyledTitle } from "./styles";
 
-interface ITitle {
+interface TitleProps {
   label: string;
   className?: string;
 }
 
-export const TitleMain = ({ label, className }: ITitle) => {
+export const TitleMain = memo(({ label, className }: TitleProps) => {
   return <StyledTitle className={className}>{label}</StyledTitle>;
-};
+});
