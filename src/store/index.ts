@@ -3,6 +3,9 @@ import {
   resetUserPassword,
   signInUser,
   signUpUser,
+  updateUserEmail,
+  updateUserName,
+  updateUserPassword,
 } from "./features/auth/authSlice";
 import { addFavorite, removeFavorite } from "./features/favorites/favoritesSlice";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
@@ -30,6 +33,8 @@ export {
   signUpUser,
   signInUser,
   resetUserPassword,
+  updateUserPassword,
+  updateUserEmail,
   getUserInfo,
   getLogOutUser,
   getAllFavorites,
@@ -38,4 +43,5 @@ export {
   getTrends,
   getMovieInfo,
   fetchMoreMovies,
+  updateUserName,
 };

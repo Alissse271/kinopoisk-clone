@@ -25,6 +25,7 @@ import { ClipLoader } from "./ClipLoader/ClipLoader";
 import { Slide } from "./Slide/Slide";
 import { FiltersModal } from "./FiltersModal/FiltersModal";
 import { SettingsForm } from "./SettingsForm/SettingsForm";
+import { SettingsModal } from "./SettingsModal/SettingsModal";
 
 export {
   ThemeToggler,
@@ -55,4 +56,5 @@ export {
   Slide,
   FiltersModal,
   SettingsForm,
+  SettingsModal,
 };

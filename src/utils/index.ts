@@ -7,8 +7,16 @@ import {
   passwordValidation,
   yearValidation,
   titleValidation,
+  settingsPasswordValidation,
 } from "./formValidation";
 
 export type { FirebaseErrorCode, FirebaseErrorMessage };
 export { getFBErrorMessage };
-export { nameValidation, emailValidation, passwordValidation, yearValidation, titleValidation };
+export {
+  nameValidation,
+  emailValidation,
+  passwordValidation,
+  yearValidation,
+  titleValidation,
+  settingsPasswordValidation,
+};

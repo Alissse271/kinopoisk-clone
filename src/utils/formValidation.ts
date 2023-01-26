@@ -30,6 +30,14 @@ const passwordValidation = () => {
     },
   };
 };
+const settingsPasswordValidation = () => {
+  return {
+    minLength: {
+      value: 8,
+      message: "*min 8 characters",
+    },
+  };
+};
 const titleValidation = () => {
   return {
     required: "Name is requared",
@@ -52,4 +60,11 @@ const yearValidation = () => {
   };
 };
 
-export { nameValidation, emailValidation, passwordValidation, yearValidation, titleValidation };
+export {
+  nameValidation,
+  emailValidation,
+  passwordValidation,
+  yearValidation,
+  titleValidation,
+  settingsPasswordValidation,
+};

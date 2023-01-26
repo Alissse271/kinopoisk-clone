@@ -28,6 +28,7 @@ export const MainTemplate = () => {
         </Container>
       )}
       <Outlet />
+
       <FiltersModal toggleModal={toggleModal} isOpen={isOpen} />
     </StyledTemplate>
   );

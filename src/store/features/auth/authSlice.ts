@@ -4,6 +4,8 @@ import {
   getAuth,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
+  updateEmail,
+  updatePassword,
 } from "firebase/auth";
 import { FirebaseErrorCode, FirebaseErrorMessage, getFBErrorMessage } from "utils";
 
@@ -73,6 +75,34 @@ export const resetUserPassword = createAsyncThunk<
     return rejectWithValue(getFBErrorMessage(firebaseError.code));
   }
 });
+export const updateUserEmail = createAsyncThunk<
+  void,
+  { email: string },
+  { rejectValue: FirebaseErrorMessage }
+>("user/updateUserEmail", async ({ email }, { rejectWithValue }) => {
+  try {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    user && (await updateEmail(user, email));
+  } catch (error) {
+    const firebaseError = error as { code: FirebaseErrorCode };
+    return rejectWithValue(getFBErrorMessage(firebaseError.code));
+  }
+});
+export const updateUserPassword = createAsyncThunk<
+  void,
+  { newPassword: string },
+  { rejectValue: FirebaseErrorMessage }
+>("user/updateUserPassword", async ({ newPassword }, { rejectWithValue }) => {
+  try {
+    const auth = getAuth();
+    const user = auth.currentUser;
+    user && (await updatePassword(user, newPassword));
+  } catch (error) {
+    const firebaseError = error as { code: FirebaseErrorCode };
+    return rejectWithValue(getFBErrorMessage(firebaseError.code));
+  }
+});
 
 const authSlice = createSlice({
   name: "user",
@@ -84,6 +114,9 @@ const authSlice = createSlice({
     },
     getLogOutUser: (state, { payload }: PayloadAction<boolean>) => {
       state.isAuth = payload;
+    },
+    updateUserName: (state, { payload }: PayloadAction<string>) => {
+      if (payload) state.name = payload;
     },
   },
   extraReducers(builder) {
@@ -139,9 +172,36 @@ const authSlice = createSlice({
         state.error = payload;
       }
     });
+    builder.addCase(updateUserEmail.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    builder.addCase(updateUserEmail.fulfilled, (state) => {
+      state.isLoading = false;
+      state.error = null;
+    });
+    builder.addCase(updateUserEmail.rejected, (state, { payload }) => {
+      if (payload) {
+        state.isLoading = false;
+        state.error = payload;
+      }
+    });
+    builder.addCase(updateUserPassword.pending, (state) => {
+      state.isLoading = true;
+      state.error = null;
+    });
+    builder.addCase(updateUserPassword.fulfilled, (state) => {
+      state.isLoading = false;
+      state.error = null;
+    });
+    builder.addCase(updateUserPassword.rejected, (state, { payload }) => {
+      if (payload) {
+        state.isLoading = false;
+        state.error = payload;
+      }
+    });
   },
 });
 export default authSlice.reducer;
 
-export const { getUserName } = authSlice.actions;
-export const { getLogOutUser } = authSlice.actions;
+export const { getUserName, getLogOutUser, updateUserName } = authSlice.actions;
