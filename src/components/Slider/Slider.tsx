@@ -11,6 +11,7 @@ import { useWindowSize } from "hooks";
 export const Slider = () => {
   const { movies } = useAppSelector(getAllMovies);
   const { width = 0 } = useWindowSize();
+
   const getSlidesAmount = () => {
     if (width <= 568) {
       return 1;

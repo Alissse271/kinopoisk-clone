@@ -43,7 +43,7 @@ export const SettingsForm = () => {
   const [isOpen, toggleModal] = useToggle(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { name, email, error, password } = useAppSelector(getUserInfo);
+  const { name, email, password } = useAppSelector(getUserInfo);
 
   const {
     register,

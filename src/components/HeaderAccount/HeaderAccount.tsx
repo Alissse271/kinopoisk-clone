@@ -19,17 +19,20 @@ import { useNavigate } from "react-router-dom";
 
 export const HeaderAccount = () => {
   const { isAuth, name } = useAppSelector(getUserInfo);
-  const [isOpen, setOpen] = useToggle(false);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+
+  const [isOpen, setOpen] = useToggle(false);
 
   const handleAccount = () => {
     setOpen();
   };
+
   const userInfo = JSON.parse(localStorage.getItem("userInfo")!);
   if (userInfo) {
     userInfo.isAuth = false;
   }
+
   const handleLogOutUser = () => {
     dispatch(getLogOutUser(false));
     localStorage.length > 0 && localStorage.setItem("userInfo", JSON.stringify(userInfo));

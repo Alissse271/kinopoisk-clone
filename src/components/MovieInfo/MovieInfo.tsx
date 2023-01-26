@@ -63,6 +63,7 @@ export const MovieInfo = memo(({ movie }: IProps) => {
   const { isAuth } = useAppSelector(getUserInfo);
   const dispach = useAppDispatch();
   const navigate = useNavigate();
+
   const favorite = { title, year, poster, id: imdbID, type: "movie" };
 
   const isFavorite = (): boolean => favorites.some((favorite) => favorite.id === imdbID);
@@ -119,7 +120,6 @@ export const MovieInfo = memo(({ movie }: IProps) => {
           </ShareButton>
         </ButtonsContainer>
       </ImageContainer>
-
       <Plot>{plot}</Plot>
       <MovieDetails>
         <MovieDetailsList>

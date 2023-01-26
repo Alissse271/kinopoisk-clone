@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import { ROUTE } from "router";
-import { Container, StyledLink, TextRights } from "./styles";
+import { Container, StyledLink, CopyRight } from "./styles";
 import { Color } from "ui";
 import { LogoIcon } from "assets";
 import { getTheme, useAppSelector } from "store";
@@ -17,7 +17,7 @@ export const AuthTemplate = () => {
         <LogoIcon fill={Color.WHITE} />
       </StyledLink>
       <Outlet />
-      <TextRights>© All Rights Reserved</TextRights>
+      <CopyRight>© All Rights Reserved</CopyRight>
     </Container>
   );
 };

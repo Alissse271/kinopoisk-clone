@@ -10,6 +10,7 @@ export const FavoritesPage = () => {
   const { favorites } = useAppSelector(getAllFavorites);
   const { isAuth } = useAppSelector(getUserInfo);
   const { width = 0 } = useWindowSize();
+
   return isAuth ? (
     <>
       {favorites.length === 0 && (
@@ -28,6 +29,6 @@ export const FavoritesPage = () => {
       )}
     </>
   ) : (
-    <Navigate to={`${ROUTE.HOME}` + `${ROUTE.SIGN_IN}`} />
+    <Navigate to={ROUTE.HOME + ROUTE.SIGN_IN} />
   );
 };

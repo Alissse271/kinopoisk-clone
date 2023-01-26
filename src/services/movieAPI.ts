@@ -38,15 +38,6 @@ class MovieAPI {
     baseURL: this.BASE_URL,
   });
 
-  // public async getRandomMovies(page: string) {
-  //   const params = {
-  //     s: this.randomMovie,
-  //     page: page,
-  //   };
-
-  //   const { data } = await this.API.get("", { params });
-  //   return data;
-  // }
   public async getRandomMovies() {
     const params = {
       s: this.randomMovie,

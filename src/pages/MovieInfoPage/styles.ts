@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Typography, Color } from "ui";
+const Container = styled.div``;
 const LoadingText = styled.span`
   ${Typography.H2};
 `;
@@ -8,4 +9,4 @@ const ErrorText = styled.p`
   ${Typography.S2};
   color: ${Color.ERROR};
 `;
-export { LoadingText, ErrorText };
+export { Container, LoadingText, ErrorText };

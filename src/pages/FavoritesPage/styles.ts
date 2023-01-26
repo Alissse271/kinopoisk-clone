@@ -10,15 +10,19 @@ const EmptyFavoritesContainer = styled.div`
 `;
 const EmptyText = styled.p`
   margin-top: 24px;
+
   ${Media.LG} {
     margin-top: 32px;
   }
+
   ${Typography.H3};
   color: ${Color.DARK_THEME};
 `;
 const StyledTitle = styled(TitleMain)`
   align-self: flex-start;
+
   margin-bottom: 32px;
+
   ${Media.LG} {
     margin-bottom: 0;
   }

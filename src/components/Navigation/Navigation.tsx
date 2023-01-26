@@ -11,8 +11,7 @@ import { Color } from "ui";
 import { FavoritesIcon, HomeIcon, LogoIcon, SettingsIcon, TrendsIcon, UserIcon } from "assets";
 import { useWindowSize } from "hooks";
 import { ButtonMenu } from "components";
-import { getLogOutUser, getUserInfo, useAppDispatch, useAppSelector } from "store";
-import { useNavigate } from "react-router-dom";
+import { getLogOutUser, useAppDispatch } from "store";
 import { memo } from "react";
 
 interface IProps {
@@ -30,19 +29,22 @@ const menuVariants = {
 
 export const Navigation = memo(({ isOpen, isMobile, handleClose, className }: IProps) => {
   const dispatch = useAppDispatch();
-  const { email } = useAppSelector(getUserInfo);
-  const navigate = useNavigate();
+
   const currentVariant = isMobile ? (isOpen ? "open" : "closed") : "idle";
+
   const { width = 0 } = useWindowSize();
+
   const userInfo = JSON.parse(localStorage.getItem("userInfo")!);
   if (userInfo) {
     userInfo.isAuth = false;
   }
+
   const handleLogOut = () => {
     handleClose();
     dispatch(getLogOutUser(false));
     localStorage.length > 0 && localStorage.setItem("userInfo", JSON.stringify(userInfo));
   };
+
   return (
     <Container className={className}>
       {(width >= 1440 || width < 768) && (

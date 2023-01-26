@@ -5,6 +5,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
   ${Media.LG} {
     display: grid;
     justify-items: flex-start;
@@ -22,9 +23,11 @@ const Container = styled.div`
     grid-column-gap: 32px;
   }
 `;
+
 const GenresList = styled.ul`
   display: inline-grid;
   grid-template-columns: repeat(3, auto);
+
   ${Media.SM} {
     grid-template-columns: repeat(auto-fit, auto);
     grid-auto-flow: column;
@@ -45,8 +48,10 @@ const Genres = styled.li`
     position: absolute;
     left: -1rem;
     top: calc(50% - 0.125rem);
+
     width: 0.5rem;
     height: 0.5rem;
+
     background-color: ${Color.LIGHT};
     border-radius: 50%;
   }
@@ -56,8 +61,10 @@ const Genres = styled.li`
       position: absolute;
       left: -1rem;
       top: calc(50% - 0.125rem);
+
       width: 0.5rem;
       height: 0.5rem;
+
       background-color: ${Color.LIGHT};
       border-radius: 50%;
     }
@@ -88,23 +95,30 @@ const ImageWrap = styled.div`
 const MovieImage = styled.img`
   width: 100%;
   height: auto;
+
   border-radius: 20px;
 `;
 const ButtonsContainer = styled.div`
   display: flex;
+
   max-width: 272px;
   width: 100%;
+
   margin-bottom: 32px;
+
   background-color: inherit;
   border-radius: 10px;
 `;
 const SaveToFavoritesButton = styled.button`
   width: 100%;
+
   margin-right: 1px;
   padding: 16px 0;
+
   background-color: ${Color.GRAPHITE};
   border-radius: 10px 0 0 10px;
   cursor: pointer;
+
   svg {
     fill: ${Color.LIGHT};
     &:hover {
@@ -122,11 +136,14 @@ const SaveToFavoritesButton = styled.button`
 `;
 const RemoveFromFavoritesButton = styled.button`
   width: 100%;
+
   margin-right: 1px;
   padding: 16px 0;
+
   background-color: ${Color.GRAPHITE};
   border-radius: 10px 0 0 10px;
   cursor: pointer;
+
   svg {
     fill: ${Color.PRIMARY};
     &:hover {
@@ -144,10 +161,13 @@ const RemoveFromFavoritesButton = styled.button`
 `;
 const ShareButton = styled.button`
   width: 100%;
+
   padding: 16px 0;
+
   background-color: ${Color.GRAPHITE};
   border-radius: 0 10px 10px 0;
   cursor: pointer;
+
   svg:hover {
     fill: ${Color.WHITE};
   }

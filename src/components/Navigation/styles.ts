@@ -30,6 +30,7 @@ const StyledNavigation = styled(motion.div)`
 
   height: fill-available;
   width: 100%;
+
   padding-left: 48px;
   padding-bottom: 20px;
 
@@ -41,9 +42,12 @@ const StyledNavigation = styled(motion.div)`
   }
   ${Media.XXXL} {
     position: relative;
+
     width: 100%;
+
     padding-left: 0;
     padding-bottom: 0;
+
     background: inherit;
     transform: none;
   }

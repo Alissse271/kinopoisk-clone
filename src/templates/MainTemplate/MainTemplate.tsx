@@ -11,9 +11,11 @@ export const MainTemplate = () => {
   const { width = 0 } = useWindowSize();
   const { theme } = useAppSelector(getTheme);
   const isMobile = width <= 1440;
+
   useEffect(() => {
     document.documentElement.setAttribute("theme", theme);
   }, [theme]);
+
   return (
     <StyledTemplate>
       {width >= 1440 ? (
@@ -28,7 +30,6 @@ export const MainTemplate = () => {
         </Container>
       )}
       <Outlet />
-
       <FiltersModal toggleModal={toggleModal} isOpen={isOpen} />
     </StyledTemplate>
   );

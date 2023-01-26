@@ -30,7 +30,7 @@ const StyledLink = styled(Link)`
   }
 `;
 
-const TextRights = styled.p`
+const CopyRight = styled.p`
   ${Typography.B1}
   color: ${Color.WHITE};
 
@@ -45,4 +45,4 @@ const TextRights = styled.p`
   }
 `;
 
-export { Container, TextRights, StyledLink };
+export { Container, CopyRight, StyledLink };

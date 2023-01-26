@@ -7,8 +7,10 @@ const Header = styled.div`
   justify-content: space-between;
 
   width: 100%;
+
   margin-top: 40px;
   margin-bottom: 32px;
+
   ${Media.LG} {
     margin-top: 48px;
   }
@@ -25,7 +27,9 @@ const Arrows = styled.div`
 `;
 const PreviousButton = styled.button`
   margin-right: 16px;
+
   background-color: transparent;
+
   path {
     stroke: ${Color.DARK_THEME};
   }
@@ -34,9 +38,11 @@ const PreviousButton = styled.button`
 `;
 const NextButton = styled.button`
   background-color: transparent;
+
   path {
     stroke: ${Color.DARK_THEME};
   }
+
   cursor: pointer;
 `;
 

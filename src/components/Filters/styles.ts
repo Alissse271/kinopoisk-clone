@@ -7,13 +7,14 @@ const StyledFilters = styled(motion.form)`
   right: 0;
   top: 0;
 
-  width: 100%;
-  height: 100vh;
-
   display: flex;
   flex-direction: column;
 
+  width: 100%;
+  height: 100vh;
+
   padding: 32px 24px;
+
   background-color: ${Color.MURK_THEME};
   z-index: 5;
 
@@ -28,6 +29,7 @@ const TitleContainer = styled.div`
   align-items: center;
 
   margin-bottom: 32px;
+
   ${Media.LG} {
     margin-bottom: 48px;
   }
@@ -53,7 +55,9 @@ const Subtitle = styled.p`
 `;
 const StyledInput = styled.input`
   width: 100%;
+
   ${inputStyles};
+
   &:focus-visible {
     outline-width: 0px;
   }

@@ -20,18 +20,6 @@ const initialState: IMoviesState = {
   error: null,
 };
 
-// export const fetchMovies = createAsyncThunk<IMovie[], string, { rejectValue: string }>(
-//   "movies/fetchMovies",
-//   async (page, { rejectWithValue }) => {
-//     try {
-//       const response = await movieAPI.getRandomMovies(page);
-//       return transrormMovies(response.Search);
-//     } catch (error) {
-//       return rejectWithValue("Error");
-//     }
-//   },
-// );
-
 export const fetchMovies = createAsyncThunk<IMovie[], undefined, { rejectValue: string }>(
   "movies/fetchMovies",
   async (_, { rejectWithValue }) => {
@@ -80,7 +68,6 @@ const moviesSlice = createSlice({
     builder.addCase(fetchMovies.fulfilled, (state, { payload }) => {
       state.isLoadingMoreMovies = false;
       state.movies = payload;
-      // state.movies = state.movies.concat(payload);
     });
     builder.addCase(fetchMovies.rejected, (state, { payload }) => {
       if (payload) {

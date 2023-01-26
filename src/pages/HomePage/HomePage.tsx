@@ -11,16 +11,13 @@ export const HomePage = () => {
 
   const handleShowMoreMovies = () => {
     setPageNumber(pageNumber + 1);
-    // dispatch(fetchMovies(pageNumber.toString()));
     dispatch(fetchMoreMovies(pageNumber.toString()));
   };
 
-  // useEffect(() => {
-  //   dispatch(fetchMovies(page.toString()));
-  // }, [dispatch, page]);
   useEffect(() => {
     dispatch(fetchMovies());
   }, [dispatch]);
+
   return (
     <Container>
       {isLoading && <StyledLoader loading={isLoading} />}

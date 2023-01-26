@@ -9,6 +9,7 @@ const Container = styled.div`
 `;
 const StyledShowMoreButton = styled(ShowMoreButton)`
   margin-top: 48px;
+
   ${Media.LG} {
     margin-top: 56px;
   }
@@ -22,6 +23,7 @@ const StyledLoader = styled(Loader)`
 `;
 const ErrorText = styled.p`
   padding: 20px 0;
+
   ${Typography.S2};
   color: ${Color.ERROR};
 `;

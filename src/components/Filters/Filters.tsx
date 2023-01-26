@@ -26,6 +26,7 @@ interface IProps {
 
 export const Filters = memo(({ toggleModal, isOpen }: IProps) => {
   const dispatch = useAppDispatch();
+
   const {
     register,
     handleSubmit,
@@ -33,13 +34,13 @@ export const Filters = memo(({ toggleModal, isOpen }: IProps) => {
     formState: { errors },
   } = useForm<FilterValue>();
 
-  const handleReset = () => {
-    reset();
-  };
-
   const onSubmit: SubmitHandler<FilterValue> = (info) => {
     dispatch(fetchMoviesBySearch(info)).unwrap();
     toggleModal(false);
+    reset();
+  };
+
+  const handleReset = () => {
     reset();
   };
 

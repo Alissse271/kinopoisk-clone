@@ -11,7 +11,7 @@ interface IProps {
 
 export const Slide = memo(({ movie: { poster, id, title } }: IProps) => {
   return (
-    <StyledSlide to={generatePath(`${ROUTE.HOME}` + `${ROUTE.MOVIE_INFO}`, { imdb: id })}>
+    <StyledSlide to={generatePath(ROUTE.HOME + ROUTE.MOVIE_INFO, { imdb: id })}>
       {poster === "N/A" ? (
         <Poster src={imageNotFound} alt="Movie" />
       ) : (

@@ -10,7 +10,6 @@ const StyledButton = styled.button<{ open: boolean }>`
   width: 56px;
   height: 56px;
 
-  background: center no-repeat url(${burgerMenu}), ${Color.PRIMARY};
   background: ${({ open }) =>
     open
       ? `center no-repeat url(${close}), ${Color.PRIMARY}`

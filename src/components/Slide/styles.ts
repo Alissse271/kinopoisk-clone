@@ -5,6 +5,7 @@ import { Color, Media, Typography } from "ui";
 const StyledSlide = styled(Link)`
   display: flex;
   flex-direction: column;
+
   text-decoration: none;
   cursor: pointer;
 `;
@@ -12,9 +13,11 @@ const StyledSlide = styled(Link)`
 const Poster = styled.img`
   width: 100%;
   height: 365px;
+
+  margin-bottom: 14px;
+
   object-fit: cover;
   border-radius: 20px;
-  margin-bottom: 14px;
 
   ${Media.SM} {
     height: 279px;

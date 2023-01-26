@@ -17,9 +17,9 @@ interface IProps {
 }
 
 export const Header = memo(({ className, toggleModal }: IProps) => {
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   // const debouncedValue = useDebounce(searchValue, 500);
-  const dispatch = useAppDispatch();
   const { width = 0 } = useWindowSize();
   const { register, handleSubmit, reset } = useForm<FilterValue>();
 
@@ -27,10 +27,12 @@ export const Header = memo(({ className, toggleModal }: IProps) => {
     dispatch(fetchMoviesBySearch(info));
     reset();
   };
+
   const handleOpenFilters = () => {
     navigate(ROUTE.HOME);
     toggleModal(true);
   };
+
   return (
     <StyledHeader className={className}>
       {width < 1440 && width >= 768 && (

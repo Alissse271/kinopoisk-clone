@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 const Card = styled(motion.div)`
   position: relative;
+
   max-width: 272px;
   width: 100%;
 `;
@@ -11,7 +12,9 @@ const FavoriteLabel = styled.div`
   position: absolute;
   right: 20px;
   top: 20px;
+
   padding: 2px 8px;
+
   background-color: ${Color.LIGHT_THEME};
   border-radius: 6px;
 `;
@@ -19,7 +22,9 @@ const TrendsLabel = styled.div`
   position: absolute;
   left: 20px;
   top: 20px;
+
   padding: 6px 8px;
+
   background-color: ${Color.PRIMARY};
   border-radius: 6px;
 `;
