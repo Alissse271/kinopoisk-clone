@@ -19,6 +19,7 @@ interface IProps {
 export const Header = memo(({ className, toggleModal }: IProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
+  // TODO: add debouncedValue to search
   // const debouncedValue = useDebounce(searchValue, 500);
   const { width = 0 } = useWindowSize();
   const { register, handleSubmit, reset } = useForm<FilterValue>();
