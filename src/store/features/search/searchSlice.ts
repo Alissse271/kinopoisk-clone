@@ -82,7 +82,6 @@ const searchSlice = createSlice({
     });
   },
 });
-
-export default searchSlice.reducer;
 export const { createNextSearchPage, updateTitle, updateYear, deleteValues, resetSearchMovies } =
   searchSlice.actions;
+export default searchSlice.reducer;
