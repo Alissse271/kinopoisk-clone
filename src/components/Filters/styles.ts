@@ -16,7 +16,7 @@ const StyledFilters = styled(motion.form)`
   padding: 32px 24px;
 
   background-color: ${Color.MURK_THEME};
-  z-index: 5;
+  z-index: 11;
 
   ${Media.LG} {
     width: 518px;

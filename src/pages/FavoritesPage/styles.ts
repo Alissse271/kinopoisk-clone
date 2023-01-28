@@ -2,6 +2,13 @@ import { TitleMain } from "components";
 import styled from "styled-components";
 import { Typography, Color, Media } from "ui";
 
+const Container = styled.div`
+  display: grid;
+  grid-template-rows: min-content auto;
+  ${Media.XXXL} {
+    grid-template-rows: auto;
+  }
+`;
 const EmptyFavoritesContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -18,6 +25,7 @@ const EmptyText = styled.p`
   ${Typography.H3};
   color: ${Color.DARK_THEME};
 `;
+const Image = styled.img``;
 const StyledTitle = styled(TitleMain)`
   align-self: flex-start;
 
@@ -28,4 +36,4 @@ const StyledTitle = styled(TitleMain)`
   }
 `;
 
-export { EmptyText, EmptyFavoritesContainer, StyledTitle };
+export { Container, EmptyText, EmptyFavoritesContainer, StyledTitle, Image };

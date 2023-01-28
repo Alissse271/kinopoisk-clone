@@ -4,7 +4,7 @@ import { useWindowSize } from "hooks";
 import { Navigate } from "react-router-dom";
 import { ROUTE } from "router";
 import { getAllFavorites, getUserInfo, useAppSelector } from "store";
-import { EmptyFavoritesContainer, EmptyText, StyledTitle } from "./styles";
+import { Container, EmptyFavoritesContainer, EmptyText, StyledTitle, Image } from "./styles";
 
 export const FavoritesPage = () => {
   const { favorites } = useAppSelector(getAllFavorites);
@@ -12,12 +12,12 @@ export const FavoritesPage = () => {
   const { width = 0 } = useWindowSize();
 
   return isAuth ? (
-    <>
+    <Container>
       {favorites.length === 0 && (
         <>
           {width < 1440 && <StyledTitle label="Favorites" />}
           <EmptyFavoritesContainer>
-            <img src={emptyFavorites} alt="Empty list of favorites"></img>
+            <Image src={emptyFavorites} alt="Empty list of favorites"></Image>
             <EmptyText>No favorite movies</EmptyText>
           </EmptyFavoritesContainer>
         </>
@@ -27,7 +27,7 @@ export const FavoritesPage = () => {
           <MovieList isFavorites movies={favorites} />
         </>
       )}
-    </>
+    </Container>
   ) : (
     <Navigate to={ROUTE.HOME + ROUTE.SIGN_IN} />
   );

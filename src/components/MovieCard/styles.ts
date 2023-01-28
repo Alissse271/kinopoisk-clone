@@ -45,6 +45,7 @@ const Image = styled.img`
   height: 100%;
 
   border-radius: 10px;
+  object-fit: cover;
 `;
 const Name = styled.p`
   padding-top: 20px;

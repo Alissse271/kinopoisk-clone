@@ -1,6 +1,6 @@
 import { FiltersMark, LogoIcon } from "assets";
 import { HeaderAccount } from "components";
-import { useDebounce, useWindowSize } from "hooks";
+import { useWindowSize } from "hooks";
 import { memo } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -19,8 +19,6 @@ interface IProps {
 export const Header = memo(({ className, toggleModal }: IProps) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  // TODO: add debouncedValue to search
-  // const debouncedValue = useDebounce(searchValue, 500);
   const { width = 0 } = useWindowSize();
   const { register, handleSubmit, reset } = useForm<FilterValue>();
 
