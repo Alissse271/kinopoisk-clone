@@ -77,7 +77,6 @@ const searchSlice = createSlice({
       if (payload) {
         state.isLoading = false;
         state.isLoadingMoreMovies = false;
-        state.isFoundMovies = false;
         state.error = payload;
       }
     });

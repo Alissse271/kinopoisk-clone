@@ -39,6 +39,9 @@ const moviesSlice = createSlice({
     createNextPage(state, { payload }: PayloadAction<boolean>) {
       payload ? (state.page = state.page + 1) : (state.page = 1);
     },
+    resetMovies(state) {
+      state.movies = [];
+    },
   },
   extraReducers(builder) {
     builder.addCase(fetchMovies.pending, (state) => {
@@ -59,4 +62,4 @@ const moviesSlice = createSlice({
 });
 
 export default moviesSlice.reducer;
-export const { createNextPage } = moviesSlice.actions;
+export const { createNextPage, resetMovies } = moviesSlice.actions;
