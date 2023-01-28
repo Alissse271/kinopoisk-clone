@@ -38,15 +38,7 @@ class MovieAPI {
     baseURL: this.BASE_URL,
   });
 
-  public async getRandomMovies() {
-    const params = {
-      s: this.randomMovie,
-    };
-
-    const { data } = await this.API.get("", { params });
-    return data;
-  }
-  public async getMoreMovies(page: string) {
+  public async getRandomMovies(page: number) {
     const params = {
       s: this.randomMovie,
       page: page,
@@ -57,7 +49,9 @@ class MovieAPI {
   }
   public async getMoviesBySearch(values: FilterValue) {
     const params = {
-      ...values,
+      s: values.s,
+      y: values.y,
+      page: values.page,
     };
     const { data } = await this.API.get("", { params });
 

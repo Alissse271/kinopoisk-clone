@@ -10,7 +10,7 @@ import {
 import { addFavorite, removeFavorite } from "./features/favorites/favoritesSlice";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import { fetchMovieInfo } from "./features/movieInfo/movieInfoSlice";
-import { fetchMoreMovies, fetchMovies, fetchMoviesBySearch } from "./features/movies/moviesSlice";
+import { fetchMovies } from "./features/movies/moviesSlice";
 import { getUserInfo } from "./selectors/authSelector";
 import { getAllFavorites } from "./selectors/favoritesSelector";
 import { getMovieInfo } from "./selectors/movieInfoSelector";
@@ -19,6 +19,15 @@ import { getTheme } from "./selectors/themeSelector";
 import { getTrends } from "./selectors/trendsSelector";
 import { store } from "./store";
 import { toggleTheme } from "./features/theme/themeSlice";
+import { getMoviesBySearch } from "./selectors/searchSelector";
+import {
+  createNextSearchPage,
+  deleteValues,
+  fetchMoviesBySearch,
+  resetSearchMovies,
+  updateTitle,
+  updateYear,
+} from "./features/search/searchSlice";
 
 export {
   useAppSelector,
@@ -29,6 +38,7 @@ export {
   getAllFavorites,
   getTrends,
   getMovieInfo,
+  getMoviesBySearch,
   store,
   toggleTheme,
   fetchMovies,
@@ -42,6 +52,10 @@ export {
   getLogOutUser,
   addFavorite,
   removeFavorite,
-  fetchMoreMovies,
   updateUserName,
+  updateTitle,
+  updateYear,
+  resetSearchMovies,
+  deleteValues,
+  createNextSearchPage,
 };

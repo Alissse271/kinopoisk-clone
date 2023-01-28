@@ -1,21 +1,27 @@
 import { MovieList } from "components";
 import { useEffect } from "react";
-import { fetchMovies, getAllMovies, useAppDispatch, useAppSelector } from "store";
-import { createNextPage } from "store/features/movies/moviesSlice";
+import {
+  createNextSearchPage,
+  fetchMoviesBySearch,
+  getMoviesBySearch,
+  useAppDispatch,
+  useAppSelector,
+} from "store";
+
 import { Container, ErrorText, StyledLoader, StyledShowMoreButton } from "./styles";
 
-export const HomePage = () => {
-  const { isLoading, movies, error, isLoadingMoreMovies, page, isFoundMovies } =
-    useAppSelector(getAllMovies);
+export const SearchPage = () => {
+  const { isLoading, movies, error, isLoadingMoreMovies, isFoundMovies, searchValue } =
+    useAppSelector(getMoviesBySearch);
   const dispatch = useAppDispatch();
 
   const handleShowMoreMovies = () => {
-    dispatch(createNextPage(true));
+    dispatch(createNextSearchPage(true));
   };
 
   useEffect(() => {
-    dispatch(fetchMovies({ page }));
-  }, [dispatch, page]);
+    if (searchValue.s || searchValue.y) dispatch(fetchMoviesBySearch(searchValue));
+  }, [searchValue]);
 
   return (
     <Container>

@@ -49,6 +49,7 @@ interface IMovieInfo {
 interface FilterValue {
   s: string;
   y: string;
+  page: number;
 }
 interface IUserInfo {
   name: string;

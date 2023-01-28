@@ -5,9 +5,8 @@ import { memo } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { ROUTE } from "router";
-import { fetchMoviesBySearch, useAppDispatch } from "store";
+import { deleteValues, resetSearchMovies, updateTitle, useAppDispatch } from "store";
 import { FilterValue } from "types";
-
 import { Color } from "ui";
 import { StyledForm, StyledHeader, StyledInput, FiltersButton, InputContainer } from "./styles";
 
@@ -23,12 +22,14 @@ export const Header = memo(({ className, toggleModal }: IProps) => {
   const { register, handleSubmit, reset } = useForm<FilterValue>();
 
   const onSubmit: SubmitHandler<FilterValue> = (info) => {
-    dispatch(fetchMoviesBySearch(info));
+    dispatch(resetSearchMovies());
+    dispatch(deleteValues());
+    dispatch(updateTitle(info.s));
     reset();
+    navigate(ROUTE.SEARCH);
   };
 
   const handleOpenFilters = () => {
-    navigate(ROUTE.HOME);
     toggleModal(true);
   };
 
@@ -41,12 +42,7 @@ export const Header = memo(({ className, toggleModal }: IProps) => {
       )}
       <InputContainer>
         <StyledForm onSubmit={handleSubmit(onSubmit)}>
-          <StyledInput
-            type="text"
-            placeholder="Search"
-            onClick={() => navigate(ROUTE.HOME)}
-            {...register("s")}
-          />
+          <StyledInput type="text" placeholder="Search" {...register("s")} />
         </StyledForm>
         <FiltersButton onClick={handleOpenFilters}>
           <FiltersMark />

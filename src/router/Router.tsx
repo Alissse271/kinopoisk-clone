@@ -5,6 +5,7 @@ import {
   MovieInfoPage,
   NotFoundPage,
   ResetPasswordPage,
+  SearchPage,
   SettingsPage,
   SignInPage,
   SignUpPage,
@@ -20,6 +21,7 @@ export const Router = createBrowserRouter(
         <Route index element={<HomePage />} />
         <Route path={ROUTE.FAVORITES} element={<FavoritesPage />} />
         <Route path={ROUTE.TRENDS} element={<TrendsPage />} />
+        <Route path={ROUTE.SEARCH} element={<SearchPage />} />
         <Route path={ROUTE.SETTINGS} element={<SettingsPage />} />
         <Route path={ROUTE.MOVIE_INFO} element={<MovieInfoPage />} />
       </Route>

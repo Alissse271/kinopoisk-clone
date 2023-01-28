@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { transrormMovies } from "mappers";
 import { movieAPI } from "services";
-import { FilterValue, IMovie } from "types";
+import { IMovie } from "types";
 
 interface IMoviesState {
   movies: IMovie[];
@@ -20,35 +20,11 @@ const initialState: IMoviesState = {
   error: null,
 };
 
-export const fetchMovies = createAsyncThunk<IMovie[], undefined, { rejectValue: string }>(
+export const fetchMovies = createAsyncThunk<IMovie[], { page: number }, { rejectValue: string }>(
   "movies/fetchMovies",
-  async (_, { rejectWithValue }) => {
+  async ({ page }, { rejectWithValue }) => {
     try {
-      const response = await movieAPI.getRandomMovies();
-      return transrormMovies(response.Search);
-    } catch (error) {
-      return rejectWithValue("Error");
-    }
-  },
-);
-
-export const fetchMoviesBySearch = createAsyncThunk<IMovie[], FilterValue, { rejectValue: string }>(
-  "movies/fetchMoviesBySearch",
-  async (value, { rejectWithValue }) => {
-    try {
-      const response = await movieAPI.getMoviesBySearch(value);
-      return transrormMovies(response.Search);
-    } catch (error) {
-      return rejectWithValue("Error");
-    }
-  },
-);
-
-export const fetchMoreMovies = createAsyncThunk<IMovie[], string, { rejectValue: string }>(
-  "movies/fetchMoreMovies",
-  async (page, { rejectWithValue }) => {
-    try {
-      const response = await movieAPI.getMoreMovies(page);
+      const response = await movieAPI.getRandomMovies(page);
       return transrormMovies(response.Search);
     } catch (error) {
       return rejectWithValue("Error");
@@ -59,7 +35,11 @@ export const fetchMoreMovies = createAsyncThunk<IMovie[], string, { rejectValue:
 const moviesSlice = createSlice({
   name: "movies",
   initialState,
-  reducers: {},
+  reducers: {
+    createNextPage(state, { payload }: PayloadAction<boolean>) {
+      payload ? (state.page = state.page + 1) : (state.page = 1);
+    },
+  },
   extraReducers(builder) {
     builder.addCase(fetchMovies.pending, (state) => {
       state.isLoadingMoreMovies = true;
@@ -67,40 +47,9 @@ const moviesSlice = createSlice({
     });
     builder.addCase(fetchMovies.fulfilled, (state, { payload }) => {
       state.isLoadingMoreMovies = false;
-      state.movies = payload;
-    });
-    builder.addCase(fetchMovies.rejected, (state, { payload }) => {
-      if (payload) {
-        state.isLoadingMoreMovies = false;
-        state.error = payload;
-      }
-    });
-    builder.addCase(fetchMoviesBySearch.pending, (state) => {
-      state.isLoading = true;
-      state.error = null;
-    });
-    builder.addCase(fetchMoviesBySearch.fulfilled, (state, { payload }) => {
-      state.isLoading = false;
-      state.isFoundMovies = true;
-      state.movies = payload;
-    });
-    builder.addCase(fetchMoviesBySearch.rejected, (state, { payload }) => {
-      if (payload) {
-        state.isLoading = false;
-        state.isFoundMovies = false;
-        state.error = payload;
-      }
-    });
-
-    builder.addCase(fetchMoreMovies.pending, (state) => {
-      state.isLoadingMoreMovies = true;
-      state.error = null;
-    });
-    builder.addCase(fetchMoreMovies.fulfilled, (state, { payload }) => {
-      state.isLoadingMoreMovies = false;
       state.movies = state.movies.concat(payload);
     });
-    builder.addCase(fetchMoreMovies.rejected, (state, { payload }) => {
+    builder.addCase(fetchMovies.rejected, (state, { payload }) => {
       if (payload) {
         state.isLoadingMoreMovies = false;
         state.error = payload;
@@ -110,3 +59,4 @@ const moviesSlice = createSlice({
 });
 
 export default moviesSlice.reducer;
+export const { createNextPage } = moviesSlice.actions;

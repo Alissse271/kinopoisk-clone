@@ -1,10 +1,11 @@
 import { Close } from "assets";
-import { Button } from "components";
-import { TitleMedium } from "components/TitleMedium/TitleMedium";
+import { Button, TitleMedium } from "components";
 import { AnimatePresence } from "framer-motion";
 import { memo } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { fetchMoviesBySearch, useAppDispatch } from "store";
+import { useNavigate } from "react-router-dom";
+import { ROUTE } from "router";
+import { deleteValues, resetSearchMovies, updateTitle, updateYear, useAppDispatch } from "store";
 import { FilterValue } from "types";
 import { titleValidation, yearValidation } from "utils";
 import {
@@ -26,7 +27,7 @@ interface IProps {
 
 export const Filters = memo(({ toggleModal, isOpen }: IProps) => {
   const dispatch = useAppDispatch();
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -35,9 +36,13 @@ export const Filters = memo(({ toggleModal, isOpen }: IProps) => {
   } = useForm<FilterValue>();
 
   const onSubmit: SubmitHandler<FilterValue> = (info) => {
-    dispatch(fetchMoviesBySearch(info)).unwrap();
+    dispatch(resetSearchMovies());
+    dispatch(deleteValues());
+    dispatch(updateTitle(info.s));
+    dispatch(updateYear(info.y));
     toggleModal(false);
     reset();
+    navigate(ROUTE.SEARCH);
   };
 
   const handleReset = () => {
