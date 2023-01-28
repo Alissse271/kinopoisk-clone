@@ -10,7 +10,7 @@ import {
 import { addFavorite, removeFavorite } from "./features/favorites/favoritesSlice";
 import { useAppDispatch, useAppSelector } from "./hooks/hooks";
 import { fetchMovieInfo } from "./features/movieInfo/movieInfoSlice";
-import { fetchMovies } from "./features/movies/moviesSlice";
+import { createNextPage, fetchMovies } from "./features/movies/moviesSlice";
 import { getUserInfo } from "./selectors/authSelector";
 import { getAllFavorites } from "./selectors/favoritesSelector";
 import { getMovieInfo } from "./selectors/movieInfoSelector";
@@ -58,4 +58,5 @@ export {
   resetSearchMovies,
   deleteValues,
   createNextSearchPage,
+  createNextPage,
 };

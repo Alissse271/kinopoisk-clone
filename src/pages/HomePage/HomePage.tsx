@@ -1,7 +1,7 @@
 import { MovieList } from "components";
 import { useEffect } from "react";
 import { fetchMovies, getAllMovies, useAppDispatch, useAppSelector } from "store";
-import { createNextPage } from "store/features/movies/moviesSlice";
+import { createNextPage } from "store";
 import { Container, ErrorText, StyledLoader, StyledShowMoreButton } from "./styles";
 
 export const HomePage = () => {
