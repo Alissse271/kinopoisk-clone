@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/kinopoisk-clone/static/css/main.9bf80ff5.css",
-    "main.js": "/kinopoisk-clone/static/js/main.c010521a.js",
+    "main.js": "/kinopoisk-clone/static/js/main.8e942629.js",
     "static/media/background.jpg": "/kinopoisk-clone/static/media/background.e99f98c69c41b665ee84.jpg",
     "static/media/image-not-found.png": "/kinopoisk-clone/static/media/image-not-found.6e33a3c8cbe2cddf7375.png",
     "static/media/logo.svg": "/kinopoisk-clone/static/media/logo.8479cf418db81b4ccbd2d64f9b11aa24.svg",
@@ -23,10 +23,10 @@
     "static/media/down-arrow.svg": "/kinopoisk-clone/static/media/down-arrow.1f0d9e9ea9a93f92106179257d89acea.svg",
     "static/media/right-arrow.svg": "/kinopoisk-clone/static/media/right-arrow.fd29f2ceb6ccc1cd24a9ca54cea8962d.svg",
     "main.9bf80ff5.css.map": "/kinopoisk-clone/static/css/main.9bf80ff5.css.map",
-    "main.c010521a.js.map": "/kinopoisk-clone/static/js/main.c010521a.js.map"
+    "main.8e942629.js.map": "/kinopoisk-clone/static/js/main.8e942629.js.map"
   },
   "entrypoints": [
     "static/css/main.9bf80ff5.css",
-    "static/js/main.c010521a.js"
+    "static/js/main.8e942629.js"
   ]
 }
